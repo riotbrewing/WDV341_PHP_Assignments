@@ -24,7 +24,7 @@ body, html
 
 .top_image
 {
-    background-image: url("Images/homeworkImage.jpg");
+    background-image: url("images_homework/homeworkImage.jpg");
     height: 50%;
     background-position: center;
     background-repeat: no-repeat;
