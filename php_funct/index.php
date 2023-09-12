@@ -1,25 +1,7 @@
 <?php
-// function to string is all a digit
-function validate_number($input)
-{
-
-    global $schoolName;
-    echo $schoolName;
-
-   if(is_numeric($input))
-   {
-
-       return true;
-   }
-   else
-   {
-        return false;
-   }
-}
 // function to format time stamp into mm/dd/yyyy format
-function month_day_year($input)
+function month_day_year($input): string
 {
-
     return date("m/d/Y",$input);
 }
 // function to format time stamp into dd/mm/yyyy format

@@ -12,8 +12,7 @@ $output = array();
 
 foreach($webDevLanguages as $value)
     {
-        $encoded = json_encode($value);
-        $output[] = $encoded;
+        $output[] = json_encode($value);
     }
 
 ?>
@@ -29,10 +28,25 @@ foreach($webDevLanguages as $value)
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="stylesheet.css">
     <title>PHP Basics</title>
-    <script src="scriptsheet.js"></script>
-</head>
-<body>
 
+</head>
+
+<body>
+<script>
+    function fromPhpLoop(input)
+    {
+        let outputArray = input;
+        let div = document.getElementById("here");
+
+        for(let i = 0; i < outputArray.length; i++)
+        {
+            let outputToDOM = document.createElement("h3");
+            outputToDOM.innerHTML = outputArray[i];
+            div.append(outputToDOM);
+        }
+
+    }
+</script>
 <div class="format_container text-center">
     <!-- #2 -->
         <?php echo "<h1>" . $assignmentName . "</h1>";?>
@@ -56,7 +70,13 @@ foreach($webDevLanguages as $value)
                         Output from an PHP array passed into JavaScript then appended to this div: <br><br>
                         <!-- #6 -->
                         <script>
-                            fromPhpLoop(<?php echo json_encode($webDevLanguages) ?>)
+                            let output_webdev_array = [];
+                            <?php foreach ($webDevLanguages as $key => $value) {?>
+
+                                output_webdev_array.push("<?php echo $value; ?>");
+                            <?php }
+                            ?>
+                            fromPhpLoop(output_webdev_array);
                         </script>
                     </p>
                 </div>
@@ -76,6 +96,7 @@ foreach($webDevLanguages as $value)
         </div>
     </div>
 </div>
+
 <!-- Option 1: Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 

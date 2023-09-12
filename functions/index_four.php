@@ -17,7 +17,7 @@ function characters_in_string($input): string
 //function to trim any whitespace from a string
 function trim_whitespace_from_string($input): string
 {
-    return trim($input, " ");
+    return str_replace(" ", "", $input);
 }
 //function to return the string in all lower case
 function convert_to_lowercase($input): string
@@ -32,7 +32,8 @@ function contains_DMACC($input): string
     //convert to lowercase for testing
     $lowercase_input = convert_to_lowercase($input);
     //return a message based on if the input matched the test variable
-    if (strstr($lowercase_input, $dmacc, true))
+    //changed str_contains to make it work with heartland
+    if (strstr($lowercase_input, $dmacc, false))
     {
         return "DMACC was found in the string";
     }
@@ -53,7 +54,6 @@ function convert_to_phone_number($input) :string
     {
         return "NOT A VALID NUMBER!";
     }
-
 
 }
 
