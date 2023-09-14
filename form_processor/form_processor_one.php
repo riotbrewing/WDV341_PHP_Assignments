@@ -15,11 +15,11 @@
     echo "</table>";
  */
 
-
     //array holding different advisors
-    $advisors = array("" => "Jen Eral","CIS" => "Igot Chaman", "GD" => "Heel Pewout", "WDV" => "Anne Sewrs");
-    $advisors_email = array("" => "jeral@tester.edu", "CIS" => "ichaman@tester.edu", "GD" => "hpewout@tester.edu", "WDV" => "asewrs@tester.edu");
-    $majors_array = array("", "CIS", "GD", "WDV");
+    //$advisors = array("" => "Jen Eral","CIS" => "Igot Chaman", "GD" => "Heel Pewout", "WDV" => "Anne Sewrs");
+    //$advisors_email = array("" => "jeral@tester.edu", "CIS" => "ichaman@tester.edu", "GD" => "hpewout@tester.edu", "WDV" => "asewrs@tester.edu");
+    //$majors_array = array("", "CIS", "GD", "WDV");
+
     $full_majors_array = array("CIS" => "Computer Information Systems", "GD" =>"Graphic Design", "WDV" => "Web Development");
     $first_name = $_POST["first_name"];
     $last_name = $_POST["last_name"];
@@ -27,35 +27,22 @@
     $major = $_POST["major_select"];
     $email = $_POST["email_input"];
     $comments = $_POST["comments"];
-    $test_array = array("" => array("Jen Eral", "jeral@tester.edu"), "CIS" => array("Igot Chaman", "ichaman@tester.edu"), "GD" => array("Heel Pewout", "hpewout@tester.edu"),
-        "WDV" => array("asewrs@tester.edu", "asewrs@tester.edu"));
+    $advisors_information_array = array("" => array("Jen Eral", "jeral@tester.edu" , "UNDECLARED"), "CIS" => array("Igot Chaman", "ichaman@tester.edu", "Computer Information Systems"), "GD" => array("Heel Pewout", "hpewout@tester.edu", "Graphic Design"),
+        "WDV" => array("Anne Sewrs", "asewrs@tester.edu", "Web Development"));
     function get_major()
     {
-        global $major, $full_majors_array;
-        if($major == "")
-        {
-            return "You did not select a major";
-        }
-        else
-        {
-            return "You have declared " . $full_majors_array[$major] . " as your major";
-        }
+
+        global $major, $advisors_information_array;
+
+        return "You have declared: " . $advisors_information_array[$major][2] . " as your major";
     }
 
     function advisor_information()
     {
-        global $advisors, $majors_array, $major, $advisors_email, $test_array;
+        global $major, $advisors_information_array;
         if (isset($_POST['contact_advisor']))
         {
-            if ($major == "")
-            {
-                return "You did not select a major, please contact our admissions counselor " . $test_array[$major][0] . " at " . $test_array[$major][1];
-            }
-            else
-            {
-                return $test_array[$major][0] . " is the advisor for the " . $major . " program please contact them at " . $test_array[$major][1];
-            }
-
+            return $advisors_information_array[$major][0] . " is the advisor for the " . $major . " program please contact them at " . $advisors_information_array[$major][1];
         }
         else
         {
@@ -65,7 +52,7 @@
 
     function contact_me()
     {
-        global $major;
+        global $major, $advisors_information_array;
         if(isset($_POST["contact_me"]))
         {
             if($major == "")
@@ -74,7 +61,7 @@
             }
             else
             {
-                return "We will email you information about your program";
+                return "We will email you information about the " . $advisors_information_array[$major][2] . " program";
             }
 
         }
@@ -86,7 +73,7 @@
     function get_date()
     {
         $today = time();
-        return date("d/m/Y", $today);
+        return date("m/d/Y", $today);
     }
 
 ?>
