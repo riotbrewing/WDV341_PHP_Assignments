@@ -1,6 +1,6 @@
 <?php
     global $connection;
-    include "connection_file_index.php";
+    include "dbConnect.php";
 ?>
 <!doctype html>
 <html lang="en">
