@@ -9,7 +9,7 @@ $sql = "SELECT events_name FROM wdv341_events";
 
 //3- Prepare your Statement PDO Prepared Statements
 $stmt = $conn->prepare($sql);
-$metadata = $stmt->getColumnMeta(1);
+
 
 //4- Bind any parameters as needed
 
@@ -71,7 +71,6 @@ $stmt->execute();
                         while(($row = $stmt->fetch(PDO::FETCH_ASSOC)) !== false)
                             echo "<tr><td>".$row['events_name'].'</td></tr>';
                     }
-
                     ?>
                 </tr>
                 </tbody>
