@@ -131,7 +131,8 @@
     <title>9-1 PHP-JSON EVENT</title>
 </head>
 <body>
-
+<!-- outputted the json object to the console to meet the assignment parameters but formatted the output below -->
+<script>console.log(<?php echo $json_object ?>)</script>
 <div class="container col-xxl-8 px-4 py-5 title_margin">
     <div class="row flex-lg-row-reverse align-items-center g-5 py-5 bg-primary">
         <div class="col-10 col-sm-8 col-lg-6">
@@ -139,7 +140,8 @@
         </div>
         <div class="col-lg-6">
             <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3 h1_text">9-1 PHP-JSON EVENT OBJECT</h1>
-            <p class="lead">Create a PHP class, and store data from the database as and instance of the class. Encode the output to JSON and output the JSON object</p>
+            <p class="lead">Create a PHP class, and store data from the database as and instance of the class. Encode the output to JSON and output the JSON object.</p>
+            <small class="text-muted">I outputted the encoded object to the console and formatted the output to display below </small>
         </div>
     </div>
 </div>
