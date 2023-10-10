@@ -1,0 +1,20 @@
+
+.bg-primary
+{
+    background-color: whitesmoke!important;
+    color: black;
+}
+
+.text-muted
+{
+    color: rgb(128, 128, 128) !important;
+}
+.h1_text
+{
+    color: black!important;
+}
+
+.title_margin
+{
+    margin-top: 5px;
+}
