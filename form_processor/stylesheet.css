@@ -1,0 +1,27 @@
+.form_format
+{
+    padding: 10px;
+    border-radius: 15px;
+    border: solid 1px #cbcbcb;
+    background-color: #e1e5ef;
+}
+.legend_format
+{
+    font-size: 1em;
+}
+.radio_format
+{
+    background-color: white;
+    border: solid 1px #cbcbcb;
+    border-radius: 5px;
+
+}
+.color_body
+{
+    background-color: #f8f9fd;
+}
+
+.trickydicky
+{
+    display: none;
+}
