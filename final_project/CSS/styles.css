@@ -1,0 +1,381 @@
+
+body
+{
+ max-height: 100vh;
+ min-width: 393px;
+ display:grid;
+ grid-template-columns: 100px 1fr;
+ grid-template-rows: 1fr 1fr;
+ grid-template-areas:
+ "side main"
+ "side main";
+}
+.header
+{
+ grid-area: header;
+ background-color: red;
+}
+.sidebar
+{
+ background-color: #1c1f23;
+ grid-area: side;
+}
+
+.main
+{
+ background-color: #c3c5ca;
+ padding: 20px;
+ grid-area: main;
+ display:grid;
+ grid-template-columns: repeat(6, 1fr);
+ grid-template-rows: 1fr 1fr;
+ grid-template-areas:
+ "c1 c1 c1 c1 c1 c1"
+ "c3 c4 c5 c6 c2 c2"
+
+ ;
+ gap:20px
+}
+
+.card
+{
+
+ background-color: #f6f7f9;
+ border-radius: 10px;
+}
+/*
+------------------------------------BEGIN ATTRIBUTE / PROF CARDS------------------------------------
+ */
+.card:nth-child(1)
+{
+ grid-area: c1;
+ font-size: 1rem;
+ font-weight: bolder;
+ overflow-x: auto;
+ overflow-y: hidden;
+ white-space: nowrap;
+
+ display:grid;
+ grid-template-columns: repeat(6, 1fr);
+ grid-template-rows: 260px 260px;
+ grid-template-areas:
+  "a1 a2 a3 a4 a5 a6"
+  "pe1 pe2 pe3 pe4 pe5 pe6";
+ gap: 5px;
+ padding:5px;
+ max-height: 620px;
+
+}
+
+.attribute_card
+{
+ background-color: lightblue;
+ border-radius: 10px;
+ text-align: center;
+ user-select: none;
+ max-height: 260px;
+}
+
+.attribute_card span
+{
+ text-decoration: underline;
+ margin: 5px;
+ background-color: #c3c5ca;
+ border-radius: 25px;
+ text-align: center;
+}
+
+.attribute_card h1
+{
+ display: table;
+ margin: 0 auto;
+ padding: 15px;
+ background-color: #c3c5ca;
+ border-radius: 180px;
+
+}
+
+.attribute_card:nth-child(1)
+{
+ grid-area: a1;
+
+}
+
+.attribute_card:nth-child(2)
+{
+ grid-area: pe1;
+}
+
+.attribute_card:nth-child(3)
+{
+ grid-area: a2;
+}
+
+.attribute_card:nth-child(4)
+{
+ grid-area: pe2;
+}
+
+.attribute_card:nth-child(5)
+{
+ grid-area: a3;
+}
+
+.attribute_card:nth-child(6)
+{
+ grid-area: pe3;
+}
+
+.attribute_card:nth-child(7)
+{
+ grid-area: a4;
+}
+
+.attribute_card:nth-child(8)
+{
+ grid-area: pe4;
+}
+
+.attribute_card:nth-child(9)
+{
+ grid-area: a5;
+}
+
+.attribute_card:nth-child(10)
+{
+ grid-area: pe5;
+}
+
+.attribute_card:nth-child(11)
+{
+ grid-area: a6;
+}
+
+.attribute_card:nth-child(12)
+{
+ grid-area: pe6;
+}
+
+.attribute_card:nth-child(even){
+ text-align: left;
+ font-size: 1rem;
+}
+/*
+ ------------------------------------END ATTRIBUTES / PROF CARD------------------------------------
+ */
+
+
+/*
+ ------------------------------------START WEAPONS CARD------------------------------------
+ */
+.card:nth-child(2)
+{
+ grid-area: c2;
+}
+
+.card:nth-child(2) table
+{
+ border-collapse: collapse;
+ width: 100%;
+}
+
+.card:nth-child(2) table td, .card:nth-child(2) table th
+{
+ border: 1px solid #ddd;
+ padding: 10px;
+}
+
+.card:nth-child(2) tr:nth-child(even)
+{
+ background-color: lightblue;
+}
+
+.card:nth-child(2) th
+{
+ padding-top: 12px;
+ padding-bottom: 12px;
+ text-align: center;
+ background-color: lightblue;
+ color: white;
+}
+
+/*
+------------------------------------END WEAPONS CARD------------------------------------
+ */
+
+
+/*
+------------------------------------START HIT POINT CARD------------------------------------
+ */
+.card:nth-child(3)
+{
+ grid-area: c3;
+ display: grid;
+ grid-template-columns: 1fr;
+ grid-template-rows: repeat(4, 1fr);
+ grid-template-areas:
+  "arm1"
+  "arm2"
+  "arm3"
+  "arm4";
+}
+
+.armor-initiative-speed
+{
+ grid-area: arm1;
+ display: grid;
+ grid-template-columns: 1fr 1fr 1fr;
+ grid-template-rows: 1fr;
+ grid-template-areas: "as ini sp";
+ gap: 20px;
+ padding: 10px;
+}
+.stat-card
+{
+ background-color: lightblue;
+ border-radius: 10px;
+ text-align: center;
+ user-select: none;
+}
+
+.stat-card span
+{
+ margin: 5px;
+ background-color: #c3c5ca;
+ border-radius: 25px;
+ text-align: center;
+ padding: 10px
+}
+
+.stat-card:nth-child(1)
+{
+ grid-area: as;
+}
+.stat-card:nth-child(2)
+{
+ grid-area: ini;
+}
+.stat-card:nth-child(3)
+{
+ grid-area: sp;
+}
+
+.current-hit-points
+{
+ grid-area: arm2;
+}
+
+.temp-hit-points
+{
+ grid-area: arm3;
+}
+
+.hit-dice-death-saves
+{
+ grid-area: arm4;
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ grid-template-rows: 1fr;
+ grid-template-areas: "hitdice deathsaves";
+ gap: 10px;
+}
+
+.hit-death
+{
+ background-color: lightblue;
+ border-radius: 10px;
+ text-align: center;
+ margin: 10px;
+ padding-top: 50px;
+}
+
+.hit-death label
+{
+ align-self: end;
+ font-weight: bolder;
+}
+.hit-death h2
+{
+ display: table;
+ margin: 0 auto;
+ padding: 15px;
+ background-color: #c3c5ca;
+ border-radius: 180px;
+}
+.hit-death:nth-child(1)
+{
+ grid-area: hitdice;
+}
+
+.hit-death:nth-child(2)
+{
+ grid-area: deathsaves;
+ align-items: center;
+}
+
+
+
+/*
+------------------------------------END HIT POINT CARD------------------------------------
+ */
+
+
+.card:nth-child(4)
+{
+ grid-area: c4;
+}
+.card:nth-child(5)
+{
+ grid-area: c5;
+}
+.card:nth-child(6)
+{
+ grid-area: c6;
+}
+.card:nth-child(7)
+{
+ grid-area: c7;
+}
+.card:nth-child(8)
+{
+ grid-area: c8;
+}
+.card:nth-child(9)
+{
+ grid-area: c9;
+}
+
+
+/*
+------------------------------------MEDIA QUERIES------------------------------------
+ */
+@media screen and (max-width: 2100px)
+{
+
+ .card:nth-child(1)
+ {
+  grid-area: c1;
+ }
+
+ .attribute_card:nth-child(even){
+  text-align: left;
+
+ }
+}
+
+@media screen and (max-width: 1500px)
+{
+ .main
+ {
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+ }
+ .card
+ {
+   max-height: 610px !important;
+ }
+ .attribute_card
+ {
+  max-height: 260px;
+ }
+}
