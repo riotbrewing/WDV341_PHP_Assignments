@@ -1,0 +1,33 @@
+
+.character-container
+{
+    display:flex;
+    margin: 25px;
+    flex-direction: column;
+}
+
+.character-card
+{
+
+    background: red;
+
+}
+
+
+@media (max-width: 750px) {
+    .character-container
+    {
+        display:flex;
+        margin: 25px;
+        flex-direction: row;
+    }
+    .character-card
+    {
+        flex: 1 0 auto;
+    }
+    .character-container .animated-nav-container
+    {
+        justify-content: left;
+
+    }
+}

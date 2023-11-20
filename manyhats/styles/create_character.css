@@ -1,0 +1,202 @@
+.container
+{
+    margin: 5px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-form
+{
+    background-color: #7F7F7F;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-width: 700px;
+    border-radius: .5rem;
+    padding: 20px;
+}
+
+.create-form-tab
+{
+    min-width: 700px;
+    margin: 10px;
+}
+.create-form-content
+{
+  display: block;
+}
+.create-form-tab.active
+{
+
+}
+
+.create-form input
+{
+
+    display: block;
+    height: 2rem;
+    border: none;
+    border-radius: .5rem;
+    min-width: 100%;
+}
+.create-form select
+{
+    flex: 1;
+    display: block;
+    height: 2rem;
+    border: none;
+    border-radius: .5rem;
+    width: 100%;
+}
+.create-form label
+{
+    display: block;
+    text-align: left;
+}
+
+.create-form-tab input.invalid
+{
+
+}
+
+.progress-bar
+{
+    margin-top: 20px;
+}
+
+.progress
+{
+    height:20px;
+    width:20px;
+    border-radius: 50%;
+    margin: 0 5px;
+    background-color: #2B9348;
+    display: inline-block;
+    opacity: .5;
+}
+
+.progress.active
+{
+    opacity: 1;
+}
+
+.progress.end
+{
+    background-color: darkgray;
+}
+
+.button-previous
+{
+    background-image: url("assets/svg/left-arrow.svg");
+    border-radius: 50%;
+    padding:0;
+    margin:25px;
+    background-color: #7F7F7F;
+    border:none;
+    height:50px;
+    width:50px;
+    opacity: 1;
+}
+.create-button-group
+{
+    display: inline-block;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+.button-next
+{
+    background-image: url("D:/xampp/htdocs/WDV341/manyhats/assets/svg/right-arrow.svg");
+    border-radius: 50%;
+    padding:0;
+    margin:25px;
+    background-color: #7F7F7F;
+    border:none;
+    height:50px;
+    width:50px;
+    filter: invert(100%);
+}
+
+.no-sub
+{
+    background-color: #2B9348;
+    color: white;
+}
+
+@media (max-width: 1000px)
+{
+    .create-form
+    {
+        min-width: 500px;
+    }
+    .create-form-tab
+    {
+        min-width: 400px;
+    }
+    .create-form input
+    {
+        min-width: 100%;
+    }
+    .create-form select
+    {
+        width: 100%;
+    }
+}
+
+@media (max-width: 800px)
+{
+    .create-button-group
+    {
+        margin: 20px;
+    }
+}
+
+@media (max-width: 500px)
+{
+    .container
+    {
+        min-width: 300px;
+    }
+    .create-form
+    {
+        min-width: 300px;
+        padding: 0;
+        margin: 0;
+        display: flex;
+    }
+    .create-form-tab
+    {
+        min-width: 300px;
+        margin: 0;
+    }
+    .create-form input
+    {
+
+        min-width: 100%;
+    }
+    .create-form select
+    {
+        width: 100%;
+    }
+    .create-form-inner-content
+    {
+        margin: 5px 25px;
+
+    }
+    .progress-bar
+    {
+        margin-bottom: 20px;
+    }
+
+}
+
+@media (max-width: 400px)
+{
+    .container
+    {
+        margin:5px 0;
+    }
+
+}

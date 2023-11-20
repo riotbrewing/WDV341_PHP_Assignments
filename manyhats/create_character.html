@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Create New Character</title>
+    <link rel="stylesheet" href="styles/setup.css">
+    <link rel="stylesheet" href="styles/create_character.css">
+</head>
+<body>
+    <div class = "container">
+        <form class="create-form" method="post" action="#">
+
+            <!-- TAB ONE -->
+            <div class="create-form-tab">
+                BASIC INFORMATION
+                <div class="create-form-content">
+                    <div class="create-form-inner-content">
+                        <label for="character_sheet_name">NAME</label>
+                        <input type="text" name="character_sheet_name" id="character_sheet_name">
+                    </div>
+                    <div class="create-form-inner-content">
+                        <label for="character_sheet_race">RACE</label>
+                        <select name="character_sheet_race" id="character_sheet_race">
+                            <option value="0">Select your characters race</option>
+                            <option value="Dwarf">Dwarf</option>
+                            <option value="Elf">Elf</option>
+                            <option value="Halfling">Halfling</option>
+                            <option value="Human">Human</option>
+                            <option value="Dragonborn">Dragonborn</option>
+                            <option value="Gnome">Gnome</option>
+                            <option value="Half-Elf">Half-Elf</option>
+                            <option value="Half-Orc">Half-Orc</option>
+                            <option value="Tiefling">Tiefling</option>
+                        </select>
+                    </div>
+                    <div class="create-form-inner-content">
+                        <label for="character_sheet_sub_race">SUB-RACE</label>
+                        <select name="character_sheet_sub_race" id="character_sheet_sub_race">
+                            <option value="0">Select Your Sub-Race</option>
+                        </select>
+                    </div>
+                    <div class="create-form-inner-content">
+                        <label for="character_sheet_class">CLASS</label>
+                        <select name="character_sheet_class" id="character_sheet_class">
+                            <option value="0">Select Your Class</option>
+                            <option value="Barbarian">Barbarian</option>
+                            <option value="Bard">Bard</option>
+                            <option value="Cleric">Druid</option>
+                            <option value="Fighter">Fighter</option>
+                            <option value="Monk">Monk</option>
+                            <option value="Paladin">Paladin</option>
+                            <option value="Ranger">Ranger</option>
+                            <option value="Rogue">Rogue</option>
+                            <option value="Sorcerer">Sorcerer</option>
+                            <option value="Warlock">Warlock</option>
+                            <option value="Wizard">Wizard</option>
+                        </select>
+
+                    </div>
+                    <div class="create-form-inner-content slider">
+                        <label for="character_sheet_height" id="height_label">HEIGHT:</label>
+                        <input type="range" name="character_sheet_height" id="character_sheet_height">
+                    </div>
+                    <div class="create-form-inner-content slider">
+                        <label for="character_sheet_weight" id="weight_label">WEIGHT:</label>
+                        <input type="range" name="character_sheet_weight" id="character_sheet_weight">
+                    </div>
+                    <div class="create-form-inner-content">
+                        <label for="character_sheet_age">AGE</label>
+                        <input type="text" name="character_sheet_age" id="character_sheet_age">
+                    </div>
+                </div>
+                <!-- END TAB ONE -->
+                <!-- TAB TWO -->
+                <div class="create-form-content">
+
+                </div>
+                <!-- END TAB TWO -->
+                <!-- bottom of tabs -->
+
+
+                <div class="create-button-group">
+                    <button class="button-previous" type="button" id="previous" style="background-image: url('assets/svg/left-arrow.svg');"></button>
+                </div>
+                <div class="create-button-group">
+                    <button class="button-next" type="button" id="next"> </button>
+                </div>
+
+                <div class="progress-bar">
+                    <span class="progress active"></span>
+                    <span class="progress"></span>
+                    <span class="progress"></span>
+                    <span class="progress"></span>
+
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+
+<script src="scripts/creation_scripts.js"></script>
+<script src="scripts/features.js"></script>
+<script src="scripts/weapons.js"></script>
+</body>
+</html>

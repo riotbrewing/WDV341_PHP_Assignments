@@ -1,0 +1,315 @@
+
+/*  STYLE SHEET FOR THE ANIMATED NAV BAR*/
+
+.animated-nav-container
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 150px;
+    min-width: 100%;
+    background: grey;
+}
+
+.animated-navigation
+{
+    display: flex;
+    width: 600px;
+    height: 70px;
+    background: lightblue;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.animated-navigation ul
+{
+    display: flex;
+    width: 420px;
+}
+
+
+
+.animated-navigation li
+{
+    position: relative;
+    list-style: none;
+    width:70px;
+    height: 70px;
+
+}
+
+
+
+.animated-navigation li a
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    font-weight: 400;
+}
+
+.animated-navigation li a .animated-icon
+{
+    position: relative;
+    display: block;
+    line-height: 75px;
+    font-size: 1.5em;
+    transition: 0.5s;
+    color: #000;
+}
+
+.animated-navigation li.active a .animated-icon
+{
+    transform: translateY(-32px);
+    z-index: 2;
+}
+
+.animated-navigation li a .animated-text
+{
+    position: absolute;
+    color: #000;
+    font-weight: var(--fw-semi-bold);
+    font-size: .75rem;
+    transition: .25s;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.animated-navigation li.active a .animated-text
+{
+    opacity: 1;
+    transform: translateY(10px);
+}
+
+.animated-indicator
+{
+    top: -50%;
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background: blue;
+    border-radius: 50%;
+    border: 6px solid grey;
+    transition: 0.5s;
+}
+
+.animated-indicator:before
+{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -1.25rem;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top-right-radius: 10px;
+    box-shadow: 0 -10px 0 0 transparent;
+
+}
+
+.animated-indicator:after
+{
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -24px;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top-left-radius: 50%;
+
+
+}
+
+.animated-navigation ul li:nth-child(1).active ~.animated-indicator
+{
+    transform:translateX(calc(70px*0));
+}
+
+.animated-navigation ul li:nth-child(2).active ~.animated-indicator
+{
+    transform:translateX(calc(70px*1));
+}
+.animated-navigation ul li:nth-child(3).active ~.animated-indicator
+{
+    transform:translateX(calc(70px*2));
+}
+.animated-navigation ul li:nth-child(4).active ~.animated-indicator
+{
+    transform:translateX(calc(70px*3));
+}
+.animated-navigation ul li:nth-child(5).active ~.animated-indicator
+{
+    transform:translateX(calc(70px*4));
+}
+.animated-navigation ul li:nth-child(6).active ~.animated-indicator
+{
+    transform:translateX(calc(70px*5));
+}
+
+/*      MEDIA QUERIES      */
+@media (max-width: 750px) {
+    .animated-nav-container
+    {
+        display: flex;
+        justify-content: left;
+
+        min-height: 100%;
+        min-width: 105px;
+        background: grey;
+    }
+
+    .animated-navigation
+    {
+        display: flex;
+        width: 70px;
+        height: 600px;
+        background: lightblue;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0;
+    }
+
+    .animated-navigation ul
+    {
+        display: block;
+        width: 70px;
+    }
+
+
+
+    .animated-navigation li
+    {
+        position: relative;
+        list-style: none;
+        width:70px;
+        height: 70px;
+
+    }
+
+
+
+    .animated-navigation li a
+    {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        width: 70px;
+        text-align: center;
+        font-weight: 400;
+    }
+
+    .animated-navigation li a .animated-icon
+    {
+        position: relative;
+        display: block;
+        line-height: 75px;
+        font-size: 1.5em;
+        transition: 0.5s;
+        color: #000;
+    }
+
+    .animated-navigation li.active a .animated-icon
+    {
+        transform: translateX(32px);
+        z-index: 2;
+    }
+
+    .animated-navigation li a .animated-text
+    {
+        position: absolute;
+        color: #000;
+        font-weight: var(--fw-semi-bold);
+        font-size: .75rem;
+        transition: .15s;
+        opacity: 0;
+        writing-mode: vertical-rl;
+        text-orientation: upright;
+        transform: translate(-40px, 5px);
+    }
+
+    .animated-navigation li.active a .animated-text
+    {
+        opacity: 1;
+        transform: translate(-25px, 5px);
+
+        writing-mode: vertical-rl;
+        text-orientation: upright;
+    }
+
+    .animated-indicator
+    {
+        top: 90px;
+        right: -48%;
+        position: absolute;
+        width: 70px;
+        height: 70px;
+        background: blue;
+        border-radius: 50%;
+        border: 6px solid grey;
+        transition: 0.5s;
+    }
+
+    .animated-indicator:before
+    {
+        content: '';
+        position: absolute;
+        top: 60px;
+        left: -1.25rem;
+        width: 20px;
+        height: 20px;
+        background: transparent;
+        border-top-right-radius: 10px;
+        box-shadow: 0 -10px 0 0 transparent;
+
+    }
+
+    .animated-indicator:after
+    {
+        content: '';
+        position: absolute;
+        top: 60px;
+        right: -24px;
+        width: 20px;
+        height: 20px;
+        background: transparent;
+        border-top-left-radius: 50%;
+
+
+    }
+
+    .animated-navigation ul li:nth-child(1).active ~.animated-indicator
+    {
+        transform:translateY(calc(70px*0));
+    }
+
+    .animated-navigation ul li:nth-child(2).active ~.animated-indicator
+    {
+        transform:translateY(calc(70px*1));
+    }
+    .animated-navigation ul li:nth-child(3).active ~.animated-indicator
+    {
+        transform:translateY(calc(70px*2));
+    }
+    .animated-navigation ul li:nth-child(4).active ~.animated-indicator
+    {
+        transform:translateY(calc(70px*3));
+    }
+    .animated-navigation ul li:nth-child(5).active ~.animated-indicator
+    {
+        transform:translateY(calc(70px*4));
+    }
+    .animated-navigation ul li:nth-child(6).active ~.animated-indicator
+    {
+        transform:translateY(calc(70px*5));
+    }
+}
