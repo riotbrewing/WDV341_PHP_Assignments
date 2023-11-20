@@ -253,7 +253,6 @@ function delete_from_special_weapons_list(input_special)
  */
 function populate_form_race()
 {
-    console.log(dagger);
     clear_children(sub_race_select);
     sub_race_select.classList.remove("no-sub");
     sub_race_select.disabled = false;
