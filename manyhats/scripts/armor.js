@@ -42,25 +42,25 @@ class Armor{
 
 }
 
-let padded = new Armor("Light Armor", "Padded", "500", "11", "none", "Disadvantage", "8", "0");
+//let padded = new Armor("Light Armor", "Padded", "500", "11", "none", "Disadvantage", "8", "0");
 
-let leather = new Armor("Light Armor", "Leather", "1000", "11", "none", "none", "10", "0");
+//let leather = new Armor("Light Armor", "Leather", "1000", "11", "none", "none", "10", "0");
 
-let studded_leather = new Armor("Light Armor", "Studded Armor", "4500", "12", "none", "none", "13", "0");
+//let studded_leather = new Armor("Light Armor", "Studded Armor", "4500", "12", "none", "none", "13", "0");
 
-let hide = new Armor("Medium Armor", "Hide", "1000", "12", "none", "none", "12", "0");
+//let hide = new Armor("Medium Armor", "Hide", "1000", "12", "none", "none", "12", "0");
 
-let chain_shirt = new Armor("Medium Armor", "Chain Shirt", "5000", "13", "none", "none", "20", "0");
+//let chain_shirt = new Armor("Medium Armor", "Chain Shirt", "5000", "13", "none", "none", "20", "0");
 
-let scale_mail = new Armor("Medium Armor", "Scale Mail", "5000", "14", "none", "Disadvantage", "45", "0");
+//let scale_mail = new Armor("Medium Armor", "Scale Mail", "5000", "14", "none", "Disadvantage", "45", "0");
 
-let breastplate = new Armor("Medium Armor", "Breastplate", "40000", "14", "none", "none", "20", "0");
+//let breastplate = new Armor("Medium Armor", "Breastplate", "40000", "14", "none", "none", "20", "0");
 
-let half_plate = new Armor("Medium Armor", "Half Plate", "75000", "15", "none", "Disadvantage", "40", "0");
+//let half_plate = new Armor("Medium Armor", "Half Plate", "75000", "15", "none", "Disadvantage", "40", "0");
 
-let ring_mail =new Armor("Heavy Armor", "Ring Mail", "3000", "14", "none", "Disadvantage", "40", "0");
+//let ring_mail =new Armor("Heavy Armor", "Ring Mail", "3000", "14", "none", "Disadvantage", "40", "0");
 
-let chain_mail = new Armor("Heavy Armor", "Chain Mail", "7500", "16", "13", "Disadvantage", "55", "0");
+//let chain_mail = new Armor("Heavy Armor", "Chain Mail", "7500", "16", "13", "Disadvantage", "55", "0");
 
 let splint = new Armor("Heavy Armor", "Splint", "20000", "17", "15", "Disadvantage", "60", "0");
 

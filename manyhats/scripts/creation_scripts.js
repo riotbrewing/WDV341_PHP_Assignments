@@ -234,7 +234,6 @@ function delete_from_special_weapons_list(input_special)
 }//end delete from special weapons list
 
 
-
 /*
 -----function to check the sub-race that was selected and autopopulate form based on values-----
     clear created sub-race select

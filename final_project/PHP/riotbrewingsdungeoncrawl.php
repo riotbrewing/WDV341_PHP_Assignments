@@ -13,7 +13,7 @@ global $test;
 
 </head>
 <body>
-<script src="api_scripts.js"></script>
+<script src="../JS/api_scripts.js"></script>
 <script></script>
 <h1>Hello, world!</h1>
 

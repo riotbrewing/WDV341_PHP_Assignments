@@ -5,28 +5,29 @@ class Features {
     }
 }
 
-let darkvision = new Features("Darkvison", "Accustomed to life underground, you have superior " +
-    "vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and " +
-    "in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray");
-
-let dwarven_resilience = new Features("Dwarven Resilience", "Accustomed to life underground, you " +
-    "have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright " +
-    "light, and in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray.");
-
-let dwarven_combat_training = new Features("Dwarven Combat Training", "You have proficiency with " +
-    "the battleaxe, hand axe, light hammer, and war hammer.");
-
-let tool_proficiency = new Features("Tool Proficiency","You gain proficiency with the artisan’s " +
-    "tools of your choice: smith’s tools, brewer’s supplies, or mason’s tools.");
-
-let stonecunning = new Features("Stonecunning", "Whenever you make an Intelligence (History) check " +
-    "related to the origin of stonework, you are considered proficient in the History skill and add double your proficiency " +
-    "bonus to the check, instead of your normal proficiency bonus.");
-
-let dwarven_toughness = new Features("Dwarven Toughness", "Your hit point maximum increases by " +
-    "1, and it increases by 1 every time you gain a level.");
-
-let dwarven_armor_training = new Features("Dwarven Armor Training", "You have proficiency with light and medium armor.");
+// let darkvision = new Features("Darkvison", "Accustomed to life underground, you have superior " +
+//     "vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and " +
+//     "in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray");
+//
+// let dwarven_resilience = new Features("Dwarven Resilience", "Accustomed to life underground, you " +
+//     "have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright " +
+//     "light, and in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray.");
+//
+// let dwarven_combat_training = new Features("Dwarven Combat Training", "You have proficiency with " +
+//     "the battleaxe, hand axe, light hammer, and war hammer.");
+//
+// let tool_proficiency = new Features("Tool Proficiency","You gain proficiency with the artisan’s " +
+//     "tools of your choice: smith’s tools, brewer’s supplies, or mason’s tools.");
+//
+// let stonecunning = new Features("Stonecunning", "Whenever you make an Intelligence (History) check " +
+//     "related to the origin of stonework, you are considered proficient in the History skill and add double your proficiency " +
+//     "bonus to the check, instead of your normal proficiency bonus.");
+//
+// let dwarven_toughness = new Features("Dwarven Toughness", "Your hit point maximum increases by " +
+//     "1, and it increases by 1 every time you gain a level.");
+//
+// let dwarven_armor_training = new Features("Dwarven Armor Training", "You have proficiency with light and medium armor.");
+//
 
 
 let keen_senses = new Features("Keen Senses", "You have proficiency in the Perception skill.");
@@ -83,7 +84,7 @@ let gnome_cunning = new Features("Gnome Cunning","You have advantage on all Inte
     "and Charisma saving throws against magic.");
 
 let natural_illusionist = new Features("Natural Illusionist","You know the minor illusion cantrip. " +
-    "Intelligence is your spell casting ability for it.");
+    "You know the minor illusion cantrip");
 
 let speak_with_small_beasts = new Features("Speak with Small Beasts", "Through sounds and gestures, " +
     "you can communicate simple ideas with small or smaller beasts. Forest Gnomes love animals and often keep squirrels, " +

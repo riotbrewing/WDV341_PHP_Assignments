@@ -16,7 +16,7 @@ class weapon{
 
 let club = new weapon("Simple Melee","Club","10","1d4","bludgeoning","2", ["Light"]);
 
-let dagger = new weapon("Simple Melee","Dagger","200","1d4","piercing","1", ["Finesse", "Light", "Thrown(range 20/60"]);
+let dagger = new weapon("Simple Melee","Dagger","200","1d4","piercing","1", ["Finesse", "Light", "Thrown(range 20/60)"]);
 
 let great_club =  new weapon("Simple Melee","Greatclub","20","1d8","bludgeoning","10", ["Two-Handed"]);
 

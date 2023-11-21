@@ -2,6 +2,7 @@
 // connect to the database
     global $conn;
     require "dbConnect.php";
+    require "classes.php";
 
     // create  sql command / prepared statement
     $stmt = $conn->prepare("SELECT events_id, events_name, events_description, events_presenter, events_date, events_time, events_date_inserted, events_date_updated FROM wdv341_events WHERE events_id = :entered_date");
@@ -13,86 +14,6 @@
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
     // execute
     $stmt->execute();
-
-    // create class events
-    class Events
-    {
-
-        private $id, $name, $description, $presenter, $date, $time, $inserted, $updated;
-        // setters
-        function set_id($input)
-        {
-            $this->id = $input;
-        }
-        function set_name($input)
-        {
-            $this->name = $input;
-        }
-        function set_description($input)
-        {
-            $this->description = $input;
-        }
-        function set_presenter($input)
-        {
-            $this->presenter = $input;
-        }
-        function set_date($input)
-        {
-            $this->date = $input;
-        }
-        function set_time($input)
-        {
-            $this->time = $input;
-        }
-        function set_inserted($input)
-        {
-            $this->inserted = $input;
-        }
-        function set_updated($input)
-        {
-            $this->updated = $input;
-        }
-        // getters
-        public function get_id()
-        {
-            return $this->id;
-        }
-        public function getName()
-        {
-            return $this->name;
-        }
-        public function getDescription()
-        {
-            return $this->description;
-        }
-        public function getPresenter()
-        {
-            return $this->presenter;
-        }
-        public function getDate()
-        {
-            return $this->date;
-        }
-        public function getTime()
-        {
-            return $this->time;
-        }
-        public function getInserted()
-        {
-            return $this->inserted;
-        }
-        public function getUpdated()
-        {
-            return $this->updated;
-        }
-
-        //function to return the values of all the object variables
-        public function test()
-        {
-            return get_object_vars($this);
-        }
-
-    }
 
     // create instance of the Events class
     $outputObj = new Events();
@@ -111,7 +32,7 @@
     $outputObj->set_updated($data['events_date_updated']);
 
     //encode to a JSON object
-    $json_object = json_encode($outputObj->test());
+    $json_object = json_encode($outputObj->getAllVariables());
 
     //decode the JSON obj to and associative array
     $new_output_object = json_decode($json_object, true);

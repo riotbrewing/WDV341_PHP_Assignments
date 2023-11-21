@@ -44,9 +44,9 @@ $stmt->execute();
             <img src="images/file_images.jpg" class="d-block mx-lg-auto shadow-lg img-fluid" alt="Bootstrap Themes" width="720" height="500" loading="lazy">
         </div>
         <div class="col-lg-6">
-            <h1 class="display-4 fw-bold lh-1">7-1: CREATE SELECT EVENTS</h1>
-            <p class="lead">Use SQL SELECT query to pull all the events from the database, and
-                display them to the page</p>
+            <h1 class="display-4 fw-bold lh-1">7-2: SELECT EVENTS</h1>
+            <p class="lead">Use SQL SELECT query to pull ONE of the events from the database, and
+                display it to the page</p>
         </div>
     </div>
 </div>

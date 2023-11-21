@@ -57,14 +57,14 @@ body
 
  display:grid;
  grid-template-columns: repeat(6, 1fr);
- grid-template-rows: 260px 260px;
+ grid-template-rows: 1fr 1fr;
  grid-template-areas:
   "a1 a2 a3 a4 a5 a6"
   "pe1 pe2 pe3 pe4 pe5 pe6";
  gap: 5px;
  padding:5px;
- max-height: 620px;
 
+min-height: 300px;
 }
 
 .attribute_card
@@ -73,7 +73,7 @@ body
  border-radius: 10px;
  text-align: center;
  user-select: none;
- max-height: 260px;
+
 }
 
 .attribute_card span
@@ -171,6 +171,7 @@ body
 .card:nth-child(2)
 {
  grid-area: c2;
+ max-height: 500px;
 }
 
 .card:nth-child(2) table
@@ -209,6 +210,7 @@ body
  */
 .card:nth-child(3)
 {
+ max-height: 500px;
  grid-area: c3;
  display: grid;
  grid-template-columns: 1fr;
@@ -322,26 +324,32 @@ body
 
 .card:nth-child(4)
 {
+ max-height: 500px;
  grid-area: c4;
 }
 .card:nth-child(5)
 {
+ max-height: 500px;
  grid-area: c5;
 }
 .card:nth-child(6)
 {
+ max-height: 500px;
  grid-area: c6;
 }
 .card:nth-child(7)
 {
+ max-height: 500px;
  grid-area: c7;
 }
 .card:nth-child(8)
 {
+ max-height: 500px;
  grid-area: c8;
 }
 .card:nth-child(9)
 {
+ max-height: 500px;
  grid-area: c9;
 }
 
@@ -372,10 +380,10 @@ body
  }
  .card
  {
-   max-height: 610px !important;
+
  }
  .attribute_card
  {
-  max-height: 260px;
+
  }
 }
