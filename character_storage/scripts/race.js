@@ -1,7 +1,4 @@
-/*
-    Functions for API calls to the server based on events on the create-form
-    And necessary functions to populate the form
- */
+let user_id = get_user_id('user_id');
 
 //----CLEAR ALL/ANY CHILDREN FROM AN ELEMENT
 function clear_children(input_element)
@@ -16,7 +13,7 @@ function clear_children(input_element)
 //API CALL TO DYNAMICALLY FILL THE RACE SELECT FROM THE DATABASE
 function fill_race_select()
 {
-    let select = document.getElementById("character-sheet-race-select");
+    let select = document.getElementById("character-sheet-race");
 
     let url = "fill_race_names.php";
 
@@ -40,15 +37,15 @@ function fill_race_select()
     }
     request.send();
 
-
 }//END FILL RACE SELECT
 
 //API TO DYNAMICALLY FILL THE SUB-RACE SELECT FROM THE DATABASE - BASED OFF OF RACE SELECTION
 function fill_sub_race_select()
 {
-    let disable_option = document.getElementById("character-sheet-race-select");
+    console.log("here");
+    let disable_option = document.getElementById("character-sheet-race");
     disable_option.options[0].disabled = true;
-    let select = document.getElementById("character-sheet-race-select").value;
+    let select = document.getElementById("character-sheet-race").value;
 
     let url = "get_race.php?race=" + select;
 
@@ -97,9 +94,124 @@ function fill_sub_race_select()
     request.send();
 
 }//END FILL-SUB-RACE FUNCTION
+/*
+name - 1
+
+--abilities--
+strength - 2,15
+dexterity - 3/16
+constitution - 4/17
+intelligence - 5/18
+wisdom - 6/19
+charisma - 7/20
+
+speed - 8
+languages - 9
+race-features - 10 / 21
+prof - 11
+--DON'T NEED 12 / 13--
+sub-race -14
+sub-features - 21
+
+class-name - 23
+class-description -24
+hit_dice - 25
+hit-points - 26
+armor-prof - 27
+weapon-prof - 28
+tool-prof -29
+save-throws - 30
+skills - 31
+prof-bonus - 32
+class-feature -33
+cantrips_known - 34
+spells_known - 35
+spell_slots - 36
+martial-arts - 37
+ki-points - 38
+unarmed-movement - 39
+sneak-attack - 40
+slot_level - 41
+
+ */
+function autofill()
+{
+    console.log("auto fill");
+
+    let race_select = document.getElementById("character-sheet-race").value;
+    let sub_select = document.getElementById("character-sheet-sub-race-select").value;
+    let class_select = document.getElementById("character-sheet-class-select").value;
+
+    let name = document.getElementById("name");
+    let sub_name = document.getElementById("sub_name");
+    let speed = document.getElementById("speed");
+    let race_name = document.getElementById("race_name");
+    let languages = document.getElementById("languages");
+    let s = document.getElementById("s");
+    let d = document.getElementById("d");
+    let c = document.getElementById("c");
+    let i = document.getElementById("i");
+    let w = document.getElementById("w");
+    let ch = document.getElementById("ch");
+    let features = document.getElementById("features");
+    let proficiency = document.getElementById("proficiency");
+
+    if(race_select !== "0" && class_select !== "0" && sub_select !== "0")
+    {
+        let url = "get_sheet_details.php?race=" + race_select + "&sub=" + sub_select + "&class=" + class_select;
+        console.log(url);
+        let request = new XMLHttpRequest();
+
+        request.open("Get", url, true);
+        request.onload = function(){
+            if(request.status === 200)
+            {
+                let response = JSON.parse(this.response);
+                name.innerHTML = response[1];
+                sub_name.innerHTML = response[14];
+                speed.innerHTML = response[8];
+                languages.innerHTML = response[9];
+                s.innerHTML = (response[2] + response[15]).toString();
+                d.innerHTML = (response[3] + response[16]).toString();
+                c.innerHTML = (response[4] + response[17]).toString();
+                i.innerHTML = (response[5] + response[18]).toString();
+                w.innerHTML = (response[6] + response[19]).toString();
+                ch.innerHTML = (response[7] + response[20]).toString();
+                features.innerHTML = response[10] + ', ' + response[21];
+                proficiency.innerHTML = response[11] + ', ' + response[27] + ', ' + response[28] + ', ' + response[29];
+                console.log(response);
+            }
+        }
+        request.send();
+    }
+    else
+    {
+        console.log("not filled in");
+    }
+}
+
+//EVENT LISTENERS
+document.getElementById("character-sheet-race").addEventListener('change', fill_sub_race_select);
+
+document.getElementById("next_one").addEventListener('click',autofill);
 
 
 
 
-// ADD EVENT LISTENERS TO ELEMENTS
-document.getElementById("character-sheet-race-select").addEventListener("change", fill_sub_race_select);
+//FUNCTION TO GET THE VALUE OF THE USER ID COOKIE
+function get_user_id(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) === 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}//END GET USER ID
+

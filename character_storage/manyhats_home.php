@@ -3,9 +3,53 @@ global $conn;
 require 'dbConnect.php';
 
 session_start();
+$username_in = "";
+$password_in = "";
+$access = "";
+$username_message = "";
+$password_message = "";
+$not_found = "";
+$valid_data = false;
+if(isset($_POST['login'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
+    if ($username == "") {
+        $username_message = "Please enter a username";
+    }
+    if ($password == "") {
+        $password_message = "Please enter a password";
+    } else {
+        $sql = "SELECT COUNT(*) FROM users WHERE username = :username AND password = :password";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(":username", $username);
+        $stmt->bindParam(":password", $password);
+
+        $stmt->execute();
+
+        $column_number = $stmt->fetchColumn();
+
+        if ($column_number < 1) {
+            $username_in = "";
+            $password_in = "";
+            $not_found = "Username Or Password Not Found";
+        } else {
+            $sql_user_id = "SELECT user_id FROM users WHERE username = :username AND password = :password";
+            $stmt_user = $conn->prepare($sql_user_id);
+            $stmt_user->bindParam(":username", $username);
+            $stmt_user->bindParam(":password", $password);
+            $stmt_user->execute();
+            $id = $stmt_user->fetch();
+            $valid_data = True;
+            $_SESSION['valid_user'] = true;
+            $_SESSION['user_id'] = $id[0];
+        }
+    }
+}
+if(!$valid_data){
 ?>
 
+<!-- SHOW PAGE UNLESS LOGIN-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,144 +58,25 @@ session_start();
     <title>Manyhats</title>
 </head>
 <body>
+    <span><?php echo $not_found?></span>
+    <form method="post" action="manyhats_home.php">
+        <label for="username">USERNAME</label>
+        <input id="username" name="username" type="text" placeholder="<?php echo $username_message?>">
+        <label for="password">PASSWORD</label>
+        <input id="password" name="password" type="password" placeholder="<?php echo $password_message?>">
+        <button name="login" id="login" type="submit">LOGIN</button>
+    </form>
 
-<form>
-    <div>
-        <label for="character-sheet-name">NAME:</label>
-        <input type="text" name="character-sheet-name" id="character-sheet-name">
-    </div>
-    <div>
-        <label for="character-sheet-race-select">RACE:</label>
-        <select name="character-sheet-race" id="character-sheet-race-select">
-            <option value = "0">Select Your Characters Race</option>
-        </select>
-    </div>
-    <div>
-        <label for="character-sheet-sub-race-select">SUB-RACE</label>
-        <select name="character-sheet-sub-race-select" id="character-sheet-sub-race-select">
+<?php
+}
+//END NOT LOGGED IN
 
-        </select>
-    </div>
-    <div>
-        <label for="character-sheet-class-select">CLASS</label>
-        <select name="character-sheet-class-select" id="character-sheet-class-select">
-            <option value = "0">Select Your Characters Class</option>
-
-        </select>
-    </div>
-    <div>
-        <label for="character-sheet-background-select">BACKGROUND</label>
-        <select name="character-sheet-background-select" id="character-sheet-background-select">
-            <option value = "0">Select Your Background</option>
-        </select>
-    </div>
-    <div>
-        <input type="radio" id="Acrobatics" name="Acrobatics">
-        <label for="Acrobatics">Acrobatics</label>
-    </div>
-    <div>
-        <input type="radio" id="Animal-Handling" name="Animal-Handling">
-        <label for="Animal-Handling">Animal-Handling</label>
-    </div>
-    <div>
-        <input type="radio" id="Arcana" name="Arcana">
-        <label for="Arcana">Arcana</label>
-    </div>
-    <div>
-        <input type="radio" id="Athletics" name="Athletics">
-        <label for="Athletics">Athletics</label>
-    </div>
-    <div>
-        <input type="radio" id="Deception" name="Deception">
-        <label for="Deception">Deception</label>
-    </div>
-    <div>
-        <input type="radio" id="History" name="History">
-        <label for="History">History</label>
-    </div>
-    <div>
-        <input type="radio" id="Insight" name="Insight">
-        <label for="Insight">Insight</label>
-    </div>
-    <div>
-        <input type="radio" id="Intimidation" name="Intimidation">
-        <label for="Intimidation">Intimidation</label>
-    </div>
-    <div>
-        <input type="radio" id="Investigation" name="Investigation">
-        <label for="Investigation">Investigation</label>
-    </div>
-    <div>
-        <input type="radio" id="Medicine" name="Medicine">
-        <label for="Medicine">Medicine</label>
-    </div>
-    <div>
-        <input type="radio" id="Nature" name="Nature">
-        <label for="Nature">Nature</label>
-    </div>
-    <div>
-        <input type="radio" id="Perception" name="Perception">
-        <label for="Perception">Perception</label>
-    </div>
-    <div>
-        <input type="radio" id="Performance" name="Performance">
-        <label for="Performance">Performance</label>
-    </div>
-    <div>
-        <input type="radio" id="Persuasion" name="Persuasion">
-        <label for="Persuasion">Persuasion</label>
-    </div>
-    <div>
-        <input type="radio" id="Religion" name="Religion">
-        <label for="Religion">Religion</label>
-    </div>
-    <div>
-        <input type="radio" id="Sleight-of-Hand" name="Sleight-of-Hand">
-        <label for="Sleight-of-Hand">Sleight-of-Hand</label>
-    </div>
-    <div>
-        <input type="radio" id="Stealth" name="Stealth">
-        <label for="Stealth">Stealth</label>
-    </div>
-    <div>
-        <input type="radio" id="Survival" name="Survival">
-        <label for="Survival">Survival</label>
-    </div>
-    <div>
-        <label for="Strength">Strength</label>
-        <input type="text" id="Strength" name="Strength">
-    </div>
-    <div>
-        <label for="dexterity">Dexterity</label>
-        <input type="text" id="dexterity" name="dexterity">
-    </div>
-    <div>
-        <label for="constitution">Constitution</label>
-        <input type="text" id="constitution" name="constitution">
-    </div>
-    <div>
-        <label for="intelligence">Intelligence</label>
-        <input type="text" id="intelligence" name="intelligence">
-    </div>
-    <div>
-        <label for="wisdom">Wisdom</label>
-        <input type="text" id="wisdom" name="wisdom">
-    </div>
-    <div>
-        <label for="charisma">charisma</label>
-        <input type="text" id="charisma" name="charisma">
-    </div>
-</form>
-
-
-
+else
+{
+    header("Location:/WDV341/character_storage/manyhats_create.php");
+}
+?>
 </body>
-<script src="scripts/race.js"></script>
-<script src="scripts/class.js"></script>
-<script src="scripts/html_templates.js"></script>
-<script>
-    fill_race_select();
-    fill_class_select();
-</script>
+
 
 </html>
