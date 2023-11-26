@@ -1,0 +1,257 @@
+/*
+   I USED AN OPEN SOURCE CSS 'RESET' FROM - https://gist.github.com/Asjas/4b0736108d56197fce0ec9068145b421
+   ALL CODE FROM THIS SOURCE WILL ME DENOTED BY -*- IN THE COMMENTS, I ALTERED/REMOVED MUCH OF THE CODE FROM THIS SOURCE
+   BUT WANT TO GIVE CREDIT IS DUE
+ */
+/*  import the fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap');
+
+:root
+{
+    /*  reds  */
+    --clr-red-100: #A12632;
+    --clr-red-200: #770B14;
+    --clr-red-300: #5D0B15;
+    --clr-red-400: #33030F;
+    --clr-red-500: #280A03;
+
+    /*  oranges  */
+    --clr-orange-100: #FFB600;
+    --clr-orange-200: #FF9E00;
+    --clr-orange-300: #FF8500;
+    --clr-orange-400: #FF6D00;
+    --clr-orange-500: #FF5400;
+
+    /*  greys  */
+    --clr-greys-100: #F2F2F2;
+    --clr-greys-200: #CCCCCC;
+    --clr-greys-300: #A5A5A5;
+    --clr-greys-400: #7F7F7F;
+    --clr-greys-500: #595959;
+
+    /*  blues  */
+    --clr-blues-100: #0466C8;
+    --clr-blues-200: #0353A4;
+    --clr-blues-300: #023E7D;
+    --clr-blues-400: #002855;
+    --clr-blues-500: #001845;
+
+    /*  yellows  */
+    --clr-yellows-100: #FFE863;
+    --clr-yellows-200: #FFE150;
+    --clr-yellows-300: #FFD93D;
+    --clr-yellows-400: #FACB2E;
+    --clr-yellows-500: #F5BD1F;
+
+    /*  greens  */
+    --clr-greens-100: #AACC00;
+    --clr-greens-200: #80B918;
+    --clr-greens-300: #55A630;
+    --clr-greens-400: #2B9348;
+    --clr-greens-500: #007F5F;
+
+    /*  purples  */
+    --clr-purples-100: #722E9A;
+    --clr-purples-200: #682A92;
+    --clr-purples-300: #5D2689;
+    --clr-purples-400: #522882;
+    --clr-purples-500: #47297B;
+
+    /*  blacks */
+    --clr-black: #000;
+
+    /*  font family  */
+    --ff-primary: 'Poppins', sans-serif;
+    --ff-body: 'Poppins', sans-serif;
+    --ff-header: 'Poppins', sans-serif;
+    --ff-cards: 'Poppins', sans-serif;
+
+    /*  font weights  */
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-semi-bold: 600;
+    --fw-bold: 800;
+
+    /*  font-sizes  */
+    --fs-300: .875rem;
+    --fs-400: 1rem;
+    --fs-500: 1.5rem;
+    --fs-600: 2rem;
+    --fs-700: 2.25rem;
+    --fs-800: 3rem;
+    --fs-900: 3.5rem;
+
+    --lh-500: 5.06rem;
+    --ls-100: .05rem;
+
+    /*  animated navbar */
+    --ani-nav-container-height: 10rem;
+    --ani-nav-width: 31rem;
+    --ani-nav-height: 4.725rem;
+    --ani-nav-border-radius: .675rem;
+
+    --ani-nav-ul-width: 29rem;
+
+    --ani-li-width-height: 4.375rem;
+
+    --ani-transition-time: 0.5s;
+}
+
+
+/* Box sizing rules -*- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Remove default margins and removes all font styles*/
+*
+{
+    margin: 0;
+    padding: 0;
+    font:inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed -*- */
+ul[role='list'],
+ol[role='list'] {
+    list-style: none;
+}
+
+/* Set core root defaults -*- */
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+/* set the height of the body and the html*/
+html, body
+{
+    height:100%;
+}
+
+/* Set core body defaults -*- */
+body {
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+
+}
+
+/* A elements that don't have a class get default styles -*- */
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with -*- */
+img, picture, svg
+{
+    max-width: 100%;
+    display: block;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them -*- */
+@media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/*      UTILITY CLASSES     */
+
+/*  BACKGROUND COLORS  */
+.bg-red-100 { background: var(--clr-red-100); }
+.bg-red-200 { background: var(--clr-red-200); }
+.bg-red-300 { background: var(--clr-red-300); }
+.bg-red-400 { background: var(--clr-red-400); }
+.bg-red-500 { background: var(--clr-red-500); }
+.bg-orange-100 { background: var(--clr-orange-100); }
+.bg-orange-200 { background: var(--clr-orange-200); }
+.bg-orange-300 { background: var(--clr-orange-300); }
+.bg-orange-400 { background: var(--clr-orange-400); }
+.bg-orange-500 { background: var(--clr-orange-500); }
+.bg-greys-100 { background: var(--clr-greys-100); }
+.bg-greys-200 { background: var(--clr-greys-200); }
+.bg-greys-300 { background: var(--clr-greys-300); }
+.bg-greys-400 { background: var(--clr-greys-400); }
+.bg-greys-500 { background: var(--clr-greys-500); }
+.bg-blues-100 { background: var(--clr-blues-100); }
+.bg-blues-200 { background: var(--clr-blues-200); }
+.bg-blues-300 { background: var(--clr-blues-300); }
+.bg-blues-400 { background: var(--clr-blues-400); }
+.bg-blues-500 { background: var(--clr-blues-500); }
+.bg-yellows-100 { background: var(--clr-yellows-100); }
+.bg-yellows-200 { background: var(--clr-yellows-200); }
+.bg-yellows-300 { background: var(--clr-yellows-300); }
+.bg-yellows-400 { background: var(--clr-yellows-400); }
+.bg-yellows-500 { background: var(--clr-yellows-500); }
+.bg-greens-100 { background: var(--clr-greens-100); }
+.bg-greens-200 { background: var(--clr-greens-200); }
+.bg-greens-300 { background: var(--clr-greens-300); }
+.bg-greens-400 { background: var(--clr-greens-400); }
+.bg-greens-500 { background: var(--clr-greens-500); }
+.bg-purples-100 { background: var(--clr-purples-100); }
+.bg-purples-200 { background: var(--clr-purples-200); }
+.bg-purples-300 { background: var(--clr-purples-300); }
+.bg-purples-400 { background: var(--clr-purples-400); }
+.bg-purples-500 { background: var(--clr-purples-500); }
+/*  END BACKGROUND COLORS*/
+
+/*  FONTS */
+.fw-regular { font-weight: var(--fw-regular)}
+.fw-medium { font-weight: var(--fw-medium)}
+.fw-semi-bold { font-weight: var(--fw-semi-bold)}
+.fw-bold { font-weight: var(--fw-bold)}
+
+.fs-300 { font-size: var(--fs-300)}
+.fs-400 { font-size: var(--fs-400)}
+.fs-500 { font-size: var(--fs-500)}
+.fs-600 { font-size: var(--fs-600)}
+.fs-700 { font-size: var(--fs-700)}
+.fs-800 { font-size: var(--fs-800)}
+.fs-900 { font-size: var(--fs-900)}
+
+.color-red-100 { color: var(--clr-red-100); }
+.color-red-200 { color: var(--clr-red-200); }
+.color-red-300 { color: var(--clr-red-300); }
+.color-red-400 { color: var(--clr-red-400); }
+.color-red-500 { color: var(--clr-red-500); }
+.color-orange-100 { color: var(--clr-orange-100); }
+.color-orange-200 { color: var(--clr-orange-200); }
+.color-orange-300 { color: var(--clr-orange-300); }
+.color-orange-400 { color: var(--clr-orange-400); }
+.color-orange-500 { color: var(--clr-orange-500); }
+.color-greys-100 { color: var(--clr-greys-100); }
+.color-greys-200 { color: var(--clr-greys-200); }
+.color-greys-300 { color: var(--clr-greys-300); }
+.color-greys-400 { color: var(--clr-greys-400); }
+.color-greys-500 { color: var(--clr-greys-500); }
+.color-blues-100 { color: var(--clr-blues-100); }
+.color-blues-200 { color: var(--clr-blues-200); }
+.color-blues-300 { color: var(--clr-blues-300); }
+.color-blues-400 { color: var(--clr-blues-400); }
+.color-blues-500 { color: var(--clr-blues-500); }
+.color-yellows-100 { color: var(--clr-yellows-100); }
+.color-yellows-200 { color: var(--clr-yellows-200); }
+.color-yellows-300 { color: var(--clr-yellows-300); }
+.color-yellows-400 { color: var(--clr-yellows-400); }
+.color-yellows-500 { color: var(--clr-yellows-500); }
+.color-greens-100 { color: var(--clr-greens-100); }
+.color-greens-200 { color: var(--clr-greens-200); }
+.color-greens-300 { color: var(--clr-greens-300); }
+.color-greens-400 { color: var(--clr-greens-400); }
+.color-greens-500 { color: var(--clr-greens-500); }
+.color-purples-100 { color: var(--clr-purples-100); }
+.color-purples-200 { color: var(--clr-purples-200); }
+.color-purples-300 { color: var(--clr-purples-300); }
+.color-purples-400 { color: var(--clr-purples-400); }
+.color-purples-500 { color: var(--clr-purples-500); }
+/*  END FONTS*/

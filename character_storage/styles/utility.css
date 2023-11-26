@@ -1,0 +1,57 @@
+.radio-container
+{
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+
+.my-radio
+{
+    height: 15px;
+    width: 15px;
+    border: 1px solid black;
+    border-radius: 50%;
+    background-color: white;
+    padding: 5px;
+}
+
+.radio-container input
+{
+    width: 3rem;
+    margin-left: 15px;
+    font-size: 1.25rem;
+    border-radius: .5rem;
+    text-align: center;
+}
+
+.radio-container p
+{
+    margin-left: 10px;
+    font-weight: var(--fw-semi-bold);
+}
+
+.add-item-container
+{
+    display: grid;
+    place-items: center;
+    place-content: center;
+    margin: 5px;
+}
+
+.add-item
+{
+    display: grid;
+    place-content: center;
+    place-items: center;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: white;
+    font-family: var(--ff-primary);
+    font-size: var(--fs-600);
+    font-weight: var(--fw-bold);
+    padding:0;
+}
+
+
+

@@ -215,3 +215,17 @@ function get_user_id(cname) {
     return "";
 }//END GET USER ID
 
+function change_tabs(tab_name, button_name)
+{
+    let tabs = document.getElementsByClassName("tabs");
+    document.getElementById('button_one').style.backgroundColor = 'lightgrey';
+    document.getElementById('button_two').style.backgroundColor = 'lightgrey';
+    document.getElementById('button_three').style.backgroundColor = 'lightgrey';
+    document.getElementById(button_name).style.backgroundColor = 'darkgrey';
+    for(let i = 0; i < tabs.length; i++)
+    {
+        tabs[i].style.display = "none";
+    }
+    console.log(tab_name);
+    document.getElementById(tab_name).style.display='block';
+}

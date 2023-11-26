@@ -1,0 +1,823 @@
+.container
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    margin: 100px;
+}
+
+.character-form
+{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+            "header header header"
+            "left middle right"
+            "left middle right";
+    min-width: 90rem;
+    gap:10px;
+}
+
+.character-form-header
+{
+    display: grid;
+    grid-area: header;
+    grid-template-areas:
+            "head-left head-right";
+}
+
+.character-name
+{
+    display: grid;
+    background-color: blueviolet;
+    grid-area: head-left;
+    border-radius: .5rem;
+    box-shadow: 15px 15px 20px;
+    margin: 5px;
+    min-height: 10rem;
+    text-align: center;
+    place-content: center;
+}
+
+.character-summary
+{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: blueviolet;
+    grid-area: head-right;
+    border-radius: .5rem;
+    box-shadow: 15px 15px 20px;
+    margin: 5px;
+    text-align: center;
+    place-content: center;
+}
+
+.character-form-header input[type='text']
+{
+    height: 2rem;
+    width: 300px;
+    margin: 10px;
+
+}
+
+.character-form-header label
+{
+    display: block;
+    text-align: start;
+    margin-left: 15px;
+}
+
+/* BEGIN FORM LEFT */
+.character-form-left
+{
+    display:grid;
+    grid-area: left;
+    grid-template-columns: 150px 1fr;
+    grid-template-areas:
+            "cf-abilitys cf-save"
+            "cf-abilitys cf-save"
+            "cf-abilitys cf-save"
+            "cf-prof cf-prof"
+            "cf-lang cf-lang";
+}
+
+.character-form-ability
+{
+    grid-area: cf-abilitys;
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+
+}
+
+.ability
+{
+    display: grid;
+    min-height: 200px;
+    grid-template-rows: 1fr .5fr;
+    text-align: center;
+    width: 85%;
+    border-radius: .5rem;
+}
+
+.ability input
+{
+    width: 3rem;
+    height: 3rem;
+    text-align: center;
+    font-size: 2rem;
+    border-radius: .5rem;
+}
+
+.ability-number
+{
+    background-color: blueviolet;
+    border-radius: .5rem .5rem 2rem 2rem;
+    box-shadow: 10px 10px 15px;
+    z-index: 1;
+}
+
+.ability-bonus
+{
+    display: grid;
+    place-content: center;
+    background-color: blueviolet;
+    width:50%;
+    margin-left:30px;
+    border-radius: 50%;
+    box-shadow: 10px 10px 20px;
+    transform: translateY(-50px);
+    transition: transform 1s;
+    z-index: 5;
+}
+
+.ability-bonus input
+{
+    width: 2.25rem;
+    height: 2.25rem;
+    text-align: center;
+    font-size: 1.5rem;
+    border-radius: .5rem;
+    margin: 3px;
+}
+
+.ability-number:hover
+{
+    box-shadow: 5px 5px 5px grey;
+}
+
+.ability-bonus:hover
+{
+    box-shadow: 10px 10px 20px black;
+    transform: translateY(-60px);
+    transition: transform 1s;
+    z-index: 2;
+}
+
+
+.character-form-saves-skills
+{
+    display: grid;
+    grid-area: cf-save;
+    grid-template-rows: .2fr .2fr .5fr 1fr;
+
+}
+
+.inspiration-prof
+{
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    max-height: 80px;
+    margin:10px;
+}
+
+.insp-prof-text
+{
+    display: grid;
+    border-radius: .5rem 0 50px 50px;
+    background-color: blueviolet;
+    box-shadow: 12px 12px 20px;
+    z-index: 1;
+    text-align: center;
+    place-content: center;
+}
+
+.insp-prof-text input
+{
+    width: 2.25rem;
+    height: 3rem;
+    text-align: center;
+    font-size: 1.5rem;
+    border-radius: .5rem;
+    color:white;
+}
+
+.insp-prof-label
+{
+    display: grid;
+    place-items: center;
+    text-align: center;
+    height:60px;
+    background-color: blueviolet;
+    border-radius: 0 3rem 0 0;
+    border-left: none;
+}
+
+.insp-prof-label h3
+{
+    margin:5px;
+}
+
+.insp-prof-text:hover
+{
+    box-shadow: 5px 5px 5px grey;
+}
+
+.saving
+{
+    display: grid;
+    grid-template-rows: repeat(6, 40px);
+    place-content: center;
+    background-color: blueviolet;
+    margin: 10px;
+    text-align: center;
+    border-radius: .5rem;
+    box-shadow: 15px 15px 20px;
+}
+.saving:hover
+{
+    box-shadow: 5px 5px 5px grey;
+}
+
+.skills
+{
+    display: grid;
+    grid-template-rows: repeat(18, 40px);
+    place-content: center;
+    background-color: blueviolet;
+    margin: 10px;
+    border-radius: .5rem;
+    box-shadow: 15px 15px 20px;
+    text-align: center;
+
+}
+
+.skills:hover
+{
+    box-shadow: 5px 5px 5px grey;
+}
+
+.character-form-passive-prof {
+    grid-area: cf-prof;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.passive-container
+{
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    margin: 10px;
+}
+
+.passive-container-text
+{
+    display: grid;
+    place-content: center;
+    height: 70px;
+    border-radius: .5rem 0 50px 50px;
+    background-color: blueviolet;
+    box-shadow: 12px 12px 20px;
+    z-index: 1;
+}
+
+.passive-container-text input
+{
+    width: 2.25rem;
+    height: 3rem;
+    text-align: center;
+    font-size: 1.5rem;
+    border-radius: .5rem;
+
+    color:white;
+}
+
+.passive-container-label
+{
+    display: grid;
+    place-items: center;
+    text-align: center;
+    height:60px;
+    background-color: blueviolet;
+    border-radius: 0 3rem 0 0;
+    border-left: none;
+}
+
+.passive-container-text:hover
+{
+    box-shadow: 5px 5px 5px grey;
+}
+
+.language
+{
+    display:grid;
+    grid-area: cf-lang;
+    place-content: center;
+    background-color: blueviolet;
+    margin: 10px;
+    border-radius: .5rem;
+    box-shadow: 15px 15px 20px;
+    text-align: center;
+
+}
+
+.language:hover
+{
+    box-shadow: 5px 5px 5px grey;
+}
+
+.language p
+{
+    font-family: var(--ff-primary);
+    font-size: var(--fs-500);
+    margin: 0;
+    background-color: white;
+}
+.language p:nth-child(even)
+{
+    background-color: grey;
+}
+.show-language
+{
+    background-color: white;
+    overflow-y: auto;
+    height: 10rem;
+    border-radius: .5rem;
+}
+
+.misc-table
+{
+    display:grid;
+    place-content: center;
+    background-color: blueviolet;
+    margin: 10px;
+    border-radius: .5rem;
+    box-shadow: 15px 15px 20px;
+    text-align: center;
+
+}
+
+.misc-table:hover
+{
+    box-shadow: 5px 5px 5px grey;
+}
+
+.misc-table p
+{
+    font-family: var(--ff-primary);
+    font-size: var(--fs-500);
+    margin: 0;
+    background-color: white;
+}
+.misc-header
+{
+    border-bottom: 1px solid grey;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.misc-table p:nth-child(even)
+{
+    background-color: grey;
+}
+
+.insert-misc
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.show-misc
+{
+    background-color: white;
+    overflow-y: auto;
+    height: 15rem;
+    width: 25rem;
+    border-radius: .5rem;
+}
+
+/* END LEFT FORM CSS */
+
+/* START MIDDLE FORM CSS*/
+
+.character-form-middle
+{
+    display: grid;
+    grid-area: middle;
+    grid-template-areas:
+            "cfm-top"
+            "cfm-middle"
+            "cfm-bottom";
+}
+
+.character-form-hit-death
+{
+    grid-area: cfm-top;
+    display: grid;
+    grid-template-areas:
+            "ac ac ini ini sp sp"
+            "cr-hp cr-hp cr-hp cr-hp cr-hp cr-hp"
+            "tp-hp tp-hp tp-hp tp-hp tp-hp tp-hp"
+            "hd hd hd ds ds ds";
+}
+
+.armor-class
+{
+    display: grid;
+    place-items: center;
+    grid-area: ac;
+    background-color: blueviolet;
+    border-radius: .5rem .5rem 25% 25%;
+    margin:10px;
+    box-shadow: 15px 15px 20px;
+    font-weight: var(--fw-semi-bold);
+}
+
+.armor-class input
+{
+    width: 3rem;
+    height: 3rem;
+    font-size: 2rem;
+    text-align: center;
+    border-radius: .5rem;
+}
+.armor-class:hover
+{
+    box-shadow: 10px 10px 10px dimgray;
+}
+
+.initiative
+{
+    display: grid;
+    place-items: center;
+    grid-area:ini;
+    background-color: blueviolet;
+    border-radius: .5rem .5rem 25% 25%;
+    margin:10px;
+    box-shadow: 15px 15px 20px;
+    font-weight: var(--fw-semi-bold);
+}
+
+.initiative input
+{
+    width: 3rem;
+    height: 3rem;
+    font-size: 2rem;
+    text-align: center;
+    border-radius: .5rem;
+}
+
+.initiative:hover
+{
+    box-shadow: 10px 10px 10px dimgray;
+}
+
+.speed
+{
+    display: grid;
+    place-items: center;
+    grid-area: sp;
+    background-color: blueviolet;
+    border-radius: .5rem .5rem 25% 25%;
+    margin:10px;
+    box-shadow: 15px 15px 20px;
+    font-weight: var(--fw-semi-bold);
+}
+
+.speed input
+{
+    width: 3rem;
+    height: 3rem;
+    font-size: 2rem;
+    text-align: center;
+    border-radius: .5rem;
+}
+
+.speed:hover
+{
+    box-shadow: 10px 10px 10px dimgray;
+}
+
+.hit-points
+{
+    display: grid;
+    place-items: center;
+
+    grid-area: cr-hp;
+    background-color: blueviolet;
+    border-radius: .5rem;
+    margin:  10px;
+    box-shadow: 15px 15px 20px;
+    font-weight: var(--fw-semi-bold);
+}
+
+.hit-points:hover
+{
+    box-shadow: 10px 10px 10px dimgray;
+}
+
+.hit-points input
+{
+    height: 5rem;
+    width: 20rem;
+    text-align: center;
+    font-size: var(--fs-600);
+}
+
+.temp-points
+{
+    display: grid;
+    place-items: center;
+    grid-area: tp-hp;
+    background-color: blueviolet;
+    border-radius: .5rem;
+    margin:  10px;
+    font-weight: var(--fw-semi-bold);
+    box-shadow: 15px 15px 20px;
+}
+
+.temp-points input
+{
+    height: 5rem;
+    width: 20rem;
+    text-align: center;
+    font-size: var(--fs-600);
+}
+
+.temp-points:hover
+{
+    box-shadow: 10px 10px 10px dimgray;
+}
+
+.hit-dice
+{
+    display: grid;
+    place-items: center;
+    grid-area: hd;
+    background-color: blueviolet;
+    border-radius: .5rem;
+    margin:  10px;
+    box-shadow: 15px 15px 20px;
+    font-weight: var(--fw-semi-bold);
+}
+
+.hit-dice input
+{
+    height: 5rem;
+    width: 7rem;
+    text-align: center;
+    font-size: var(--fs-600);
+}
+
+.hit-dice:hover
+{
+    box-shadow: 10px 10px 10px dimgray;
+}
+
+.hp-max
+{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    font-weight: var(--fw-semi-bold);
+}
+
+.hp-max input
+{
+    width: 5rem;
+    height: 2rem;
+
+}
+
+.death-save
+{
+    display: grid;
+    place-items: center;
+    grid-area: ds;
+    background-color: blueviolet;
+    border-radius: .5rem;
+    margin:  10px;
+    box-shadow: 15px 15px 20px;
+    font-weight: var(--fw-semi-bold);
+}
+
+.death-save input
+{
+    height: 5rem;
+    width: 7rem;
+    text-align: center;
+    font-size: var(--fs-600);
+}
+
+.death-save:hover
+{
+    box-shadow: 10px 10px 10px dimgray;
+}
+
+.character-form-attacks
+{
+    grid-area: cfm-middle;
+    display:grid;
+    grid-template-rows: 1fr 1fr ;
+
+}
+.form-table-container
+{
+    display:grid;
+    place-items: center;
+    background-color: blueviolet;
+    margin: 10px;
+    border-radius: .5rem;
+    box-shadow: 15px 15px 20px;
+    Overflow-y: auto;
+}
+
+.form-table-container:hover
+{
+    box-shadow: 10px 10px 10px dimgray;
+}
+
+.form-table
+{
+
+    text-align: center;
+    background-color: white;
+    min-width: 20rem;
+    height:180px;
+    border-radius: .5rem;
+    overflow-y: auto;
+}
+.form-table table
+{
+    width: 100%;
+}
+
+.form-table thead th
+{
+    text-align: center;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    border-bottom: 1px solid grey;
+    font-size: var(--fs-300);
+}
+
+.form-table tr:nth-child(even)
+{
+    background-color: grey;
+}
+
+.form-table td:nth-child(even)
+{
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
+}
+
+
+
+
+/* END MIDDLE FORM CSS*/
+
+/* START RIGHT FORM CSS*/
+.character-form-right
+{
+    display: grid;
+    grid-area: right;
+    grid-template-areas:
+            "cfr-top"
+            "cfr-bottom"
+            "cfr-bottom";
+}
+
+.character-form-personality
+{
+    grid-area: cfr-top;
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+}
+
+.personality-content
+{
+    display: grid;
+    place-items: center;
+    place-content: center;
+    background-color: blueviolet;
+    border-radius: .5rem;
+    box-shadow: 15px 15px 20px;
+    margin:  10px;
+    font-weight: var(--fw-semi-bold);
+}
+
+.personality-content input
+{
+    width: 25rem;
+    height: 5rem;
+}
+
+.personality-content:hover
+{
+    box-shadow: 10px 10px 10px dimgray;
+}
+
+.character-form-features
+{
+    grid-area: cfr-bottom;
+    display: grid;
+    grid-template-columns: 1fr;
+
+}
+
+.features-table
+{
+    display:grid;
+    place-content: center;
+    background-color: blueviolet;
+    margin: 10px;
+    border-radius: .5rem;
+    box-shadow: 15px 15px 20px;
+    text-align: center;
+
+}
+
+.features-table:hover
+{
+    box-shadow: 5px 5px 5px grey;
+}
+
+.features-table p
+{
+    font-family: var(--ff-primary);
+    font-size: var(--fs-500);
+    margin: 0;
+    background-color: white;
+}
+.features-header
+{
+    border-bottom: 1px solid grey;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.features-table p:nth-child(even)
+{
+    background-color: grey;
+}
+
+.insert-feature
+{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.show-features
+{
+    background-color: white;
+    overflow-y: auto;
+    max-height:800px;
+    width: 25rem;
+    border-radius: .5rem;
+}
+/* END RIGHT FORM CSS*/
+
+/* MODALS */
+.create-modal
+{
+    display: none;
+    position: fixed;
+    place-items: center;
+    z-index: 1000;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 700px;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.create-modal-content
+{
+    display: grid;
+    background-color: white;
+    margin: 20px;
+}
+
+.create-modal-content input[type='text']
+{
+    height:2rem;
+    margin: 0 20px;
+}
+
+.create-modal-content label
+{
+    margin: 5px 50px;
+}
+
+.create-modal-content select
+{
+    height:2rem;
+}
+
+.create-modal-content h1
+{
+    font-family: var(--ff-primary);
+    font-size: var(--fs-600);
+    font-weight: var(--fw-semi-bold);
+}
+
+.modal-button
+{
+    display: none;
+}
+
