@@ -1,4 +1,4 @@
-class Race
+class Sub_Race
 {
         constructor() {
                 this.name= "";

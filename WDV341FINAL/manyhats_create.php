@@ -1,4 +1,5 @@
 <?php
+
 ?>
 
 <!DOCTYPE html>
@@ -10,6 +11,10 @@
     <link rel="stylesheet" href="styles/create-form.css">
     <title>ManyHats-Character Creation</title>
 </head>
+
+<script src="scripts/feature.js"></script>
+<script src="scripts/race.js"></script>
+<script src="scripts/sub_race.js"></script>
 <body>
     <div class="container-create">
         <ul class="nav-bar">
@@ -180,5 +185,6 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="scripts/create-form.js"></script>
+
 </body>
 </html>

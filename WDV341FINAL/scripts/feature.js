@@ -9,9 +9,7 @@ let darkvision = new Features("Darkvison", "Accustomed to life underground, you 
     "vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and " +
     "in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray");
 
-let superior_darkvision = new Features("Darkvison", "Accustomed to life underground, you have superior " +
-    "vision in dark and dim conditions. You can see in dim light within 120 feet of you as if it were bright light, and " +
-    "in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray");
+
 
 let dwarven_resilience = new Features("Dwarven Resilience", "Accustomed to life underground, you " +
     "have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright " +

@@ -4,13 +4,15 @@ require 'dbConnect.php';
 
 session_start();
 
+$race = $_GET['race'];
 
-$sql = "SELECT name FROM race";
+$sql = "SELECT * FROM race WHERE name = :race_name";
 
 $stmt = $conn->prepare($sql);
+$stmt ->bindParam(':race_name', $race);
 
 $stmt->execute();
 
-$results = $stmt->fetchAll();
+$results = $stmt->fetch();
 
 echo json_encode($results);

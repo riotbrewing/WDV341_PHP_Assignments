@@ -189,12 +189,48 @@ bonus_button_list.forEach((item) => item.addEventListener('click', plus_minus))
 let race_change = document.querySelector("#race-select");
 race_change.addEventListener('change', set_sub_race);
 
-
 let sub_select = document.querySelector("#sub-race-select");
 
+//----CLEAR ALL/ANY CHILDREN FROM AN ELEMENT
+function clear_children(input_element)
+{
+    while(input_element.hasChildNodes())
+    {
+        input_element.removeChild(input_element.firstChild)
+    }
 
-//FUNCTION TO SET THE SUB-RACE BASED ON THE RACE INPUT
+}// END CLEAR CHILDREN
+
+//FUNCTION FILL RACE SELECT
+
 function set_sub_race()
 {
     race_change.options[0].disabled = 'disabled';
+
+    add_race_to_db()
 }
+
+// function add_race_to_db()
+// {
+//     let list = [Hill_Dwarf, Mountain_Dwarf, High_Elf, Wood_Elf, Lightfoot_Halfling, Stout_Halfling,
+//     dragon_black, dragon_blue, dragon_brass, dragon_bronze, dragon_copper, dragon_gold, dragon_green,
+//     dragon_red, dragon_silver, dragon_white, Forest_Gnome, Rock_Gnome]
+//     for(let i = 0; i < list.length; i++)
+//     {
+//         let race = JSON.stringify(list[i]);
+//
+//         let url= "db_add_sub_race.php?race=" + race
+//
+//         let request = new XMLHttpRequest();
+//
+//         request.open("GET", url, true)
+//
+//         request.onload= function()
+//         {
+//             console.log(this.response)
+//         }
+//
+//         request.send()
+//     }
+//
+// }
