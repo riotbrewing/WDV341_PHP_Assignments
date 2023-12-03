@@ -5,7 +5,7 @@ require 'dbConnect.php';
 session_start();
 
 
-$sql = "SELECT name FROM race";
+$sql = "SELECT race_name FROM race";
 
 $stmt = $conn->prepare($sql);
 

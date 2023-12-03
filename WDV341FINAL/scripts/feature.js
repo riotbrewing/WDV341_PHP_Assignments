@@ -9,8 +9,6 @@ let darkvision = new Features("Darkvison", "Accustomed to life underground, you 
     "vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and " +
     "in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray");
 
-
-
 let dwarven_resilience = new Features("Dwarven Resilience", "Accustomed to life underground, you " +
     "have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright " +
     "light, and in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray.");
@@ -203,3 +201,6 @@ let infernal_legacy = new Features("Infernal Legacy", "You know the thaumaturgy 
     "3rd level, you can cast the hellish rebuke spell as a 2nd-level spell once with this trait and regain the ability to do " +
     "so when you finish a long rest. When you reach 5th level, you can cast the darkness spell once with this trait and regain the " +
     "ability to do so when you finish a long rest. Charisma is your spell casting ability for these spells");
+
+
+//let test= new Features("","")

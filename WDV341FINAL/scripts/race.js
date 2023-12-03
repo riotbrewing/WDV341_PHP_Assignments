@@ -1,42 +1,51 @@
 class Race
 {
-        constructor() {
-                this.name= "";
-                this.strength = 0;
-                this.dexterity = 0;
-                this.constitution = 0;
-                this.intelligence= 0;
-                this.wisdom= 0;
-                this.charisma= 0;
-                this.strength_save= 0;
-                this.dexterity_save= 0;
-                this.constitution_save= 0;
-                this.intelligence_save= 0;
-                this.wisdom_save= 0;
-                this.charisma_save= 0;
-                this.acrobatics= 0;
-                this.animal_handling= 0;
-                this.arcana= 0;
-                this.athletics= 0;
-                this.deception= 0;
-                this.history= 0;
-                this.insight= 0;
-                this.intimidation= 0;
-                this.investigation= 0;
-                this.medicine= 0;
-                this.nature= 0;
-                this.perception= 0;
-                this.performance= 0;
-                this.persuasion= 0;
-                this.religion= 0;
-                this.slight_of_hand= 0;
-                this.stealth= 0;
-                this.survival= 0;
-                this.speed= 0;
-                this.features= [];
-                this.proficiencies= [];
-                this.languages= [];
-                this.sub_races= [];
-                this.hit_points= 0;
+        constructor(name, strength, dexterity, constitution, intelligence, wisdom, charisma, strength_save, dexterity_save,
+                    constitution_save, intelligence_save, wisdom_save, charisma_save, acrobatics, animal_handling,
+                    arcana, athletics, deception, history, insight, intimidation, investigation, medicine, nature,
+                    perception, performance, persuasion, religion, slight_of_hand, stealth, survival,speed, features, proficiencies,
+                    languages, sub_races, hit_points) {
+                this.name= name;
+                this.strength = strength;
+                this.dexterity = dexterity;
+                this.constitution = constitution;
+                this.intelligence= intelligence;
+                this.wisdom= wisdom;
+                this.charisma= charisma;
+                this.strength_save= strength_save;
+                this.dexterity_save= dexterity_save;
+                this.constitution_save= constitution_save;
+                this.intelligence_save= intelligence_save;
+                this.wisdom_save= wisdom_save;
+                this.charisma_save= charisma_save;
+                this.acrobatics= acrobatics;
+                this.animal_handling= animal_handling;
+                this.arcana= arcana;
+                this.athletics= athletics;
+                this.deception= deception;
+                this.history= history;
+                this.insight= insight;
+                this.intimidation= intimidation;
+                this.investigation= investigation;
+                this.medicine= medicine;
+                this.nature= nature;
+                this.perception= perception;
+                this.performance= performance;
+                this.persuasion= persuasion;
+                this.religion= religion;
+                this.slight_of_hand= slight_of_hand;
+                this.stealth= stealth;
+                this.survival = survival;
+                this.speed= speed;
+                this.features= features;
+                this.proficiencies= proficiencies;
+                this.languages= languages;
+                this.sub_races= sub_races;
+                this.hit_points= hit_points;
         }
 }
+
+let dwarfqq = new Race("Dwarf",0,0,2,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0, 25, [darkvision, dwarven_resilience],
+    [dwarven_combat_training, tool_proficiency, stonecunning], ["Common", "Dwarvish"], ["Hill Dwarf", "Mountian Dwarf"], 0)

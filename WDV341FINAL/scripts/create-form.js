@@ -186,8 +186,8 @@ bonus_button_list.forEach((item) => item.addEventListener('click', plus_minus))
 
 /*-----------------------------------RACE FUNCTIONS-------------------------------------------*/
 
-let race_change = document.querySelector("#race-select");
-race_change.addEventListener('change', set_sub_race);
+let race_select = document.querySelector("#race-select");
+race_select.addEventListener('change', set_sub_race);
 
 let sub_select = document.querySelector("#sub-race-select");
 
@@ -202,35 +202,92 @@ function clear_children(input_element)
 }// END CLEAR CHILDREN
 
 //FUNCTION FILL RACE SELECT
+function set_race_select()
+{
+    console.log("HERE")
+    let url = "db_get_race_names.php";
+
+    let request = new XMLHttpRequest();
+
+    request.open("Get", url, true);
+
+    request.onload = function()
+    {
+        if(request.status === 200)
+        {
+            let race_names = JSON.parse(this.response);
+            for(let i = 0; i < race_names.length; i++)
+            {
+                let option = document.createElement('option');
+                option.name = race_names[i]['race_name'];
+                option.value = race_names[i]['race_name'];
+                option.innerHTML = race_names[i]['race_name'];
+                race_select.appendChild(option);
+            }
+        }
+    }
+
+    request.send()
+}
+
 
 function set_sub_race()
 {
-    race_change.options[0].disabled = 'disabled';
+    let race = document.querySelector("#race-select").value;
 
-    add_race_to_db()
+    let url= "db_get_sub_race_names.php?race=" + race;
+
+    let request = new XMLHttpRequest();
+
+    request.open('Get', url, true);
+
+    request.onload = function()
+    {
+        let response = this.response;
+        //let test = JSON.parse(response);
+        console.log(response);
+    }
+
+    request.send();
+}
+
+
+
+/*-----------------------------------RADIO FUNCTIONS-------------------------------------------*/
+let radio_list = document.querySelectorAll(".prof-radio");
+
+radio_list.forEach((item) => item.addEventListener("click", radio_select));
+radio_list.forEach((item)=> item.value=0);
+
+function radio_select()
+{
+    if(this.value === 0)
+    {
+        this.value = 1;
+        this.style.backgroundColor='var(--clr-purples-100)';
+    }
+    else if (this.value === 1)
+    {
+        this.value = 0;
+        this.style.backgroundColor='var(--clr-greys-100)';
+    }
 }
 
 // function add_race_to_db()
 // {
-//     let list = [Hill_Dwarf, Mountain_Dwarf, High_Elf, Wood_Elf, Lightfoot_Halfling, Stout_Halfling,
-//     dragon_black, dragon_blue, dragon_brass, dragon_bronze, dragon_copper, dragon_gold, dragon_green,
-//     dragon_red, dragon_silver, dragon_white, Forest_Gnome, Rock_Gnome]
-//     for(let i = 0; i < list.length; i++)
+//
+//     console.log(race);
+//
+//     let url= "test_race_add.php?race=" + race
+//
+//     let request = new XMLHttpRequest();
+//
+//     request.open("GET", url, true)
+//
+//     request.onload= function()
 //     {
-//         let race = JSON.stringify(list[i]);
-//
-//         let url= "db_add_sub_race.php?race=" + race
-//
-//         let request = new XMLHttpRequest();
-//
-//         request.open("GET", url, true)
-//
-//         request.onload= function()
-//         {
-//             console.log(this.response)
-//         }
-//
-//         request.send()
+//         console.log(this.response)
 //     }
 //
+//     request.send();
 // }

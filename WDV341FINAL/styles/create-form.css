@@ -96,32 +96,16 @@
     background-color: var(--clr-red-100);
 }
 
-.show-form
-{
-    display: none;
-    grid-area: content;
-}
-
-.active-form
-{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    gap: 10px;
-    margin: 15px;
-    border: 1px solid greenyellow;
-    height: 400px;
-    width: 800px;
-
-}
-
 .form-content
 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 700px;
-    width: 900px;
+    display: grid;
+    grid-template-areas:
+            "form prof"
+            "form prof"
+            "throw prof"
+            "bottom prof";
+    height: 800px;
+    width: 1100px;
     box-shadow: 5px 5px 5px rgba(0,0,0,.25),
     inset 2px 2px 3px rgba(255,255,255,.25),
     inset -3px -3px 5px rgba(0,0,0,.5);
@@ -130,12 +114,55 @@
 
 }
 
+.show-form
+{
+    display: none;
+    grid-area: form;
+}
+
+.active-form
+{
+    display: grid;
+    place-items: center;
+    gap: 10px;
+    margin:10px;
+    height: 400px;
+    width: 800px;
+    grid-template-columns: 1fr 1fr 1fr;
+
+}
+
+.active-form select
+{
+    height: 2rem;
+    width: 15rem;
+}
+
+.active-form input[type="text"]
+{
+    height: 2rem;
+    width: 15rem;
+}
+
+.active-form label
+{
+    display: block;
+}
+
+.throws{
+    display: grid;
+    grid-area: throw;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
 .ability-container
 {
+    grid-area: bottom;
     position: absolute;
-    bottom: 200px;
+    bottom: 75px;
     display:flex;
     gap: 10px;
+    margin: 10px;
 }
 
 .ability
@@ -197,6 +224,18 @@
     inset -3px -3px 5px rgba(0,0,0,.5);
     background-color: var(--clr-red-100);
 }
+
+.ability-number input[type='text']
+{
+    text-align: center;
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: var(--clr-red-100);
+    border:none;
+    color:white;
+    font-weight: var(--fw-regular);
+}
+
 .ability-button-container
 {
 
@@ -223,6 +262,40 @@
 {
     transform: rotate(90deg);
 }
+
+.proficiencies
+{
+    grid-area: prof;
+    display: flex;
+    flex-direction: column;
+}
+.radio-content
+{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+.radio-content input[type="text"]
+{
+    height: 1rem;
+    width: 2rem;
+    margin-right: 5px;
+}
+
+.prof-radio
+{
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    box-shadow: 5px 5px 5px rgba(0,0,0,.75),
+    inset 2px 2px 3px rgba(255,255,255,.25),
+    inset -3px -3px 5px rgba(0,0,0,.5);
+    background-color: var(--clr-greys-100);
+    font-size: var(--fs-500);
+    color: var(--clr-greys-100);
+    margin-right: 10px;
+}
+
 
 
 /*.form-content input[type="text"]*/

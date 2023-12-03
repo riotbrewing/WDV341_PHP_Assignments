@@ -1,0 +1,122 @@
+.temp
+{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.temp button
+{
+    width: 15rem;
+    height: 3rem;
+}
+
+.modal
+{
+    display: none;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    height: 80%;
+    width: 80%;
+    overflow-y: scroll;
+}
+
+.modal-content label
+{
+    display: block;
+}
+
+.modal-content input[type=text]
+{
+    width:30rem;
+}
+
+.modal-content input[type=text]::placeholder
+{
+    color: var(--clr-red-300, darkred);
+}
+
+.modal-content textarea
+{
+    width:30rem;
+    height: 10rem;
+}
+
+.model-content textarea::placeholder
+{
+    color: var(--clr-red-300, darkred);
+}
+
+.modal-close-btn
+{
+    position: fixed;
+    place-self: end;
+    text-align: center;
+    padding: .5rem;
+    border-radius: 50%;
+    box-shadow: 5px 5px 5px rgba(0,0,0,.25),
+    inset 2px 2px 3px rgba(255,255,255,.25),
+    inset -3px -3px 5px rgba(0,0,0,.5);;
+    background-color: #7F7F7F;
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:focus
+{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.ability-radio-container
+{
+    display: grid;
+    grid-template-areas:
+            "header header"
+            "str dex"
+            "cons int"
+            "wis chr";
+}
+
+
+
+.my-radio-content
+{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.my-radio-content input[type="text"] {
+    height: 1rem;
+    width: 5rem;
+    margin-right: 5px;
+}
+
+.my-radio-content input[type="text"]::placeholder
+{
+    color: var(--clr-red-300, darkred);
+}
+
+.abilities-label
+{
+    grid-area:header;
+    place-self: center;
+}
