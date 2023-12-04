@@ -1,277 +1,403 @@
-/*-----------------------------------FORM FUNCTIONS-------------------------------------------*/
-
-let nav_list = document.querySelectorAll('.nav-bar li');
-let show_list = document.querySelectorAll(".show-form");
-function active_link()
-{
-    console.log(this.id);
-    nav_list.forEach((item) => item.classList.remove('nav-active'));
-    this.classList.add('nav-active');
-    show_form(this.id);
-
+/*-----------------------------------DRAG DROP FUNCTION-------------------------------------------*/
+function allowDrop(ev) {
+    ev.preventDefault();
 }
-// FUNCTION TO SET THE CURRENT FROM BASED ON CLICKED BUTTON
-function show_form(id_input)
-{
-    show_list.forEach((item) => item.classList.remove('active-form'));
 
-    if(id_input === "start-button")
-    {
-        document.querySelector("#start-form").classList.add('active-form');
-    }
-    if(id_input === "class-button")
-    {
-        document.querySelector("#class-form").classList.add('active-form');
-    }
-    if(id_input === "back-button")
-    {
-        document.querySelector("#back-form").classList.add('active-form');
-    }
-    if(id_input === "equip-button")
-    {
-        document.querySelector("#equip-form").classList.add('active-form');
-    }
-    if(id_input === "final-button")
-    {
-        document.querySelector("#final-form").classList.add('active-form');
-    }
-}// END SHOW FORM
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
 
-//FUNCTION TO ADD A NUMBER TO THE BONUS
-
-
-nav_list.forEach((item) => item.addEventListener('click', active_link));
-
-
-/*-----------------------------------FORM BUTTONS-------------------------------------------*/
-
-let bonus_button_list = document.querySelectorAll('.ability-button');
-let bonus_mod_list = document .querySelectorAll('#bonus-mod')
-
-//FUNCTION TO CHECK THE ID OF THE BUTTON AND CALL EITHER THE ADD OR SUBTRACT FUNCTION
-function plus_minus()
-{
-   if(this.id === 'str-plus-one' || this.id === 'dex-plus-one' || this.id === 'con-plus-one'
-       || this.id === 'int-plus-one' || this.id === 'wis-plus-one' || this.id === 'chr-plus-one')
-   {
-       add_one(this.id);
-   }
-   else
-   {
-       subtract_one(this.id)
-   }
-
-}//END PLUS MINUS
-
-//FUNCTION TO ADD ONE TO THE ABILITY MODIFIER SELECTED
-function add_one(input_id)
-{
-
-    if(input_id === 'str-plus-one')
-    {
-        let temp = parseFloat(bonus_mod_list[0].innerHTML);
-        if(temp < 5)
-        {
-            temp += 1;
-            bonus_mod_list[0].innerHTML = temp.toString();
-        }
+function drop(ev) {
+    ev.preventDefault();
+    if (ev.dataTransfer.items) {
+        // Use DataTransferItemList interface to access the file(s)
+        [...ev.dataTransfer.items].forEach((item, i) => {
+            // If dropped items aren't files, reject them
+            if (item.kind === "file") {
+                const file = item.getAsFile();
+                console.log(`… file[${i}].name = ${file.name}`);
+            }
+        });
     }
-    else if(input_id === 'dex-plus-one')
-    {
-        let temp = parseFloat(bonus_mod_list[1].innerHTML);
-        if(temp < 5)
-        {
-            temp += 1;
-            bonus_mod_list[1].innerHTML = temp.toString();
-        }
+    else {
+        // Use DataTransfer interface to access the file(s)
+        [...ev.dataTransfer.files].forEach((file, i) => {
+            console.log(`… file[${i}].name = ${file.name}`);
+        });
     }
-    else if(input_id === 'con-plus-one')
-    {
-        let temp = parseFloat(bonus_mod_list[2].innerHTML);
-        if(temp < 5)
-        {
-            temp += 1;
-            bonus_mod_list[2].innerHTML = temp.toString();
-        }
-    }
-    else if(input_id === 'int-plus-one')
-    {
-        let temp = parseFloat(bonus_mod_list[3].innerHTML);
-        if(temp < 5)
-        {
-            temp += 1;
-            bonus_mod_list[3].innerHTML = temp.toString();
-        }
-    }
-    else if(input_id === 'wis-plus-one')
-    {
-        let temp = parseFloat(bonus_mod_list[4].innerHTML);
-        if(temp < 5)
-        {
-            temp += 1;
-            bonus_mod_list[4].innerHTML = temp.toString();
-        }
-    }
-    else if(input_id === 'chr-plus-one')
-    {
-        let temp = parseFloat(bonus_mod_list[5].innerHTML);
-        if(temp < 5)
-        {
-            temp += 1;
-            bonus_mod_list[5].innerHTML = temp.toString();
-        }
-    }
-}//END ADD ONE
+}
 
-//FUNCTION TO SUBTRACT ONE FROM THE ABILITY MODIFIER SELECTED
-function subtract_one(input_id)
-{
-    if(input_id === 'str-minus-one')
-    {
-        let temp = parseFloat(bonus_mod_list[0].innerHTML);
-        if (temp > 0)
-        {
-            temp -= 1;
-            bonus_mod_list[0].innerHTML = temp.toString();
-        }
-    }
-    else if(input_id === 'dex-minus-one')
-    {
-        let temp = parseFloat(bonus_mod_list[1].innerHTML);
-        if (temp > 0)
-        {
-            temp -= 1;
-            bonus_mod_list[1].innerHTML = temp.toString();
-        }
-    }
-    else if(input_id === 'con-minus-one')
-    {
-        let temp = parseFloat(bonus_mod_list[2].innerHTML);
-        if (temp > 0)
-        {
-            temp -= 1;
-            bonus_mod_list[2].innerHTML = temp.toString();
-        }
-    }
-    else if(input_id === 'int-minus-one')
-    {
-        let temp = parseFloat(bonus_mod_list[3].innerHTML);
-        if (temp > 0)
-        {
-            temp -= 1;
-            bonus_mod_list[3].innerHTML = temp.toString();
-        }
-    }
-    else if(input_id === 'wis-minus-one')
-    {
-        let temp = parseFloat(bonus_mod_list[4].innerHTML);
-        if (temp > 0)
-        {
-            temp -= 1;
-            bonus_mod_list[4].innerHTML = temp.toString();
-        }
-    }
-    else
-    {
-        let temp = parseFloat(bonus_mod_list[5].innerHTML);
-        if (temp > 0)
-        {
-            temp -= 1;
-            bonus_mod_list[5].innerHTML = temp.toString();
-        }
-    }
-} //END SUBTRACT ONE
+/*--------------------------------END DRAG DROP FUNCTION---------------------------------------*/
 
-bonus_button_list.forEach((item) => item.addEventListener('click', plus_minus))
-
-/*-----------------------------------RACE FUNCTIONS-------------------------------------------*/
-
-let race_select = document.querySelector("#race-select");
-race_select.addEventListener('change', set_sub_race);
-
-let sub_select = document.querySelector("#sub-race-select");
-
-//----CLEAR ALL/ANY CHILDREN FROM AN ELEMENT
+/*------------------------------------FORM FUNCTIONS-------------------------------------------*/
+let previous_list = document.querySelectorAll(".btn-previous-form, .btn-next-form");
+let display_list = document.querySelectorAll('.body-container');
+let race_container = document.querySelector(".race-container");
 function clear_children(input_element)
 {
-    while(input_element.hasChildNodes())
+    while(input_element.lastElementChild)
     {
-        input_element.removeChild(input_element.firstChild)
+        input_element.removeChild(input_element.lastElementChild);
+    }
+}
+
+//check the button clicked and display the correct info
+previous_list.forEach((item) => item.addEventListener('click', function(){
+
+    if(item.id === "home-next")
+    {
+        display_list.forEach((item) => item.classList.remove('active-display'));
+        display_list[1].classList.add('active-display');
+        get_races();
+
+    }
+    if(item.id === "race-previous")
+    {
+        clear_children(race_container);
+        display_list.forEach((item) => item.classList.remove('active-display'));
+        display_list[0].classList.add('active-display');
+    }
+    if(item.id === "race-next")
+    {
+        display_list.forEach((item) => item.classList.remove('active-display'));
+        display_list[2].classList.add('active-display');
+    }
+    if(item.id === "class-previous")
+    {
+        display_list.forEach((item) => item.classList.remove('active-display'));
+        display_list[1].classList.add('active-display');
+    }
+    if(item.id === "class-next")
+    {
+        display_list.forEach((item) => item.classList.remove('active-display'));
+        display_list[3].classList.add('active-display');
+    }
+    if(item.id === "ability-previous")
+    {
+        display_list.forEach((item) => item.classList.remove('active-display'));
+        display_list[2].classList.add('active-display');
+    }
+    if(item.id === "ability-next")
+    {
+        display_list.forEach((item) => item.classList.remove('active-display'));
+        display_list[4].classList.add('active-display');
+    }
+    if(item.id === "description-previous")
+    {
+        display_list.forEach((item) => item.classList.remove('active-display'));
+        display_list[3].classList.add('active-display');
+    }
+    if(item.id === "description-next")
+    {
+        display_list.forEach((item) => item.classList.remove('active-display'));
+        display_list[5].classList.add('active-display');
+    }
+    if(item.id === "equipment-previous")
+    {
+        display_list.forEach((item) => item.classList.remove('active-display'));
+        display_list[4].classList.add('active-display');
+    }
+    if(item.id === "equipment-next")
+    {
+        display_list.forEach((item) => item.classList.remove('active-display'));
+        display_list[6].classList.add('active-display');
+    }
+    if(item.id === "submit-previous")
+    {
+        display_list.forEach((item) => item.classList.remove('active-display'));
+        display_list[5].classList.add('active-display');
     }
 
-}// END CLEAR CHILDREN
+}))
 
-//FUNCTION FILL RACE SELECT
-function set_race_select()
+
+//API TO GET THE RACES FROM THE DB AND PASS THE LIST OF RACES TO THE GET SUB RACE API
+function get_races()
 {
-    console.log("HERE")
+    let race_request = new XMLHttpRequest();
     let url = "db_get_race_names.php";
+    race_request.open('Get', url, true);
 
-    let request = new XMLHttpRequest();
-
-    request.open("Get", url, true);
-
-    request.onload = function()
+    race_request.onload = function()
     {
-        if(request.status === 200)
+        let response = JSON.parse(this.response);
+        let race_list = []
+        for(let i =0; i < response.length; i++)
         {
-            let race_names = JSON.parse(this.response);
-            for(let i = 0; i < race_names.length; i++)
+            race_list.push(response[i]['race_name']);
+        }
+
+        get_sub_races(race_list);
+    }
+    race_request.send()
+}//END GET RACES API
+
+
+//API T0 GET A LIST OF THE SUB-RACES AND PASS THE LIST AND THE RACE LIST TO THE CREATE CONTENT FUNCTION
+function get_sub_races(input_list)
+{
+    let sub_race_list =[]
+    let sub_race_request = new XMLHttpRequest();
+    let url = "db_get_sub_race_names.php"
+    sub_race_request.open('Get', url, true);
+    sub_race_request.onload = function()
+    {
+        let response = JSON.parse(this.response);
+
+        for(let i =0; i < response.length; i++)
+        {
+            sub_race_list.push(response[i]);
+        }
+        create_race_content(input_list, sub_race_list);
+    }
+    sub_race_request.send()
+} //END GET SUB-RACES API
+
+//API to get the features from the database
+function get_features_race()
+{
+    let race_features = [];
+
+       let feature_request = new XMLHttpRequest();
+       let url = "db_get_create_features.php";
+       feature_request.open('Get', url, true);
+
+       feature_request.onload = function()
+       {
+           let response = JSON.parse(this.response);
+       }
+       feature_request.send()
+} // END GET FEATURES API
+
+
+//function to fill the race container on the dom
+function create_race_content(race_list, sub_race_list)
+{
+    for(let i = 0; i < race_list.length; i++)
+    {
+        let race_container = document.querySelector(".race-container");
+
+        let race_card_div = document.createElement('div');
+        race_card_div.classList.add('race-card');
+
+        let race_img_div = document.createElement('div');
+        race_img_div.classList.add('race-img');
+
+        let race_content_div = document.createElement('div');
+        race_content_div.classList.add('race-content');
+
+        let button_div = document.createElement('div');
+
+        let btn_down = document.createElement('button');
+        btn_down.classList.add('btn-down');
+        let btn_next = document.createElement('button');
+        btn_next.classList.add('btn-next');
+
+
+        race_content_div.innerHTML = race_list[i];
+        race_card_div.appendChild(race_img_div);
+        race_card_div.appendChild(race_content_div);
+        btn_down.id = race_list[i] + '-btn';
+        btn_down.innerHTML = "+";
+        btn_down.value = "0";
+
+
+
+        btn_down.addEventListener("click", function() {
+
+            if (btn_down.value === '0') {
+                btn_down.value = "1";
+                btn_down.classList.remove('btn-down');
+                btn_down.classList.add('btn-next');
+                btn_down.innerHTML= '-';
+                let id = '#' +race_list[i] + "-sub-card";
+                if(document.querySelectorAll(id))
+                {
+                    document.querySelectorAll(id).forEach((item) => item.classList.add('sub-race-card-active'));
+                }
+                return;
+            }
+           if (btn_down.value === '1') {
+                btn_down.value = "0";
+                btn_down.classList.remove('btn-next');
+              btn_down.innerHTML= '+';
+                btn_down.classList.add('btn-down');
+               let id = '#' +race_list[i] + "-sub-card";
+               if(document.querySelectorAll(id))
+               {
+                   document.querySelectorAll(id).forEach((item) => item.classList.remove('sub-race-card-active'));
+               }
+            }
+
+        })
+
+        let check = false;
+
+        for(let z = 0; z <sub_race_list.length; z++)
+        {
+            if(race_list[i] === sub_race_list[z]['race_name'])
             {
-                let option = document.createElement('option');
-                option.name = race_names[i]['race_name'];
-                option.value = race_names[i]['race_name'];
-                option.innerHTML = race_names[i]['race_name'];
-                race_select.appendChild(option);
+                check = true;
+            }
+        }
+
+        if(check)
+        {
+            button_div.appendChild(btn_down);
+            race_card_div.appendChild(button_div);
+            race_container.appendChild(race_card_div);
+        }
+        else
+        {
+            btn_next.id = race_list[i] + '-btn';
+            btn_next.innerHTML = ">";
+            btn_next.value = "0";
+            btn_next.name = race_list[i];
+            button_div.appendChild(btn_next);
+            race_card_div.appendChild(button_div);
+            race_container.appendChild(race_card_div);
+        }
+
+        check = false;
+
+        for(let x =0; x < sub_race_list.length; x++)
+        {
+            if(race_list[i] === sub_race_list[x]['race_name'])
+            {
+                let sub_race_card = document.createElement('div');
+                let race_card_div = document.createElement('div');
+                let button_div = document.createElement('div');
+
+                race_card_div.classList.add('race-card');
+
+                let race_img_div = document.createElement('div');
+                race_img_div.classList.add('race-img');
+
+                let btn_next = document.createElement('button');
+                btn_next.classList.add('btn-next');
+
+                btn_next.id = race_list[i] + '-btn';
+                btn_next.name = sub_race_list[x]['sub_race_name'].toString();
+                btn_next.innerHTML = ">";
+                btn_next.value = "0";
+
+                button_div.appendChild(btn_next);
+
+                let race_content_div = document.createElement('div');
+                race_content_div.classList.add('race-content');
+                sub_race_card.classList.add('sub-race-card');
+                sub_race_card.id = race_list[i] + "-sub-card";
+                race_content_div.innerHTML = sub_race_list[x]['sub_race_name'].toString();
+                sub_race_card.appendChild(race_img_div);
+                sub_race_card.appendChild(race_content_div);
+                sub_race_card.appendChild(button_div);
+                race_container.appendChild(sub_race_card);
             }
         }
     }
 
-    request.send()
+    let next_button_list = document.querySelectorAll('.btn-next');
+
+    next_button_list.forEach((item) => item.addEventListener('click', function()
+    {
+        if(check_white_space(item.name))
+        {
+            get_sub_race_details(item.name);
+        }
+        else
+        {
+            get_race_details(item.name);
+        }
+    }));
 }
 
-
-function set_sub_race()
+function check_white_space(name)
 {
-    let race = document.querySelector("#race-select").value;
+    return name.indexOf(' ') >= 0;
+}
 
-    let url= "db_get_sub_race_names.php?race=" + race;
-
+function get_race_details(name)
+{
     let request = new XMLHttpRequest();
-
+    let url = "db_get_race.php?race_name=" + name;
     request.open('Get', url, true);
 
     request.onload = function()
     {
-        let response = this.response;
-        //let test = JSON.parse(response);
-        console.log(response);
+        let response = JSON.parse(this.response);
+        display_race_details(response);
     }
-
     request.send();
 }
 
-
-
-/*-----------------------------------RADIO FUNCTIONS-------------------------------------------*/
-let radio_list = document.querySelectorAll(".prof-radio");
-
-radio_list.forEach((item) => item.addEventListener("click", radio_select));
-radio_list.forEach((item)=> item.value=0);
-
-function radio_select()
+function get_sub_race_details(name)
 {
-    if(this.value === 0)
+    let request = new XMLHttpRequest();
+    let url = "db_get_sub_race.php?race_name=" + name;
+    request.open('Get', url, true);
+
+    request.onload = function()
     {
-        this.value = 1;
-        this.style.backgroundColor='var(--clr-purples-100)';
+        let response = JSON.parse(this.response);
+        get_combined_race(response);
     }
-    else if (this.value === 1)
-    {
-        this.value = 0;
-        this.style.backgroundColor='var(--clr-greys-100)';
-    }
+    request.send();
 }
+
+function get_combined_race(name)
+{
+    let race_name = name[0]['race_name'];
+
+    let request = new XMLHttpRequest();
+    let url = "db_get_race.php?race_name=" + race_name;
+    request.open('Get', url, true);
+
+    request.onload = function()
+    {
+        let response = JSON.parse(this.response);
+        display_sub_race_details_combined(name, response)
+    }
+    request.send();
+}
+
+/*
+*
+* functions below are for filling the race modal
+*
+* */
+function display_sub_race_details_combined(sub_name, race)
+{
+    console.log(sub_name);
+    console.log(race);
+    //modal.style.display = 'grid';
+}
+
+function display_race_details(name)
+{
+    console.log(name);
+    //modal.style.display = 'grid';
+}
+
+/*----------------------------------RACE MODAL-----------------------------------------*/
+
+
+let modal = document.getElementById('sub-race-modal');
+let closeModalBtn = document.getElementById('closeModalBtn');
+
+closeModalBtn.addEventListener('click', function () {
+    modal.style.display = 'none';
+});
+
+window.addEventListener('click', function (event) {
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+});
+
+
+/*------------------------------------END RACE MODAL-------------------------------------------*/
+
+/*----------------------------------END FORM FUNCTIONS-----------------------------------------*/
 
 // function add_race_to_db()
 // {

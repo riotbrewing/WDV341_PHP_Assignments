@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/setup.css">
+    <link rel="stylesheet" href="styles/create-form.css">
+    <title>Manyhats Create Character</title>
+</head>
+<body>
+<header class="header">
+    <div>
+        Manyhats w/logo
+    </div>
+    <div class="user-selection">
+        <ul>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="drop-link" id="user-name-insert">USER NAME</a>
+                <div class="dropdown-content">
+                    <a href="#">One</a>
+                    <a href="#">Two</a>
+                    <a href="#">Three</a>
+                    <a href="#">Four</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</header>
+<div class="nav-bar">
+<ul>
+    <li>
+        <a href="#">HOME</a>
+    </li>
+    <li>
+        <a href="#">RACE</a>
+    </li>
+    <li>
+        <a href="#">CLASS</a>
+    </li>
+    <li>
+        <a href="#">ABILITIES</a>
+    </li>
+    <li>
+        <a href="#">DESCRIPTION</a>
+    </li>
+    <li>
+        <a href="#">EQUIPMENT</a>
+    </li>
+    <li>
+        <a href="#">SUBMIT</a>
+    </li>
+</ul>
+</div>
+<div class="body-container active-display">
+    <div>
+        <button class="btn-previous-form" id="home-previous" disabled="disabled"> > </button>
+    </div>
+    <div class="character-container">
+        <div class="start-character-card">
+            <div class="drag-drop" id="drag-image" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div class="start-character-name">
+                <div>
+                    <label for="character-name">Character Name</label>
+                    <input type="text" id="character-name">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <button class="btn-next-form" id="home-next"> > </button>
+    </div>
+</div>
+<!--RACE-->
+<div class="body-container">
+    <div>
+        <button class="btn-previous-form" id="race-previous"> > </button>
+    </div>
+    <div class="race-container">
+    </div>
+    <div>
+        <button class="btn-next-form" id="race-next"> > </button>
+    </div>
+</div>
+
+<!--CLASS-->
+<div class="body-container">
+    <div>
+        <button class="btn-previous-form" id="class-previous"> > </button>
+    </div>
+    <div class="character-container">
+        <div><h1>class</h1></div>
+        <div><h1>class</h1></div>
+    </div>
+    <div>
+        <button class="btn-next-form" id="class-next"> > </button>
+    </div>
+</div>
+
+<!--ABILITIES-->
+<div class="body-container">
+    <div>
+        <button class="btn-previous-form" id="ability-previous"> > </button>
+    </div>
+    <div class="character-container">
+        <div><h1>ability</h1></div>
+        <div><h1>ability</h1></div>
+    </div>
+    <div>
+        <button class="btn-next-form" id="ability-next"> > </button>
+    </div>
+</div>
+
+<!--DESCRIPTION-->
+<div class="body-container">
+    <div>
+        <button class="btn-previous-form" id="description-previous"> > </button>
+    </div>
+    <div class="character-container">
+        <div><h1>description</h1></div>
+        <div><h1>description</h1></div>
+    </div>
+    <div>
+        <button class="btn-next-form" id="description-next"> > </button>
+    </div>
+</div>
+
+<!--EQUIPMENT-->
+<div class="body-container">
+    <div>
+        <button class="btn-previous-form" id="equipment-previous"> > </button>
+    </div>
+    <div class="character-container">
+        <div><h1>equipment</h1></div>
+        <div><h1>equipment</h1></div>
+    </div>
+    <div>
+        <button class="btn-next-form" id="equipment-next"> > </button>
+    </div>
+</div>
+
+<!--SUBMIT-->
+<div class="body-container">
+    <div>
+        <button class="btn-previous-form" id="submit-previous"> > </button>
+    </div>
+    <div class="character-container">
+        <div><h1>submit</h1></div>
+        <div><h1>submit</h1></div>
+    </div>
+    <div>
+        <button class="btn-next-form" id="submit-next" disabled="disabled"> > </button>
+    </div>
+</div>
+
+<div class="create-modal" id="sub-race-modal">
+    <div class="create-modal-content">
+        <div class="create-modal-header">
+            <div>
+                <h1>CONFIRM RACE SELECTION</h1>
+            </div>
+            <div>
+                <span class="create-modal-close-btn" id="closeModalBtn">X</span>
+            </div>
+        </div>
+        <div class="create-modal-body">
+            <div class="race-description">
+                <h1>RACE NAME</h1>
+                <p>a;lsdkfj;laskdjf;lsakjdf;lksajdf;lkjsad;lfkja;sldkjf;lsakjdf;lk
+                ;ladskjf;lksajdf;lkasjdfl;kjsal;dfkj;lsakdjf;lksajdf;lkasjdf;ljk
+                lk;asjdf;lkasjdf;lkasjdf;lksajdf;lkjasd;ofieqroiekljahv,.jcxnb,mhfcvgjlequhgf</p>
+            </div>
+            <div class="race-features-container">
+                <h1>RACE/SUB-RACE NAME TRAITS</h1>
+                <div class="race-features">
+                    <div class="feature-name">
+                        Feature name
+                    </div>
+                    <div class="feature-description">
+                        a;ldsf;lasdf;lasdf;ljsalgfkjdlaksdf;lkjsadfl;kjasd;lfkj;alsdkj;ldsakfsa;ldkjf
+                        'asld;fj;ldsajkf;lasdkjf;lksadjf;lksajdfl;kjasd;lfkjas;ldkfj;lasdkjf;lasdkjf;ldsaj
+                        ;laskdjf;lksadjf;lksadjf;lkjasd;lfkjasl;dkjfl;kasjdfl;kajsdl;fkjas;ldkfjal;sdkjfl;asjdk
+                    </div>
+                </div>
+                <div class="race-features">
+                    <div class="feature-name">
+                        Feature name
+                    </div>
+                    <div class="feature-description">
+                        a;ldsf;lasdf;lasdf;ljsalgfkjdlaksdf;lkjsadfl;kjasd;lfkj;alsdkj;ldsakfsa;ldkjf
+                        'asld;fj;ldsajkf;lasdkjf;lksadjf;lksajdfl;kjasd;lfkjas;ldkfj;lasdkjf;lasdkjf;ldsaj
+                        ;laskdjf;lksadjf;lksadjf;lkjasd;lfkjasl;dkjfl;kasjdfl;kajsdl;fkjas;ldkfjal;sdkjfl;asjdk
+                    </div>
+                </div>
+                <div class="race-features">
+                    <div class="feature-name">
+                        Feature name
+                    </div>
+                    <div class="feature-description">
+                        a;ldsf;lasdf;lasdf;ljsalgfkjdlaksdf;lkjsadfl;kjasd;lfkj;alsdkj;ldsakfsa;ldkjf
+                        'asld;fj;ldsajkf;lasdkjf;lksadjf;lksajdfl;kjasd;lfkjas;ldkfj;lasdkjf;lasdkjf;ldsaj
+                        ;laskdjf;lksadjf;lksadjf;lkjasd;lfkjasl;dkjfl;kasjdfl;kajsdl;fkjas;ldkfjal;sdkjfl;asjdk
+                    </div>
+                </div>
+                <div class="race-features">
+                    <div class="feature-name">
+                        Feature name
+                    </div>
+                    <div class="feature-description">
+                        a;ldsf;lasdf;lasdf;ljsalgfkjdlaksdf;lkjsadfl;kjasd;lfkj;alsdkj;ldsakfsa;ldkjf
+                        'asld;fj;ldsajkf;lasdkjf;lksadjf;lksajdfl;kjasd;lfkjas;ldkfj;lasdkjf;lasdkjf;ldsaj
+                        ;laskdjf;lksadjf;lksadjf;lkjasd;lfkjasl;dkjfl;kasjdfl;kajsdl;fkjas;ldkfjal;sdkjfl;asjdk
+                    </div>
+                </div>
+                <div class="race-features">
+                    <div class="feature-name">
+                        Feature name
+                    </div>
+                    <div class="feature-description">
+                        a;ldsf;lasdf;lasdf;ljsalgfkjdlaksdf;lkjsadfl;kjasd;lfkj;alsdkj;ldsakfsa;ldkjf
+                        'asld;fj;ldsajkf;lasdkjf;lksadjf;lksajdfl;kjasd;lfkjas;ldkfj;lasdkjf;lasdkjf;ldsaj
+                        ;laskdjf;lksadjf;lksadjf;lkjasd;lfkjasl;dkjfl;kasjdfl;kajsdl;fkjas;ldkfjal;sdkjfl;asjdk
+                    </div>
+                </div>
+            </div>
+            <div class="add-feature-buttons">
+                <div class="cancel">
+                    CANCEL
+                </div>
+                <div class="choose">
+                    SELECT
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="scripts/create-form.js"></script>
+</body>
+</html>

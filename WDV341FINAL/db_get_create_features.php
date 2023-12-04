@@ -4,9 +4,7 @@ require 'dbConnect.php';
 
 session_start();
 
-
-
-$sql = "SELECT race_name, sub_race_name FROM sub_race";
+$sql = "SELECT * FROM features";
 
 $stmt = $conn->prepare($sql);
 

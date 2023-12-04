@@ -4,11 +4,13 @@ require 'dbConnect.php';
 
 session_start();
 
+$race_name = $_GET['race_name'];
 
 
-$sql = "SELECT race_name, sub_race_name FROM sub_race";
+$sql = "SELECT * FROM race WHERE race_name = :race_name";
 
 $stmt = $conn->prepare($sql);
+$stmt->bindParam(':race_name', $race_name);
 
 $stmt->execute();
 

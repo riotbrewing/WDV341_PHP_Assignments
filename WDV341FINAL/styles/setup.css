@@ -134,7 +134,9 @@ html, body
 body {
     text-rendering: optimizeSpeed;
     line-height: 1.5;
-
+    background-image: url("../images/paper.svg");
+    background-size: cover;
+    background-repeat: repeat;
 }
 
 /* A elements that don't have a class get default styles -*- */
