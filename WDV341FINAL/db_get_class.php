@@ -4,14 +4,8 @@ require 'dbConnect.php';
 
 session_start();
 
-$race_name = $_GET['race_name'];
-
-
-$sql = "SELECT * FROM features WHERE race_relation = :race_name";
-
+$sql = "SELECT * FROM character_class";
 $stmt = $conn->prepare($sql);
-$stmt->bindParam(':race_name', $race_name);
-
 $stmt->execute();
 
 $results = $stmt->fetchAll();

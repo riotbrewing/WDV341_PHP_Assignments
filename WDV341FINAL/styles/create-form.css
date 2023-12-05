@@ -429,44 +429,69 @@ li a:hover, .dropdown:hover .drop-link {
 {
     display: grid;
     grid-template-columns: 1fr;
+    background-color: var(--clr-greys-300);
 }
 
 .race-description
 {
     margin: 30px;
     padding: 10px;
+    background-color: var(--clr-greys-100);
+    border-radius: .5rem;
+    box-shadow: rgba(0, 0, 0, 0.17) 0 -10px 5px 0 inset,
+    rgba(0, 0, 0, 0.15) 0 -16px 10px 0 inset,
+    rgba(0, 0, 0, 0.1) 0 -19px 20px 0 inset,
+    rgba(0, 0, 0, 0.06) 0 2px 1px,
+    rgba(0, 0, 0, 0.09) 0 4px 2px,
+    rgba(0, 0, 0, 0.09) 0 8px 4px,
+    rgba(0, 0, 0, 0.09) 0 16px 8px,
+    rgba(0, 0, 0, 0.09) 0 32px 16px;
 }
 
+.race-description h1
+{
+    font-family: var(--ff-primary);
+    text-align: center;
+    font-size: var(--fs-700);
+    font-weight: var(--fw-semi-bold);
+}
 .race-features-container
 {
     display: grid;
     grid-template-columns: 1fr;
     place-items: center;
-
 }
 
 .race-features
 {
-    display: grid;
-    grid-template-areas:
-            "tops"
-            "bottoms";
-    margin: 5px 30px;
-    border-radius: .5rem;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 15px;
+    background-color: transparent;
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.17) 0 -10px 5px 0 inset,
+    rgba(0, 0, 0, 0.15) 0 -16px 10px 0 inset,
+    rgba(0, 0, 0, 0.1) 0 -19px 20px 0 inset,
+    rgba(0, 0, 0, 0.06) 0 2px 1px,
+    rgba(0, 0, 0, 0.09) 0 4px 2px,
+    rgba(0, 0, 0, 0.09) 0 8px 4px,
+    rgba(0, 0, 0, 0.09) 0 16px 8px,
+    rgba(0, 0, 0, 0.09) 0 32px 16px;
+
 }
 
-.feature-name
-{
-    background-color: var(--clr-greys-300);
-    grid-area: tops;
+.feature-name {
+    background-color: var(--clr-greys-200);
     padding-left: 10px;
+    border-radius: 1rem 1rem 0 0 ;
 }
 
 .feature-description
 {
     background-color: var(--clr-greys-100);
-    grid-area: bottoms;
     padding-left: 10px;
+    border-radius: 0 0 1rem 1rem;
 }
 
 .add-feature-buttons
@@ -477,7 +502,6 @@ li a:hover, .dropdown:hover .drop-link {
     place-content: center;
     width: 100%;
     height: 5rem;
-
 }
 .cancel
 {
@@ -488,6 +512,7 @@ li a:hover, .dropdown:hover .drop-link {
     background-color: var(--clr-red-100);
     height: 5rem;
     width: 100%;
+    color:white;
 }
 .choose
 {
@@ -495,8 +520,8 @@ li a:hover, .dropdown:hover .drop-link {
     place-content: center;
     place-items: center;
     text-align: center;
-    text-align: center;
     background-color: var(--clr-red-300);
     height: 5rem;
     width: 100%;
+    color:white;
 }

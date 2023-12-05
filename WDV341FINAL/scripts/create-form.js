@@ -33,6 +33,7 @@ function drop(ev) {
 let previous_list = document.querySelectorAll(".btn-previous-form, .btn-next-form");
 let display_list = document.querySelectorAll('.body-container');
 let race_container = document.querySelector(".race-container");
+let class_container = document.querySelector(".class-container");
 function clear_children(input_element)
 {
     while(input_element.lastElementChild)
@@ -61,19 +62,23 @@ previous_list.forEach((item) => item.addEventListener('click', function(){
     {
         display_list.forEach((item) => item.classList.remove('active-display'));
         display_list[2].classList.add('active-display');
+        get_classes();
     }
     if(item.id === "class-previous")
     {
         display_list.forEach((item) => item.classList.remove('active-display'));
         display_list[1].classList.add('active-display');
+        clear_children(class_container);
     }
     if(item.id === "class-next")
     {
         display_list.forEach((item) => item.classList.remove('active-display'));
         display_list[3].classList.add('active-display');
+        clear_children(class_container);
     }
     if(item.id === "ability-previous")
     {
+        get_classes();
         display_list.forEach((item) => item.classList.remove('active-display'));
         display_list[2].classList.add('active-display');
     }
@@ -110,6 +115,7 @@ previous_list.forEach((item) => item.addEventListener('click', function(){
 
 }))
 
+/*----------------------------------------RACES-----------------------------------------------*/
 
 //API TO GET THE RACES FROM THE DB AND PASS THE LIST OF RACES TO THE GET SUB RACE API
 function get_races()
@@ -131,7 +137,6 @@ function get_races()
     }
     race_request.send()
 }//END GET RACES API
-
 
 //API T0 GET A LIST OF THE SUB-RACES AND PASS THE LIST AND THE RACE LIST TO THE CREATE CONTENT FUNCTION
 function get_sub_races(input_list)
@@ -309,13 +314,15 @@ function create_race_content(race_list, sub_race_list)
             get_race_details(item.name);
         }
     }));
-}
+}//END CREATE RACE CONTENT
 
+//FUNCTION TO CHECK IF A NAME HAS WHITE SPACE (SUB RACE CHECK)
 function check_white_space(name)
 {
     return name.indexOf(' ') >= 0;
-}
+}//END CHECK WHITE SPACE
 
+//GET ALL RACE DATA BASED OFF NAME
 function get_race_details(name)
 {
     let request = new XMLHttpRequest();
@@ -325,11 +332,12 @@ function get_race_details(name)
     request.onload = function()
     {
         let response = JSON.parse(this.response);
-        display_race_details(response);
+        features_race_details(response);
     }
     request.send();
-}
+}//END GET RACE
 
+//GET ALL SUB RACE DATA BASED OFF NAME
 function get_sub_race_details(name)
 {
     let request = new XMLHttpRequest();
@@ -342,7 +350,7 @@ function get_sub_race_details(name)
         get_combined_race(response);
     }
     request.send();
-}
+}//END GET SUB RACE
 
 function get_combined_race(name)
 {
@@ -355,47 +363,461 @@ function get_combined_race(name)
     request.onload = function()
     {
         let response = JSON.parse(this.response);
-        display_sub_race_details_combined(name, response)
+        features_sub_race_details_combined(name, response)
     }
     request.send();
 }
 
-/*
-*
-* functions below are for filling the race modal
-*
-* */
-function display_sub_race_details_combined(sub_name, race)
+// API GET FEATURES BASED OFF SUB RACE AND CALL FUNCTION TO FILL SUB-RACE MODAL
+function features_sub_race_details_combined(sub_name, race)
 {
-    console.log(sub_name);
-    console.log(race);
-    //modal.style.display = 'grid';
+    let sub_race_name = sub_name[0]['sub_race_name'];
+    let race_name = race[0]['race_name'];
+    let request = new XMLHttpRequest();
+    let url = "db_get_features_sub_race.php?race_name=" + race_name + '&sub_race_name=' + sub_race_name;
+
+    request.open('Get', url, true);
+    request.onload = function()
+    {
+        let response = JSON.parse(this.response);
+        display_sub_race(race, sub_name, response);
+    }
+    request.send()
+} //END SUB-RACE FEATURES API
+
+// API GET FEATURES BASED OFF RACE AND CALL FUNCTION TO FILL RACE MODAL
+function features_race_details(name)
+{
+    let race_name= name[0]['race_name'];
+    let request = new XMLHttpRequest();
+    let url = "db_get_features_race.php?race_name=" + race_name;
+
+    request.open('Get', url, true);
+    request.onload = function()
+    {
+        let response = JSON.parse(this.response);
+        display_race(name, response);
+    }
+    request.send()
+}//END RACE FEATURES API
+
+//FILL AND DISPLAY MODAL BASED ON RACE CALL FUNCTION TO STORE DATA
+function display_race(race, features)
+{
+    /*
+    PARENT - CREATE-MODAL-CONTENT
+    1ST CHILD - CREATE-MODAL-HEADER
+        1ST CHILD - DIV
+        <H1<
+        2ND CHILD - DIV
+        <SPAN> CLASS-CREATE-MODAL-CLOSE-BTN ID-CLOSE-MODAL-BTN
+    2ND CHILD - CREATE-MODAL-BODY
+        1ST CHILD - RACE-DESCRIPTION
+            <h1>
+            <p>
+        2ND CHILD - RACE-FEATURE-CONTAINER
+            1ST CHILD(RFC) - RACE-FEATURES
+                1ST CHILD(RF) - FEATURE-NAME
+                2ND CHILD(RF) - FEATURE-DESCRIPTION
+        3RD CHILD - ADD-FEATURE-BUTTONS
+            1ST CHILD(AFB) - CANCEL
+            2ND CHILD(AFB) - CHOOSE
+
+     */
+
+    let content = document.createElement('div');
+    content.classList.add('create-modal-content');
+
+    let header = document.createElement('div');
+    header.classList.add('create-modal-header');
+
+    let header_div_1 =document.createElement('div');
+    let header_h1 = document.createElement('h1');
+    header_h1.innerHTML = "CONFIRM RACE SELECTION"
+    let header_div_2 = document.createElement('div');
+    let span = document.createElement('span');
+    span.classList.add('create-modal-close-btn');
+    span.id = 'closeModalBtn';
+    span.innerHTML = 'X';
+    span.addEventListener('click', function () {
+        modal.style.display = 'none';
+        clear_children(modal);
+    });
+
+    header_div_1.appendChild(header_h1);
+    header_div_2.appendChild(span)
+
+    header.appendChild(header_div_1);
+    header.appendChild(header_div_2);
+
+    content.appendChild(header);
+
+    let body = document.createElement('div');
+    body.classList.add("create-modal-body");
+
+    let race_description = document.createElement('div');
+    race_description.classList.add('race-description')
+    let h1 = document.createElement('h1');
+    h1.innerHTML = race[0]['race_name'].toString();
+    let p =document.createElement('p');
+    p.innerHTML = race[0]['race_description'].toString();
+
+    race_description.appendChild(h1);
+    race_description.appendChild(p);
+
+    body.appendChild(race_description);
+
+
+    let race_features_container = document.createElement('div');
+    race_features_container.classList.add('race-features-container');
+    let h1_2 = document.createElement('h1');
+    h1_2.innerHTML = "FEATURES AND TRAITS"
+
+    race_features_container.appendChild(h1_2)
+
+
+    if(features.length > 0)
+    {
+        for(let i = 0; i < features.length; i++)
+        {
+            let race_features = document.createElement('div');
+            race_features.classList.add('race-features');
+
+            //loop through and create feature names and descriptions
+            let feature_name = document.createElement('div');
+            feature_name.classList.add('feature-name');
+            feature_name.innerHTML = features[i]['feature_name'];
+
+            let feature_description = document.createElement('div');
+            feature_description.classList.add('feature-description');
+            feature_description.innerHTML = features[i][3].toString();
+
+            race_features.appendChild(feature_name);
+            race_features.appendChild(feature_description);
+
+            race_features_container.appendChild(race_features);
+        }
+    }
+    else
+    {
+        let race_features = document.createElement('div');
+        race_features.classList.add('race-features');
+
+        let feature_name = document.createElement('div');
+        feature_name.classList.add('feature-name');
+        feature_name.innerHTML = "HUMANS HAVE NO RACIAL TRAITS";
+        race_features.appendChild(feature_name);
+        race_features_container.appendChild(race_features);
+    }
+
+    body.appendChild(race_features_container);
+
+    let add_feature_buttons = document.createElement('div');
+    add_feature_buttons.classList.add('add-feature-buttons');
+
+    let cancel = document.createElement('div');
+    cancel.classList.add('cancel');
+    cancel.innerHTML='CANCEL';
+    cancel.addEventListener('click', function () {
+        modal.style.display = 'none';
+        clear_children(modal);
+    });
+
+    let choose = document.createElement('div');
+    choose.classList.add('choose');
+    choose.innerHTML='CHOOSE';
+    choose.addEventListener('click', function () {
+        modal.style.display = 'none';
+        clear_children(modal);
+
+        set_race_details(race, features);
+
+    });
+
+    add_feature_buttons.appendChild(cancel);
+    add_feature_buttons.appendChild(choose);
+
+    body.appendChild(add_feature_buttons);
+
+    content.appendChild(body);
+
+    modal.appendChild(content);
+
+    modal.style.display = 'grid';
+}//END DISPLAY RACE
+
+//FILL AND DISPLAY MODAL BASED ON SUB-RACE CALL FUNCTION TO STORE DATA
+function display_sub_race(race, sub_race, features)
+{
+    let content = document.createElement('div');
+    content.classList.add('create-modal-content');
+
+    let header = document.createElement('div');
+    header.classList.add('create-modal-header');
+
+    let header_div_1 =document.createElement('div');
+    let header_h1 = document.createElement('h1');
+    header_h1.innerHTML = "CONFIRM RACE SELECTION"
+    let header_div_2 = document.createElement('div');
+    let span = document.createElement('span');
+    span.classList.add('create-modal-close-btn');
+    span.id = 'closeModalBtn';
+    span.innerHTML = 'X';
+    span.addEventListener('click', function () {
+        modal.style.display = 'none';
+        clear_children(modal);
+    });
+
+    header_div_1.appendChild(header_h1);
+    header_div_2.appendChild(span)
+
+    header.appendChild(header_div_1);
+    header.appendChild(header_div_2);
+
+    content.appendChild(header);
+
+    let body = document.createElement('div');
+    body.classList.add("create-modal-body");
+
+    let race_description = document.createElement('div');
+    race_description.classList.add('race-description')
+    let h1 = document.createElement('h1');
+    h1.innerHTML = race[0]['race_name'].toString();
+    let p =document.createElement('p');
+    p.innerHTML = race[0]['race_description'].toString() + '\n' + sub_race[0]['sub_race_description'];
+
+    race_description.appendChild(h1);
+    race_description.appendChild(p);
+
+    body.appendChild(race_description);
+
+
+    let race_features_container = document.createElement('div');
+    race_features_container.classList.add('race-features-container');
+    let h1_2 = document.createElement('h1');
+    h1_2.innerHTML = "FEATURES AND TRAITS"
+
+    race_features_container.appendChild(h1_2)
+
+
+
+    for(let i = 0; i < features.length; i++)
+    {
+        let race_features = document.createElement('div');
+        race_features.classList.add('race-features');
+
+        //loop through and create feature names and descriptions
+        let feature_name = document.createElement('div');
+        feature_name.classList.add('feature-name');
+        feature_name.innerHTML = features[i]['feature_name'];
+
+        let feature_description = document.createElement('div');
+        feature_description.classList.add('feature-description');
+        feature_description.innerHTML = features[i][3].toString();
+
+        race_features.appendChild(feature_name);
+        race_features.appendChild(feature_description);
+
+        race_features_container.appendChild(race_features);
+    }
+
+    body.appendChild(race_features_container);
+
+    let add_feature_buttons = document.createElement('div');
+    add_feature_buttons.classList.add('add-feature-buttons');
+
+    let cancel = document.createElement('div');
+    cancel.classList.add('cancel');
+    cancel.addEventListener('click', function () {
+        modal.style.display = 'none';
+        clear_children(modal);
+    });
+
+    let choose = document.createElement('div');
+    choose.classList.add('choose');
+    choose.innerHTML='CHOOSE';
+    choose.addEventListener('click', function () {
+        modal.style.display = 'none';
+        clear_children(modal);
+
+        set_race_details_sub(race, sub_race, features);
+
+    });
+
+    add_feature_buttons.appendChild(cancel);
+    add_feature_buttons.appendChild(choose);
+
+    body.appendChild(add_feature_buttons);
+
+    content.appendChild(body);
+    modal.appendChild(content);
+    modal.style.display = 'grid';
+}//END DISPLAY SUB-RACE
+
+
+/*---------------------------------------END RACES--------------------------------------------*/
+
+
+/*----------------------------------------CLASSES----------------------------------------------*/
+function get_classes()
+{
+    let request = new XMLHttpRequest();
+    let url = "db_get_class.php";
+
+    request.open('Get', url, true);
+    request.onload = function()
+    {
+        let response = JSON.parse(this.response);
+        fill_class_container(response);
+    }
+    request.send();
 }
 
-function display_race_details(name)
+function fill_class_container(class_input)
 {
-    console.log(name);
-    //modal.style.display = 'grid';
+    console.log(class_input);
+
+    let class_list = class_input;
+
+    let class_container = document.querySelector(".class-container");
+    class_container.classList.add('race-container');
+
+    for(let i = 0; i < class_list.length; i++)
+    {
+        console.log(class_list[i]['class_name']);
+
+        let class_card_div = document.createElement('div');
+        class_card_div.classList.add('race-card');
+
+        let class_img_div = document.createElement('div');
+        class_img_div.classList.add('race-img');
+
+        let class_content_div = document.createElement('div');
+        class_content_div.classList.add('race-content');
+
+        let button_div = document.createElement('div');
+        let btn_next = document.createElement('button');
+        btn_next.classList.add('btn-next');
+
+        class_content_div.innerHTML = class_list[i]['class_name'];
+        class_card_div.appendChild(class_img_div);
+        class_card_div.appendChild(class_content_div);
+
+        btn_next.id = class_list[i]['class_name'] + '-btn';
+        btn_next.innerHTML = ">";
+        btn_next.value = "0";
+        btn_next.name = class_list[i]['class_name'];
+        button_div.appendChild(btn_next);
+        class_card_div.appendChild(button_div);
+        class_container.appendChild(class_card_div);
+
+    }
+
+    let next_button_list = document.querySelectorAll('.btn-next');
+
+    next_button_list.forEach((item) => item.addEventListener('click', function() {
+       console.log("CLICKED");
+    }));
+
+
 }
+
+
+/*---------------------------------------END CLASSES--------------------------------------------*/
+
+
+//CREATE CHARACTER VARIABLES
+
+//change this to the cookie from the current user
+let user_number = 1;
+/*************************************************/
+
+let db_race_name = "";
+let db_sub_race_name = "";
+let db_strength = 0;
+let db_dexterity = 0;
+let db_constitution = 0;
+let db_intelligence = 0;
+let db_wisdom = 0;
+let db_charisma = 0;
+let db_features = [];
+
+
+
+
+//FUNCTION TO STORE CHARACTER DETAILS
+function set_race_details(race, features)
+{
+    console.log(race);
+    console.log(features);
+
+    if(db_race_name === "")
+    {
+        //RACE
+        db_race_name = race[0]['race_name'];
+        db_strength = race[0]['strength'];
+        db_dexterity = race[0]['dexterity'];
+        db_constitution = race[0]['constitution'];
+        db_intelligence = race[0]['intelligence'];
+        db_wisdom = race[0]['wisdom'];
+        db_charisma = race[0]['charisma'];
+        db_features = JSON.stringify(features);
+    }
+}//END STORE RACE DETAILS
+
+//FUNCTION TO STORE CHARACTER (SUB-RACE) DETAILS
+function set_race_details_sub(race, sub_race, features)
+{
+    console.log(race);
+    console.log(sub_race);
+    console.log(features);
+
+    if(db_race_name === "")
+    {
+        db_race_name = race[0]['race_name'];
+        db_sub_race_name = sub_race[0]['sub_race_name'];
+        db_strength = race[0]['strength'];
+        db_dexterity = race[0]['dexterity'];
+        db_constitution = race[0]['constitution'];
+        db_intelligence = race[0]['intelligence'];
+        db_wisdom = race[0]['wisdom'];
+        db_charisma = race[0]['charisma'];
+        db_features = JSON.stringify(features);
+    }
+
+}//END STORE SUB-RACE DETAILS
+
 
 /*----------------------------------RACE MODAL-----------------------------------------*/
 
 
 let modal = document.getElementById('sub-race-modal');
-let closeModalBtn = document.getElementById('closeModalBtn');
-
-closeModalBtn.addEventListener('click', function () {
-    modal.style.display = 'none';
-});
 
 window.addEventListener('click', function (event) {
     if (event.target === modal) {
         modal.style.display = 'none';
+        clear_children(modal);
     }
 });
 
 
-/*------------------------------------END RACE MODAL-------------------------------------------*/
+/*------------------------------------END RACE MODAL--------------------------------------------*/
+
+
+/*--------------------------------------CLASS MODAL---------------------------------------------*/
+
+let modal_class = document.getElementById('class-modal');
+
+window.addEventListener('click', function (event) {
+    if (event.target === modal_class) {
+        modal_class.style.display = 'none';
+        clear_children(modal_class);
+    }
+});
+
+/*-------------------------------------END CLASS MODAL-------------------------------------------*/
+
+
 
 /*----------------------------------END FORM FUNCTIONS-----------------------------------------*/
 
