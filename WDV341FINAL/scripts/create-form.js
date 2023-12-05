@@ -628,6 +628,7 @@ function display_sub_race(race, sub_race, features)
 
     let cancel = document.createElement('div');
     cancel.classList.add('cancel');
+    cancel.innerHTML = 'CANCEL';
     cancel.addEventListener('click', function () {
         modal.style.display = 'none';
         clear_children(modal);
@@ -675,7 +676,6 @@ function get_classes()
 
 function fill_class_container(class_input)
 {
-    console.log(class_input);
 
     let class_list = class_input;
 
@@ -684,8 +684,6 @@ function fill_class_container(class_input)
 
     for(let i = 0; i < class_list.length; i++)
     {
-        console.log(class_list[i]['class_name']);
-
         let class_card_div = document.createElement('div');
         class_card_div.classList.add('race-card');
 
@@ -716,14 +714,195 @@ function fill_class_container(class_input)
     let next_button_list = document.querySelectorAll('.btn-next');
 
     next_button_list.forEach((item) => item.addEventListener('click', function() {
-       console.log("CLICKED");
+
+       get_class_details(item.name)
     }));
 
 
 }
 
+//API TO GET CLASS DETAILS BY NAME AND CALL THE API TO GET CLASS FEATURES
+function get_class_details(name)
+{
+    let request = new XMLHttpRequest();
+    let url = "db_get_class_by_name.php?class_name=" + name;
+    request.open("Get", url, true);
+    request.onload = function ()
+    {
+        let response = JSON.parse(this.response);
+        get_class_features(response);
+    }
+    request.send();
+}//END GET CLASS DETAILS
 
-/*---------------------------------------END CLASSES--------------------------------------------*/
+////API TO GET CLASS FEATURES BY CLASS NAME
+function get_class_features(class_input)
+{
+    let name = class_input[0]['class_name'];
+
+    let request = new XMLHttpRequest();
+    let url = "db_get_class_features_name.php?class_name=" + name;
+    request.open('Get', url, true);
+    request.onload = function ()
+    {
+        let response = JSON.parse(this.response);
+        fill_class_modal(class_input, response);
+    }
+    request.send();
+}//END GET CLASS FEATURES
+
+
+//FUNCTION TO FILL THE CLASS MODAL BASED ON CLASS DETAILS
+function fill_class_modal(class_input, class_features)
+{
+    console.log(class_input);
+    console.log(class_features);
+
+    /*
+   PARENT - CREATE-MODAL-CONTENT
+   1ST CHILD - CREATE-MODAL-HEADER
+       1ST CHILD - DIV
+       <H1<
+       2ND CHILD - DIV
+       <SPAN> CLASS-CREATE-MODAL-CLOSE-BTN ID-CLOSE-MODAL-BTN
+   2ND CHILD - CREATE-MODAL-BODY
+       1ST CHILD - RACE-DESCRIPTION
+           <h1>
+           <p>
+       2ND CHILD - RACE-FEATURE-CONTAINER
+           1ST CHILD(RFC) - RACE-FEATURES
+               1ST CHILD(RF) - FEATURE-NAME
+               2ND CHILD(RF) - FEATURE-DESCRIPTION
+       3RD CHILD - ADD-FEATURE-BUTTONS
+           1ST CHILD(AFB) - CANCEL
+           2ND CHILD(AFB) - CHOOSE
+
+    */
+    let class_content = document.createElement('div');
+    class_content.classList.add('create-modal-content');
+
+    let header = document.createElement('div');
+    header.classList.add('create-modal-header');
+
+    let header_div_1 =document.createElement('div');
+    let header_h1 = document.createElement('h1');
+    header_h1.innerHTML = "CONFIRM CLASS SELECTION"
+    let header_div_2 = document.createElement('div');
+    let span = document.createElement('span');
+    span.classList.add('create-modal-close-btn');
+    span.id = 'closeModalBtn';
+    span.innerHTML = 'X';
+    span.addEventListener('click', function () {
+        modal.style.display = 'none';
+        clear_children(modal);
+    });
+
+    header_div_1.appendChild(header_h1);
+    header_div_2.appendChild(span)
+
+    header.appendChild(header_div_1);
+    header.appendChild(header_div_2);
+
+    class_content.appendChild(header);
+
+    let class_body = document.createElement('div');
+    class_body.classList.add("create-modal-body");
+
+    let class_description = document.createElement('div');
+    class_description.classList.add('race-description')
+    let h1 = document.createElement('h1');
+    h1.innerHTML = class_input[0]['class_name'].toString();
+    let p =document.createElement('p');
+    p.innerHTML = class_input[0]['class_description'].toString();
+
+    class_description.appendChild(h1);
+    class_description.appendChild(p);
+
+    class_body.appendChild(class_description);
+
+
+    let class_features_container = document.createElement('div');
+    class_features_container.classList.add('race-features-container');
+    let h1_2 = document.createElement('h1');
+    h1_2.innerHTML = "CLASS FEATURES"
+
+    class_features_container.appendChild(h1_2)
+
+
+    if(class_features.length > 0)
+    {
+        for(let i = 0; i < class_features.length; i++)
+        {
+            let race_features = document.createElement('div');
+            race_features.classList.add('race-features');
+
+            //loop through and create feature names and descriptions
+            let feature_name = document.createElement('div');
+            feature_name.classList.add('feature-name');
+            feature_name.innerHTML = class_features[i]['class_feature_name'];
+
+            let feature_description = document.createElement('div');
+            feature_description.classList.add('feature-description');
+            feature_description.innerHTML = class_features[i][3].toString();
+
+            race_features.appendChild(feature_name);
+            race_features.appendChild(feature_description);
+
+            class_features_container.appendChild(race_features);
+        }
+    }
+
+    class_body.appendChild(class_features_container);
+
+    let add_feature_buttons = document.createElement('div');
+    add_feature_buttons.classList.add('add-feature-buttons');
+
+    let cancel = document.createElement('div');
+    cancel.classList.add('cancel');
+    cancel.innerHTML='CANCEL';
+    cancel.addEventListener('click', function () {
+        modal.style.display = 'none';
+        clear_children(modal);
+    });
+
+    let choose = document.createElement('div');
+    choose.classList.add('choose');
+    choose.innerHTML='CHOOSE';
+    choose.addEventListener('click', function () {
+        modal.style.display = 'none';
+        clear_children(modal);
+
+        set_class_details(class_input, class_features);
+
+    });
+
+    add_feature_buttons.appendChild(cancel);
+    add_feature_buttons.appendChild(choose);
+
+    class_body.appendChild(add_feature_buttons);
+
+    class_content.appendChild(class_body);
+
+    modal.appendChild(class_content);
+
+    modal.style.display = 'grid';
+
+
+}//END FILL CLASS MODAL
+
+
+/*-----------------------------------------END CLASSES--------------------------------------------*/
+
+/*-----------------------------------------ABILITIES----------------------------------------------*/
+
+//FUNCTION TO SET UP ABILITY MODAL
+function fill_ability_modal()
+{
+    let select_options = ['15', '14', '13', '12' , '10', '8'];
+}
+
+/*---------------------------------------END ABILITIES--------------------------------------------*/
+
 
 
 //CREATE CHARACTER VARIABLES
@@ -742,6 +921,15 @@ let db_wisdom = 0;
 let db_charisma = 0;
 let db_features = [];
 
+let db_class_name = "";
+let db_hit_dice = "";
+let db_hit_points = "";
+let db_class_saves = "";
+let db_armor = "";
+let db_equipment = "";
+let db_tools = "";
+let db_weapons = "";
+let db_class_features = "";
 
 
 
@@ -751,18 +939,16 @@ function set_race_details(race, features)
     console.log(race);
     console.log(features);
 
-    if(db_race_name === "")
-    {
-        //RACE
-        db_race_name = race[0]['race_name'];
-        db_strength = race[0]['strength'];
-        db_dexterity = race[0]['dexterity'];
-        db_constitution = race[0]['constitution'];
-        db_intelligence = race[0]['intelligence'];
-        db_wisdom = race[0]['wisdom'];
-        db_charisma = race[0]['charisma'];
-        db_features = JSON.stringify(features);
-    }
+    //RACE
+    db_race_name = race[0]['race_name'];
+    db_strength = race[0]['strength'];
+    db_dexterity = race[0]['dexterity'];
+    db_constitution = race[0]['constitution'];
+    db_intelligence = race[0]['intelligence'];
+    db_wisdom = race[0]['wisdom'];
+    db_charisma = race[0]['charisma'];
+    db_features = JSON.stringify(features);
+
 }//END STORE RACE DETAILS
 
 //FUNCTION TO STORE CHARACTER (SUB-RACE) DETAILS
@@ -772,21 +958,34 @@ function set_race_details_sub(race, sub_race, features)
     console.log(sub_race);
     console.log(features);
 
-    if(db_race_name === "")
-    {
-        db_race_name = race[0]['race_name'];
-        db_sub_race_name = sub_race[0]['sub_race_name'];
-        db_strength = race[0]['strength'];
-        db_dexterity = race[0]['dexterity'];
-        db_constitution = race[0]['constitution'];
-        db_intelligence = race[0]['intelligence'];
-        db_wisdom = race[0]['wisdom'];
-        db_charisma = race[0]['charisma'];
-        db_features = JSON.stringify(features);
-    }
+    db_race_name = race[0]['race_name'];
+    db_sub_race_name = sub_race[0]['sub_race_name'];
+    db_strength = race[0]['strength'] + sub_race[0]['strength'];
+    db_dexterity = race[0]['dexterity'] + sub_race[0]['dexterity'];
+    db_constitution = race[0]['constitution'] + sub_race[0]['constitution'];
+    db_intelligence = race[0]['intelligence'] + sub_race[0]['intelligence'];
+    db_wisdom = race[0]['wisdom'] + sub_race[0]['wisdom'];
+    db_charisma = race[0]['charisma'] + sub_race[0]['charisma'];
+    db_features = JSON.stringify(features);
+
 
 }//END STORE SUB-RACE DETAILS
 
+//FUNCTION TO STORE CLASS DETAILS
+function set_class_details(class_input, class_features)
+{
+    console.log(class_input);
+    console.log(class_features);
+
+    db_class_name = class_input[0]['class_name'];
+    db_hit_dice = class_input[0]['hit_dice'];
+    db_hit_points = class_input[0]['hit_points'];
+    db_class_saves = class_input[0]['saves'];
+    db_armor = class_input[0]['armor'];
+    db_tools = class_input[0]['tools'];
+    db_weapons = class_input[0]['weapons'];
+    db_class_features = "";
+}
 
 /*----------------------------------RACE MODAL-----------------------------------------*/
 
