@@ -1,10 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/setup.css">
+    <link rel="stylesheet" href="styles/create-sheet.css">
+    <title>MANYHATS CREATE CHARACTER</title>
 </head>
 <body>
-$END$
+<script src="scripts/character_class.js"></script>
+<script src="scripts/create.js"></script>
+<script src="scripts/view_all.js"></script>
+<script>
+    get_race_from_db();
+    show_page_check();
+</script>
+    <header>
+        <div>
+            <img src="images/manyhats_scalable.svg" alt="manyhats logo">
+        </div>
+        <div class="header-text">
+            - CREATE A CHARACTER -
+        </div>
+    </header>
+    <div class="nav-bar">
+        <ul id="nav-ul">
+            <li><a href="manyhats-view-all.html">VIEW ALL</a></li>
+            <li><a href="manyhats-create.html">CREATE</a></li>
+            <li><a href="manyhats-delete.html">DELETE</a></li>
+            <li id="admin-link" style="visibility: hidden"><a href="manyhats-admin.html">ADMIN</a></li>
+            <li  style="float: right"><a href="manyhats-home.html" onclick="remove_user()">SIGN OUT</a></li>
+        </ul>
+    </div>
+    <div class="create-header">
+        <div class="create-image">
+
+        </div>
+        <div class="create-name">
+            <label for="character_name">CHARACTER NAME</label>
+            <input type="text" id="character_name">
+        </div>
+    </div>
+    <div class="create-content">
+
+        <div class="container-race active-container" id="show-race">
+
+        </div>
+
+        <div class="container-race" id="show-race-details">
+
+        </div>
+
+        <div class="container-race" id="show-class">
+
+        </div>
+
+        <div class="container-race" id="show-class-details">
+
+        </div>
+
+        <div class="container-race" id="show-ability">
+
+        </div>
+
+        <div class="container-race" id="show-background">
+
+            <div class="container-background">
+                <div class="background-header">
+                    CHOOSE A BACKGROUND
+                </div>
+                <div class="background-select">
+                    <select id="background-choice" aria-label=""></select>
+                </div>
+                <hr>
+                <div class="background-content">
+
+                    <div class="feature-content">
+                        <div class="race-name">
+                            CHARACTER DETAILS
+                        </div>
+                        <div>
+                            <div class="feature-btn" id="character-description">+</div>
+                        </div>
+                    </div>
+                    <div class="show-features" id="character-description-div">
+                        <label for="alignment">ALIGNMENT</label>
+                        <select id="alignment"></select>
+                        <p id="alignment description"></p>
+
+                        <hr>
+
+                        <label for="faith">FAITH</label>
+                        <input type="text" id="faith">
+                    </div>
+
+                    <div class="feature-content">
+                        <div class="race-name">
+                            PHYSICAL TRAITS
+                        </div>
+                        <div>
+                            <div class="feature-btn" id="physical-traits">+</div>
+                        </div>
+                    </div>
+                    <div class="show-features" id="physical-traits-div">
+                        <label for="hair">HAIR</label>
+                        <input type="text" id="hair">
+
+                        <label for="skin">SKIN</label>
+                        <input type="text" id="skin">
+
+                        <label for="eyes">EYES</label>
+                        <input type="text" id="eyes">
+
+                        <label for="height">HEIGHT</label>
+                        <input type="text" id="height">
+
+                        <label for="weight">WEIGHT</label>
+                        <input type="number" id="weight">
+
+                        <label for="age">AGE</label>
+                        <input type="number" id="age">
+
+                        <label for="gender">GENDER</label>
+                        <input type="text" id="gender">
+                    </div>
+
+                    <div class="feature-content">
+                        <div class="race-name">
+                            PERSONALITY TRAITS
+                        </div>
+                        <div>
+                            <div class="feature-btn" id="personality-traits">+</div>
+                        </div>
+                    </div>
+
+                    <div class="show-features" id="personality-traits-div">
+                        <div class="personality-container">
+                            <div class="personality-header">
+                                PERSONALITY-TRAITS
+                            </div>
+                            <div class="personality-button">
+                                <button type="button" id="personality-btn">ADD TRAIT</button>
+                            </div>
+                            <div class="personality-text" id="personality-txt">
+
+                            </div>
+                        </div>
+                        <div class="personality-container">
+                            <div class="personality-header">
+                                IDEALS
+                            </div>
+                            <div class="personality-button">
+                                <button type="button" id="ideals-btn">ADD TRAIT</button>
+                            </div>
+                            <div class="personality-text" id="ideals-txt">
+
+                            </div>
+                        </div>
+                        <div class="personality-container">
+                            <div class="personality-header">
+                                BONDS
+                            </div>
+                            <div class="personality-button">
+                                <button type="button" id="bonds-btn">ADD TRAIT</button>
+                            </div>
+                            <div class="personality-text" id="bonds-txt">
+
+                            </div>
+                        </div>
+                        <div class="personality-container">
+                            <div class="personality-header">
+                                FLAWS
+                            </div>
+                            <div class="personality-button">
+                                <button type="button" id="flaws-btn">ADD TRAIT</button>
+                            </div>
+                            <div class="personality-text" id="flaws-txt">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature-content">
+                        <div class="race-name">
+                            CHARACTER NOTES
+                        </div>
+                        <div>
+                            <div class="feature-btn" id="character-notes">+</div>
+                        </div>
+                    </div>
+                    <div class="show-features" id="character-note-div">
+
+                        <div class="notes-container">
+                            <div>ORGANIZATIONS</div>
+                            <div><button type="button" id="org-btn">ADD</button></div>
+                        </div>
+                        <div class="notes-container">
+                            <div>ALLIES</div>
+                            <div><button type="button" id="allies-btn">ADD</button></div>
+                        </div>
+                        <div class="notes-container">
+                            <div>ENEMIES</div>
+                            <div><button type="button" id="enemies-btn">ADD</button></div>
+                        </div>
+                        <div class="notes-container">
+                            <div>BACKSTORY</div>
+                            <div><button type="button" id="backstory-btn">ADD</button></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button type="button" id="add_character" class="create-button">CREATE CHARACTER</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="modal-traits" id="personality-modal">
+
+        <div class="modal-traits-content">
+            <div class="modal-header">
+                <div>SELECT A PERSONALITY TRAIT</div>
+                <div class = "modal-traits-close" onclick="modal_close()">X</div>
+            </div>
+            <div class="trait-table" id="personality-content">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-traits" id="ideals-modal">
+
+        <div class="modal-traits-content">
+            <div class="modal-header">
+                <div>SELECT AN IDEAL</div>
+                <div class = "modal-traits-close" onclick="modal_close()">X</div>
+            </div>
+            <div class="trait-table" id="ideals-content">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-traits" id="bonds-modal">
+
+        <div class="modal-traits-content">
+            <div class="modal-header">
+                <div>SELECT A BOND</div>
+                <div class = "modal-traits-close" onclick="modal_close()">X</div>
+            </div>
+            <div class="trait-table" id="bonds-content">
+
+            </div>
+        </div>
+    </div>
+
+<div class="modal-traits" id="flaws-modal">
+
+    <div class="modal-traits-content">
+        <div class="modal-header">
+            <div>SELECT A FLAW</div>
+            <div class = "modal-traits-close" onclick="modal_close()">X</div>
+        </div>
+        <div class="trait-table" id="flaws-content">
+
+        </div>
+    </div>
+</div>
+
+<div class="modal-traits" id="org-modal">
+    <div class="modal-traits-content">
+        <div class="modal-header">
+            <div>ADD ORGANIZATIONS</div>
+            <div class = "modal-traits-close" onclick="modal_close()">X</div>
+        </div>
+        <label for="org-text"></label>
+        <textarea id="org-text">
+
+        </textarea>
+    </div>
+</div>
+
+<div class="modal-traits" id="allies-modal">
+    <div class="modal-traits-content">
+        <div class="modal-header">
+            <div>ADD ALLIES</div>
+            <div class = "modal-traits-close" onclick="modal_close()">X</div>
+        </div>
+        <label for="allies-text"></label>
+        <textarea id="allies-text">
+
+        </textarea>
+    </div>
+</div>
+
+<div class="modal-traits" id="enemies-modal">
+    <div class="modal-traits-content">
+        <div class="modal-header">
+            <div>ADD ENEMIES</div>
+            <div class = "modal-traits-close" onclick="modal_close()">X</div>
+        </div>
+        <label for="enemies-text"></label>
+        <textarea id="enemies-text">
+
+        </textarea>
+    </div>
+</div>
+
+<div class="modal-traits" id="backstory-modal">
+    <div class="modal-traits-content">
+        <div class="modal-header">
+            <div>ADD EXTRA BACKSTORY</div>
+            <div class = "modal-traits-close" onclick="modal_close()">X</div>
+        </div>
+        <label for="background-text"></label>
+        <textarea id="background-text">
+
+        </textarea>
+    </div>
+</div>
+
+<script src="scripts/race_class.js"></script>
+
+<script>
+    create_race_fill();
+    create_listener();
+</script>
+<script>add_hyperlink();</script>
 </body>
 </html>

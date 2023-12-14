@@ -1,10 +1,432 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/setup.css">
+    <link rel="stylesheet" href="styles/character-sheet.css">
+    <title>MANYHATS CHARACTER SHEET</title>
 </head>
 <body>
-$END$
+<div class="character-sheet">
+    <header class="character-header">
+
+    </header>
+
+    <div class="character-top-bar">
+        <div class="container-abilities">
+            <div class="ability">
+                <div class="ability-mod">
+                    <label for="strength-mod">STRENGTH</label>
+                    <input type="text" id="strength-mod" disabled="disabled">
+                </div>
+                <div class="ability-number" id="strength">0</div>
+            </div>
+            <div class="ability">
+                <div class="ability-mod">
+                    <label for="dexterity-mod">DEXTERITY</label>
+                    <input type="text" id="dexterity-mod" disabled="disabled">
+                </div>
+                <div class="ability-number" id="dexterity">0</div>
+            </div>
+            <div class="ability">
+                <div class="ability-mod">
+                    <label for="constitution-mod">CONSTITUTION</label>
+                    <input type="text" id="constitution-mod" disabled="disabled">
+                </div>
+                <div class="ability-number" id="constitution">0</div>
+            </div>
+            <div class="ability">
+                <div class="ability-mod">
+                    <label for="intelligence-mod">INTELLIGENCE</label>
+                    <input type="text" id="intelligence-mod" disabled="disabled">
+                </div>
+                <div class="ability-number" id="intelligence">0</div>
+            </div>
+            <div class="ability">
+                <div class="ability-mod">
+                    <label for="wisdom-mod">WISDOM</label>
+                    <input type="text" id="wisdom-mod" disabled="disabled">
+                </div>
+                <div class="ability-number" id="wisdom">0</div>
+            </div>
+            <div class="ability">
+                <div class="ability-mod">
+                    <label for="charisma-mod">CHARISMA</label>
+                    <input type="text" id="charisma-mod" disabled="disabled">
+                </div>
+                <div class="ability-number" id="charisma">0</div>
+            </div>
+        </div>
+        <div class="container-small-box">
+            <div class="small-box-content">
+                PROFICIENCY
+                <input type="text" id="proficiency-bonus" aria-label="proficiency-bonus">
+                BONUS
+            </div>
+        </div>
+        <div class="container-small-box">
+            <div class="small-box-content">
+                <div class="small-box-content">
+                    SPEED
+                    <input type="text" id="speed" aria-label="speed">
+                </div>
+            </div>
+        </div>
+        <div class="container-small-rect">
+            <div class="hit-point-container">
+                <div class="heal-damage">
+                    <button type="button" class="heal-btn" id="heal">HEAL</button>
+                    <input type="text" class="damage-btn" id="damage-amount" aria-label="damage">
+                    <button type="button" class="damage-btn" id="damage">DAMAGE</button>
+                </div>
+                <div class="hit-point-content">
+                    <div>
+                        <div class="hit-label">CURRENT / MAX</div>
+                        <span id="current-hit-points">0</span> / <span id="max-hit-points">0</span>
+                    </div>
+                </div>
+                <div class="temp">
+                    TEMP
+                    <input type="text" id="temp-hit-points" aria-label="temporary hit points">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="character-left-bar">
+        <div class="container-medium-box">
+            <div class="container-saving-throws">
+                <div class="save-box">
+                    <div class="save-text">
+                        <div class="prof-radio" id="strength-prof"></div>
+                        STRENGTH
+                    </div>
+                    <div class="save-number" id="strength-save-number">
+                        0
+                    </div>
+                </div>
+                <div class="save-box">
+                    <div class="save-text">
+                        <div class="prof-radio" id="dexterity-prof"></div>
+                        DEXTERITY
+                    </div>
+                    <div class="save-number" id="dexterity-save-number">
+                        0
+                    </div>
+                </div>
+                <div class="save-box">
+                    <div class="save-text">
+                        <div class="prof-radio" id="constitution-prof"></div>
+                        CONSTITUTION
+                    </div>
+                    <div class="save-number" id="constitution-save-number">
+                        0
+                    </div>
+                </div>
+                <div class="save-box">
+                    <div class="save-text">
+                        <div class="prof-radio" id="intelligence-prof"></div>
+                        INTELLIGENCE
+                    </div>
+                    <div class="save-number" id="intelligence-save-number">
+                        0
+                    </div>
+                </div>
+                <div class="save-box">
+                    <div class="save-text">
+                        <div class="prof-radio" id="wisdom-prof"></div>
+                        WISDOM
+                    </div>
+                    <div class="save-number" id="wisdom-save-number">
+                        0
+                    </div>
+                </div>
+                <div class="save-box">
+                    <div class="save-text">
+                        <div class="prof-radio" id="charisma-prof"></div>
+                        CHARISMA
+                    </div>
+                    <div class="save-number" id="charisma-save-number">
+                        0
+                    </div>
+                </div>
+            </div>
+            <br>
+            <h1>SAVING THROWS</h1>
+        </div>
+        <div class="container-medium-box">
+            <div class="container-senses">
+                <div class="sense-box">
+                    <div class="sense-number" id="passive-perception">0</div>
+                    <div class="sense-text">PASSIVE WIS(perception)</div>
+                </div>
+                <div class="sense-box">
+                    <div class="sense-number" id="passive-investigation">0</div>
+                    <div class="sense-text">PASSIVE INT(investigation)</div>
+                </div>
+                <div class="sense-box">
+                    <div class="sense-number" id="passive-insight">0</div>
+                    <div class="sense-text">PASSIVE WIS(insight)</div>
+                </div>
+                <h1>SENSES</h1>
+            </div>
+        </div>
+        <div class="container-medium-rect">
+            <div class="container-prof-lang">
+                <div class="container-prof-content">
+                    <h1>ARMOR</h1>
+                    <div class="prof-content" id="prof-armor">
+
+                    </div>
+                    <hr>
+                </div>
+                <div class="container-prof-content">
+                    <h1>WEAPONS</h1>
+                    <div class="prof-content" id="prof-weapons">
+
+                    </div>
+                    <hr>
+                </div>
+                <div class="container-prof-content">
+                    <h1>TOOLS</h1>
+                    <div class="prof-content" id="prof-tools">
+
+                    </div>
+                    <hr>
+                </div>
+                <div class="container-prof-content">
+                    <h1>LANGUAGES</h1>
+                    <div class="prof-content" id="prof-languages">
+
+                    </div>
+                </div>
+                <h1>PROFICIENCIES/ LANGUAGES</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="character-middle-bar">
+        <div class="container-large-rect">
+            <div class="container-skills">
+                <div class="skills-box">
+                    <div class="prof-radio" id="acrobatics-prof"></div>
+                    <div class="skill-ability">DEX</div>
+                    <div class="skill-name">ACROBATICS</div>
+                    <div class="skill-bonus">
+                        <input type="text" id="acrobatics-bonus" aria-label="acrobatics-bonus" disabled="disabled">
+                    </div>
+                </div>
+                <div class="skills-box">
+                    <div class="prof-radio" id="animal-handling-prof"></div>
+                    <div class="skill-ability">WIS</div>
+                    <div class="skill-name">ANIMAL HANDLING</div>
+                    <div class="skill-bonus">
+                        <input type="text" id="animal-handling-bonus" aria-label="animal-handling-bonus" disabled="disabled">
+                    </div>
+                </div>
+                <div class="skills-box">
+                    <div class="prof-radio" id="arcana-prof"></div>
+                    <div class="skill-ability">INT</div>
+                    <div class="skill-name">ARCANA</div>
+                    <div class="skill-bonus">
+                        <input type="text" id="arcana-bonus" aria-label="arcana-bonus" disabled="disabled">
+                    </div>
+                </div>
+                <div class="skills-box">
+                    <div class="prof-radio" id="athletics-prof"></div>
+                    <div class="skill-ability">STR</div>
+                    <div class="skill-name">ATHLETICS</div>
+                    <div class="skill-bonus">
+                        <input type="text" id="athletics-bonus" aria-label="athletics-bonus" disabled="disabled">
+                    </div>
+                </div>
+                <div class="skills-box">
+                    <div class="prof-radio" id="deception-prof"></div>
+                    <div class="skill-ability">CHA</div>
+                    <div class="skill-name">DECEPTION</div>
+                    <div class="skill-bonus">
+                        <input type="text" id="deception-bonus" aria-label="deception-bonus" disabled="disabled">
+                    </div>
+                </div>
+                <div class="skills-box">
+                    <div class="prof-radio" id="history-prof"></div>
+                    <div class="skill-ability">INT</div>
+                    <div class="skill-name">HISTORY</div>
+                    <div class="skill-bonus">
+                        <input type="text" id="history-bonus" aria-label="history-bonus" disabled="disabled">
+                    </div>
+                </div>
+                <div class="skills-box">
+                    <div class="prof-radio" id="intimidation-prof"></div>
+                    <div class="skill-ability">CHA</div>
+                    <div class="skill-name">INTIMIDATION</div>
+                    <div class="skill-bonus">
+                        <input type="text" id="intimidation-bonus" aria-label="intimidation-bonus" disabled="disabled">
+                    </div>
+                </div>
+                <div class="skills-box">
+                    <div class="prof-radio" id="investigation-prof"></div>
+                    <div class="skill-ability">INT</div>
+                    <div class="skill-name">INVESTIGATION</div>
+                    <div class="skill-bonus">
+                        <input type="text" id="investigation-bonus" aria-label="investigation-bonus" disabled="disabled">
+                    </div>
+                </div>
+                <div class="skills-box">
+                    <div class="prof-radio" id="medicine-prof"></div>
+                    <div class="skill-ability">WIS</div>
+                    <div class="skill-name">WISDOM</div>
+                    <div class="skill-bonus">
+                        <input type="text" id="medicine-bonus" aria-label="medicine-bonus" disabled="disabled">
+                    </div>
+                </div>
+                <div class="skills-box">
+                    <div class="prof-radio" id="nature-prof"></div>
+                    <div class="skill-ability">INT</div>
+                    <div class="skill-name">NATURE</div>
+                    <div class="skill-bonus">
+                        <input type="text" id="nature-bonus" aria-label="nature-bonus" disabled="disabled">
+                    </div>
+                </div>
+                <div class="skills-box">
+                    <div class="prof-radio" id="perception-prof"></div>
+                    <div class="skill-ability">WIS</div>
+                    <div class="skill-name">PERCEPTION</div>
+                    <div class="skill-bonus">
+                        <input type="text" id="perception-bonus" aria-label="perception-bonus" disabled="disabled">
+                    </div>
+                </div>
+                <div class="skills-box">
+                    <div class="prof-radio" id="performance-prof"></div>
+                    <div class="skill-ability">CHA</div>
+                    <div class="skill-name">PERFORMANCE</div>
+                    <div class="skill-bonus">
+                        <input type="text" id="performance-bonus" aria-label="performance-bonus" disabled="disabled">
+                    </div>
+                </div>
+                <div class="skills-box">
+                    <div class="prof-radio" id="persuasion-prof"></div>
+                    <div class="skill-ability">CHA</div>
+                    <div class="skill-name">PERSUASION</div>
+                    <div class="skill-bonus">
+                        <input type="text" id="persuasion-bonus" aria-label="persuasion-bonus" disabled="disabled">
+                    </div>
+                </div>
+                <div class="skills-box">
+                    <div class="prof-radio" id="religion-prof"></div>
+                    <div class="skill-ability">INT</div>
+                    <div class="skill-name">RELIGION</div>
+                    <div class="skill-bonus">
+                        <input type="text" id="religion-bonus" aria-label="religion-bonus" disabled="disabled">
+                    </div>
+                </div>
+                <div class="skills-box">
+                    <div class="prof-radio" id="slight-of-hands-prof"></div>
+                    <div class="skill-ability">DEX</div>
+                    <div class="skill-name">SLIGHT-OF-HAND</div>
+                    <div class="skill-bonus">
+                        <input type="text" id="slight-of-hands-bonus" aria-label="slight-of-hands-bonus" disabled="disabled">
+                    </div>
+                </div>
+                <div class="skills-box">
+                    <div class="prof-radio" id="stealth-prof"></div>
+                    <div class="skill-ability">DEX</div>
+                    <div class="skill-name">STEALTH</div>
+                    <div class="skill-bonus">
+                        <input type="text" id="stealth-bonus" aria-label="stealth-bonus" disabled="disabled">
+                    </div>
+                </div>
+                <div class="skills-box">
+                    <div class="prof-radio" id="survival-prof"></div>
+                    <div class="skill-ability">WIS</div>
+                    <div class="skill-name">SURVIVAL</div>
+                    <div class="skill-bonus">
+                        <input type="text" id="survival-bonus" aria-label="survival-bonus" disabled="disabled">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="character-right-bar">
+        <div class="right-bar-top">
+            <div class="container-small-circle">
+                <div class="initiative">
+                    INITIATIVE
+                    <input type="text" id="initiative" aria-label="initiative" disabled="disabled">
+                </div>
+            </div>
+            <div class="container-small-circle">
+                <div class="armor-class">
+                    ARMOR
+                    <input type="text" id="armor-class" aria-label="initiative" disabled="disabled">
+                    CLASS
+                </div>
+            </div>
+            <div class="container-small-rect">
+                <div class="conditions">
+                    <h1>CONDITIONS</h1>
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <div class="right-bar-bottom">
+            <div class="container-bottom-box">
+                <div class="bottom-nav-bar">
+                    <ul>
+                        <li class="btm-frm-btn" id="action-btn">ACTIONS</li>
+                        <li class="btm-frm-btn" id="spells-btn">SPELLS</li>
+                        <li class="btm-frm-btn" id="inventory-btn">INVENTORY</li>
+                        <li class="btm-frm-btn" id="features-btn">FEATURES</li>
+                        <li class="btm-frm-btn" id="description-btn">DESCRIPTION</li>
+                        <li class="btm-frm-btn" id="notes-btn">NOTES</li>
+                    </ul>
+                </div>
+
+                <div class="bottom-content action">
+                        <div class="attack-label">
+                            <div>ATTACK</div>
+                            <div>RANGE</div>
+                            <div>HIT / DC</div>
+                            <div>DAMAGE</div>
+                            <div>NOTES</div>
+                        </div>
+                        <div class="attack-form">
+                            <div class="weapon-name" id="weapon-name">Crossbow, heavy</div>
+                            <div class="weapon-range" id="weapon-range">20/60</div>
+                            <div class="hit-dc"><input type="text" id="weapon-hit-dc" aria-label="hit / dc"></div>
+                            <div class="damage"><input type="text" id="weapon-damage" aria-label="hit / dc"></div>
+                            <div class="notes" id="weapon-notes">Finesse, Light, Thrown(range 20/60)</div>
+                        </div>
+                </div>
+
+                <div class="bottom-content spells">
+                        <textarea  aria-label="spells"></textarea>
+                </div>
+
+                <div class="bottom-content inventory">
+                    <textarea  aria-label="spells"></textarea>
+                </div>
+
+                <div class="bottom-content features">
+                    <textarea  aria-label="spells"></textarea>
+                </div>
+
+                <div class="bottom-content description">
+                    <textarea  aria-label="spells"></textarea>
+                </div>
+
+                <div class="bottom-content notes">
+                    <textarea  aria-label="spells"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="scripts/character_sheet.js"></script>
+<script src="scripts/view_all.js"></script>
+<script>show_page_check();</script>
 </body>
 </html>

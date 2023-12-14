@@ -1,0 +1,610 @@
+.character-sheet
+{
+    display: none;
+    grid-template-areas:
+            "head head head"
+            "ability ability ability"
+            "lefts middles rights";
+}
+
+.character-header
+{
+    width: 100%;
+    height: 10rem;
+    background-color: var(--clr-greys-300);
+    grid-area: head;
+}
+
+.character-top-bar
+{
+    display: grid;
+    width: 100%;
+    background-color: var(--clr-greys-300);
+    height: 10rem;
+    grid-template-columns: 35rem 8rem  8rem 22rem;
+    place-content: center;
+    place-items: center;
+    gap: 1rem;
+    grid-area: ability;
+}
+
+.container-abilities
+{
+    display: grid;
+    grid-template-columns: repeat(6, 5rem);
+    place-content: center;
+    place-items: center;
+    gap: 1rem;
+    width: 30rem;
+}
+
+.ability
+{
+
+    width: 5.5rem;
+    height: 6rem;
+    background-color: var(--clr-greys-100);
+
+}
+
+.ability-mod
+{
+    display: grid;
+    text-align: center;
+    font-family: var(--ff-primary);
+    font-size: var(--fs-300);
+    font-weight: var(--fw-semi-bold);
+}
+
+.ability-mod input[type='text']
+{
+    margin-top: .5rem;
+    place-self: center;
+    width: 3rem;
+    height: 2.5rem;
+    font-size: var(--fs-500);
+    text-align: center;
+}
+
+.ability-mod label
+{
+    display: block;
+}
+
+.ability-number
+{
+    display: grid;
+    place-content: center;
+    place-items: center;
+    position: absolute;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    margin-left: 1.3rem;
+    transform: translateY(.5rem);
+    background-color: var(--clr-greys-100);
+    z-index: 1;
+    text-align: center;
+    border:3px solid var(--clr-greys-300);
+    font-family: var(--ff-primary);
+    font-size: var(--fs-500);
+}
+
+
+.container-small-box
+{
+    width:6rem;
+    height: 6rem;
+    background-color: var(--clr-greys-100);
+}
+
+.small-box-content
+{
+    display: grid;
+    place-items: center;
+    place-content: center;
+    place-self: center;
+    text-align: center;
+    font-family: var(--ff-primary);
+    font-size: var(--fs-300);
+    font-weight: var(--fw-semi-bold);
+}
+
+.small-box-content input
+{
+    margin-top: .5rem;
+    place-self: center;
+    width: 3rem;
+    height: 2.5rem;
+    font-size: var(--fs-500);
+    text-align: center;
+    margin-bottom: .8rem;
+}
+
+.container-small-rect
+{
+    width: 20rem;
+    height: 6rem;
+    background-color: var(--clr-greys-100);
+}
+
+.hit-point-container
+{
+    display: grid;
+    grid-template-columns: 5rem 10.5rem 5rem;
+}
+
+.heal-damage
+{
+    display: grid;
+    grid-template-rows: auto;
+    gap: 5px;
+    place-items: center;
+    place-content: center;
+    margin: .5rem;
+}
+
+.heal-damage button
+{
+    width: 4rem;
+    font-family: var(--ff-primary);
+    font-size: var(--fs-300);
+}
+
+.heal-damage input[type="text"]
+{
+    width:4rem;
+    text-align: center;
+    font-family: var(--ff-primary);
+    font-size: var(--fs-400);
+}
+
+.hit-point-content
+{
+    display: grid;
+    place-items: center;
+    place-content: center;
+    font-family: var(--ff-primary);
+    font-size: var(--fs-700);
+}
+
+.temp
+{
+    display: grid;
+    place-content: center;
+    place-items: center;
+    font-family: var(--ff-primary);
+    font-size: var(--fs-300);
+    font-weight: var(--fw-semi-bold);
+}
+
+.temp input[type="text"]
+{
+    width: 3rem;
+    height: 2.5rem;
+    margin-top: 1rem;
+    font-size: var(--fs-500);
+    text-align: center;
+}
+
+.hit-label
+{
+    font-family: var(--ff-primary);
+    font-size: var(--fs-300);
+    font-weight: var(--fw-semi-bold);
+}
+
+.character-left-bar
+{
+    display: grid;
+    gap: 5px;
+    margin:1rem;
+    grid-area: lefts;
+}
+
+.container-medium-box
+{
+    width: 30rem;
+    height: 17rem;
+    display: grid;
+    place-content: center;
+    place-items: center;
+    background-color: var(--clr-greys-300);
+
+
+}
+
+.container-medium-box h1
+{
+
+    font-family: var(--ff-primary);
+    font-size: var(--fs-400);
+    font-weight: var(--fw-semi-bold);
+}
+
+.container-saving-throws
+{
+    display: grid;
+    place-content: center;
+    place-items: center;
+    grid-template-columns: 9rem 9rem;
+    grid-template-rows: 2rem 2rem 2rem;
+    gap:2rem;
+}
+
+.save-box
+{
+    display: grid;
+    place-items: center;
+    place-content: center;
+    grid-template-columns: 5rem 2rem;
+}
+
+.save-text
+{
+    display: grid;
+    place-items: center;
+    place-content: center;
+    border: 1px solid black;
+    border-right:none;
+    height: 2rem;
+    width: 8rem;
+    font-family: var(--ff-primary);
+    font-size: var(--fs-300);
+    font-weight: var(--fw-semi-bold);
+    background-color: white;
+}
+
+.save-number
+{
+    display: grid;
+    place-items: center;
+    place-content: center;
+    border: 1px solid black;
+    border-radius: 50%;
+    height: 3rem;
+    width: 3rem;
+    position: absolute;
+    transform: translateX(3.25rem);
+    background-color: white;
+}
+
+.container-senses
+{
+    display: grid;
+    place-content: center;
+    place-items: center;
+    grid-template-columns: 18rem;
+}
+
+.sense-box
+{
+    display: grid;
+    place-items: center;
+    place-content: center;
+    grid-template-columns: 2rem 10rem;
+}
+
+.sense-box h1
+{
+    font-family: var(--ff-primary);
+    font-size: var(--fs-400);
+    font-weight: var(--fw-semi-bold);
+}
+
+.sense-number
+{
+    display: grid;
+    place-items: center;
+    place-content: center;
+    border: 1px solid black;
+    border-radius: 50%;
+    height: 3rem;
+    width: 3rem;
+    background-color: white;
+    transform: translateX(-3rem);
+    z-index: 2;
+}
+
+.sense-text
+{
+    display: grid;
+    place-items: center;
+    place-content: center;
+    border: 1px solid black;
+    border-left:none;
+    height: 2rem;
+    width: 15rem;
+    font-family: var(--ff-primary);
+    font-size: var(--fs-300);
+    font-weight: var(--fw-semi-bold);
+    background-color: white;
+    position: absolute;
+}
+
+.container-medium-rect
+{
+    width: 30rem;
+    height: 17rem;
+    display: grid;
+    place-content: center;
+    place-items: center;
+    background-color: var(--clr-greys-300);
+}
+
+.container-prof-lang
+{
+    display: grid;
+    width: 30rem;
+    place-items: center;
+    place-content: center;
+}
+
+.container-prof-content
+{
+    width: 30rem;
+}
+
+.container-prof-lang h1
+{
+    font-family: var(--ff-primary);
+    font-size: var(--fs-400);
+    font-weight: var(--fw-semi-bold);
+    text-align: center;
+    padding-top: 5px;
+}
+
+.container-prof-content h1
+{
+    display: block;
+    text-align: left;
+    font-family: var(--ff-primary);
+    font-size: var(--fs-300);
+    font-weight: var(--fw-semi-bold);
+    background-color: var(--clr-greys-100);
+}
+
+.prof-content
+{
+    background-color: var(--clr-greys-100);
+    height:2rem;
+}
+
+.character-middle-bar
+{
+    display: grid;
+    grid-area: middles;
+}
+
+.container-large-rect
+{
+    display: grid;
+    width: 20rem;
+}
+
+.container-skills
+{
+    display: grid;
+    width: 20rem;
+    margin: 1rem;
+    gap: .5rem;
+}
+
+.skills-box
+{
+    display: grid;
+    place-content: center;
+    place-items: center;
+    grid-template-columns: 3rem 3rem 1fr 5rem;
+}
+
+.skills-box:nth-child(even)
+{
+    background-color: var(--clr-greys-200);
+}
+
+.prof-radio
+{
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    border: 1px solid black
+}
+
+.skill-ability
+{
+    font-family: var(--ff-primary);
+    font-size: var(--fs-300);
+    font-weight: var(--fw-semi-bold);
+}
+
+.skill-name
+{
+    font-family: var(--ff-primary);
+    font-size: var(--fs-300);
+    font-weight: var(--fw-semi-bold);
+}
+
+.skill-bonus
+{
+
+}
+
+.skill-bonus input
+{
+    width: 3rem;
+    text-align: center;
+}
+
+.character-right-bar
+{
+    display: grid;
+    place-items: center;
+    place-content: center;
+    gap: 1rem;
+    width: 50rem;
+}
+
+
+
+.right-bar-bottom
+{
+    width: 45rem;
+
+}
+
+.right-bar-top
+{
+    display: grid;
+    grid-template-columns: 10rem 10rem 20rem;
+    place-items: center;
+    place-content: center;
+    margin: 1rem;
+
+}
+
+.container-small-circle
+{
+    height: 8rem;
+    width: 8rem;
+    display: grid;
+    place-items: center;
+    place-content: center;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.initiative
+{
+    display: grid;
+    place-items: center;
+    place-content: center;
+    font-family: var(--ff-primary);
+    font-size: var(--fs-400);
+    font-weight: var(--fw-semi-bold);
+}
+
+.initiative input
+{
+    text-align: center;
+    font-size: var(--fs-500);
+    height: 3rem;
+    width: 3rem;
+}
+
+.armor-class
+{
+    display: grid;
+    place-items: center;
+    place-content: center;
+    font-family: var(--ff-primary);
+    font-size: var(--fs-400);
+    font-weight: var(--fw-semi-bold);
+}
+
+.armor-class input
+{
+    text-align: center;
+    font-size: var(--fs-500);
+    height: 3rem;
+    width: 3rem;
+}
+
+.container-bottom-box
+{
+
+}
+
+.bottom-nav-bar
+{
+    display: grid;
+    place-items: center;
+    place-content: center;
+    background-color: var(--clr-greys-300);
+}
+
+.bottom-nav-bar ul
+{
+
+}
+
+
+.bottom-nav-bar li
+{
+    list-style: none;
+    display: inline;
+    margin-right: 1rem;
+    font-family: var(--ff-primary);
+    font-size: var(--fs-400);
+    font-weight: var(--fw-semi-bold);
+}
+
+.bottom-nav-bar li:hover
+{
+    background-color: #80B918;
+}
+
+
+.bottom-content
+{
+    display: none;
+    height: 40rem;
+    background-color: var(--clr-greys-300);
+}
+
+.bottom-content textarea
+{
+    margin: 5rem;
+    resize: none;
+    overflow: auto;
+}
+
+.bottom-active
+{
+    display: grid;
+    grid-template-rows: 2rem 1fr;
+}
+
+.attack-label
+{
+    display: grid;
+    grid-template-columns: 8rem 4rem 5rem 5rem 1fr;
+    height: 1rem;
+    gap:5px;
+    margin: 1rem;
+}
+
+.action
+{
+    display: grid;'
+    font-family: var(--ff-primary);
+    font-size: var(--fs-400);
+    font-weight: var(--fw-semi-bold);
+}
+
+
+
+.attack-form
+{
+    display: grid;
+    grid-template-columns: 8rem 4rem 5rem 5rem 1fr;
+    height: 30rem;
+    place-content: start;
+    font-family: var(--ff-primary);
+    font-size: var(--fs-300);
+    font-weight: var(--fw-semi-bold);
+    gap:5px;
+    margin: 1rem;
+    background-color: var(--clr-greys-200);
+    overflow: auto;
+}
+.attack-form hr
+{
+    width: 39rem;
+    text-align: center;
+}
+
+.attack-form input
+{
+    width: 5rem;
+}

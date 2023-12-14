@@ -1,10 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/setup.css">
+    <link rel="stylesheet" href="styles/view-all-sheet.css">
+    <link rel="stylesheet" href="styles/character-sheet.css">
+    <link rel="stylesheet" href="styles/create-sheet.css">
+    <title>MANYHATS VIEW ALL CHARACTERS</title>
 </head>
+
+<script src="scripts/view_all.js"></script>
+
+<script> show_page_check(); get_my_characters() </script>
 <body>
-$END$
+<header>
+    <div>
+        <img src="images/manyhats_scalable.svg" alt="manyhats logo">
+    </div>
+    <div class="header-text">
+        - DELETE A CHARACTER -
+    </div>
+</header>
+<div class="nav-bar">
+    <ul>
+        <li><a href="manyhats-view-all.html">VIEW ALL</a></li>
+        <li><a href="manyhats-create.html">CREATE</a></li>
+        <li><a href="manyhats-delete.html">DELETE</a></li>
+        <li id="admin-link" style="visibility: hidden"><a href="manyhats-admin.html">ADMIN</a></li>
+        <li  style="float: right"><a href="manyhats-home.html">SIGN OUT</a></li>
+    </ul>
+</div>
+<div class="view-content" id="veiw-all">
+
+    <div class="view-all-content" id="place-content"></div>
+
+</div>
+
 </body>
+<script>add_hyperlink(); fill_delete()</script>
 </html>

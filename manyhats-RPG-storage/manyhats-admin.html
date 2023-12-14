@@ -1,10 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/setup.css">
+    <link rel="stylesheet" href="styles/view-all-sheet.css">
+    <link rel="stylesheet" href="styles/character-sheet.css">
+    <link rel="stylesheet" href="styles/create-sheet.css">
+    <title>MANYHATS VIEW ALL CHARACTERS</title>
 </head>
+
+<script src="scripts/view_all.js"></script>
+
+<script> show_page_check(); </script>
 <body>
-$END$
+<header>
+    <div>
+        <img src="images/manyhats_scalable.svg" alt="manyhats logo">
+    </div>
+    <div class="header-text">
+        - ADMIN PAGE -
+    </div>
+</header>
+<div class="nav-bar">
+    <ul id="nav-ul">
+        <li><a href="manyhats-view-all.html">VIEW ALL</a></li>
+        <li><a href="manyhats-create.html">CREATE</a></li>
+        <li><a href="manyhats-delete.html">DELETE</a></li>
+        <li id="admin-link" style="visibility: hidden"><a href="manyhats-admin.html">ADMIN</a></li>
+        <li  style="float: right"><a href="manyhats-home.html"  onclick="remove_user()">SIGN OUT</a></li>
+    </ul>
+</div>
+<div class="container-background">
+    <div class="feature-content">
+        <div class="race-name">
+            ADD WEAPON
+        </div>
+        <div>
+            <div class="feature-btn" id="add-weapon">+</div>
+        </div>
+    </div>
+    <div class="show-features" id="add-weapon-div">
+        <label for="weapon-name">NAME</label>
+        <input type="text" id="weapon-name">
+
+        <label for="weapon-cost">COST</label>
+        <input type="text" id="weapon-cost">
+
+        <label for="weapon-damage">DAMAGE</label>
+        <input type="text" id="weapon-damage">
+
+        <label for="weapon-weight">WEIGHT</label>
+        <input type="text" id="weapon-weight">
+
+        <label for="weapon-properties">PROPERTIES</label>
+        <input type="text" id="weapon-properties">
+        <br>
+        <button type="button" id="add-weapon-button" onclick="add_weapon()">ADD WEAPON</button>
+    </div>
+    <div class="feature-content">
+        <div class="race-name">
+            ADD FEATURE
+        </div>
+        <div>
+            <div class="feature-btn" id="add-feature">+</div>
+        </div>
+    </div>
+    <div class="show-features" id="add-feature-div">
+        <label for="feature-name">NAME</label>
+        <input type="text" id="feature-name">
+
+        <label for="feature-description" style="width: 80%;">DESCRIPTION</label>
+        <textarea  id="feature-description"></textarea>
+        <br>
+        <button type="button" id="add-feature-button" onclick="add_feature()">ADD FEATURE</button>
+    </div>
+
+    <div class="view-content" id="veiw-every">
+
+        <div class="view-all-content" id="place-content"></div>
+
+    </div>
+
+</div>
+<div class="footer">
+MANYHATS &copy; 2023
+</div>
+<script>
+    add_hyperlink();
+    setup_listeners();
+    get_all_characters();
+</script>
 </body>
 </html>

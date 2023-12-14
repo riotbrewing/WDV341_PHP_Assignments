@@ -1,10 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/setup.css">
+    <link rel="stylesheet" href="styles/homepage.css">
+    <title>MANYHATS HOMEPAGE</title>
+
+    <style>
+        .footer
+        {
+            display: grid;
+            place-content: center;
+            background-color: black;
+            bottom: 0;
+            height: 5rem;
+            width: 100%;
+            overflow: hidden;
+            color: white;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="home-content">
+    <div class="home-header">
+        <img src="images/manyhats.png" alt="Manyhats logo">
+        VIRTUAL TABLE TOP <br> - MADE EASY -
+    </div>
+    <div class="login-form">
+        <div><span id="login-failure"></span></div>
+
+        <input type="text" id="username-input" name="username-input" aria-label="username" placeholder="username">
+        <input type="password" id="password-input" name="password-input" aria-label="username" placeholder="password">
+        <div class="container-form-btn">
+            <button id="login">LOGIN</button>
+            <button id="signup" onclick="openForm()">SIGN-UP</button>
+        </div>
+    </div>
+    <div class="form-popup" id="myForm">
+        <form class="form-container">
+            <h1>Login</h1>
+
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" id="email" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+
+            <button type="button" class="btn" onclick="send_email()">SIGN UP</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">CANCEL</button>
+        </form>
+    </div>
+</div>
+<div class="footer">
+    MANYHATS &copy; 2023
+</div>
+<script src="scripts/home_page.js"></script>
 </body>
 </html>
