@@ -173,6 +173,7 @@ li a:hover, .dropdown:hover .drop-link {
     place-content: center;
     height: 55px;
     width: 55px;
+    top: 30%;
     background-color: #AACC00;
     font-size: var(--fs-900);
     font-weight: var(--fw-bold);
@@ -189,6 +190,7 @@ li a:hover, .dropdown:hover .drop-link {
     place-content: center;
     height: 55px;
     width: 55px;
+    top: 30%;
     background-color: #AACC00;
     font-size: var(--fs-900);
     font-weight: var(--fw-bold);
@@ -526,4 +528,32 @@ li a:hover, .dropdown:hover .drop-link {
     color:white;
 }
 
+.abilities-container
+{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    place-items: center;
+    place-content: center;
+    margin: auto;
+    gap:10px;
+}
 
+.ability-select-container
+{
+    display: grid;
+    place-items: center;
+    place-content: center;
+    background-color: grey;
+    width: 120px;
+
+}
+.ability-select-container label
+{
+    display: block;
+}
+
+.ability-select-container select
+{
+    height: 2rem;
+    width: 5rem;
+}

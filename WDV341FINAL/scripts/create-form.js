@@ -896,10 +896,199 @@ function fill_class_modal(class_input, class_features)
 /*-----------------------------------------ABILITIES----------------------------------------------*/
 
 //FUNCTION TO SET UP ABILITY MODAL
-function fill_ability_modal()
+
+let strength_list = document.querySelector("#ability-select-strength");
+let dexterity_list = document.querySelector("#ability-select-dexterity");
+let constitution_list = document.querySelector("#ability-select-constitution");
+let intelligence_list = document.querySelector("#ability-select-intelligence");
+let wisdom_list = document.querySelector("#ability-select-wisdom");
+let charisma_list = document.querySelector("#ability-select-charisma");
+
+let select_list = [strength_list, dexterity_list, constitution_list, intelligence_list, wisdom_list, charisma_list];
+
+let strength_index = 0;
+let dexterity_index = 0;
+let constitution_index = 0;
+let intelligence_index = 0;
+let wisdom_index = 0;
+let charisma_index = 0;
+
+let strength_total = document.getElementById('strength-total')
+let dexterity_total = document.getElementById('dexterity-total')
+let constitution_total = document.getElementById('constitution-total')
+let intelligence_total = document.getElementById('intelligence-total')
+let wisdom_total = document.getElementById('wisdom-total')
+let charisma_total = document.getElementById('charisma-total')
+
+//ADD EVENT LISTENERS TO EACH SELECT
+select_list.forEach((item) => item.addEventListener('change', search_and_update));
+
+//UPDATE CONTENTS OF THE SELECTION BASED ON USER CHOICE
+function search_and_update()
 {
-    let select_options = ['15', '14', '13', '12' , '10', '8'];
+    if(this.value > 0) {
+        if (this.id === strength_list.id) {
+            if (strength_index === 0) {
+                strength_index = this.selectedIndex;
+                for (let i = 0; i < select_list.length; i++) {
+                    select_list[i].options[this.selectedIndex].style.display = 'none';
+                }
+            } else {
+                for (let i = 0; i < select_list.length; i++) {
+                    select_list[i].options[this.selectedIndex].style.display = 'none';
+                }
+                for (let i = 0; i < select_list.length; i++) {
+                    select_list[i].options[strength_index].style.display = 'block';
+                }
+                strength_index = this.selectedIndex;
+            }
+        }
+        if (this.id === dexterity_list.id) {
+            if (dexterity_index === 0) {
+                dexterity_index = this.selectedIndex;
+                for (let i = 0; i < select_list.length; i++) {
+                    select_list[i].options[this.selectedIndex].style.display = 'none';
+                }
+            } else {
+                for (let i = 0; i < select_list.length; i++) {
+                    select_list[i].options[this.selectedIndex].style.display = 'none';
+                }
+                for (let i = 0; i < select_list.length; i++) {
+                    select_list[i].options[dexterity_index].style.display = 'block';
+                }
+                dexterity_index = this.selectedIndex;
+            }
+        }
+        if (this.id === constitution_list.id) {
+            if (constitution_index === 0) {
+                constitution_index = this.selectedIndex;
+                for (let i = 0; i < select_list.length; i++) {
+                    select_list[i].options[this.selectedIndex].style.display = 'none';
+                }
+            } else {
+                for (let i = 0; i < select_list.length; i++) {
+                    select_list[i].options[this.selectedIndex].style.display = 'none';
+                }
+                for (let i = 0; i < select_list.length; i++) {
+                    select_list[i].options[constitution_index].style.display = 'block';
+                }
+                constitution_index = this.selectedIndex;
+            }
+        }
+        if (this.id === intelligence_list.id) {
+            if (intelligence_index === 0) {
+                intelligence_index = this.selectedIndex;
+                for (let i = 0; i < select_list.length; i++) {
+                    select_list[i].options[this.selectedIndex].style.display = 'none';
+                }
+            } else {
+                for (let i = 0; i < select_list.length; i++) {
+                    select_list[i].options[this.selectedIndex].style.display = 'none';
+                }
+                for (let i = 0; i < select_list.length; i++) {
+                    select_list[i].options[intelligence_index].style.display = 'block';
+                }
+                intelligence_index = this.selectedIndex;
+            }
+        }
+        if (this.id === wisdom_list.id) {
+            if (wisdom_index === 0) {
+                wisdom_index = this.selectedIndex;
+                for (let i = 0; i < select_list.length; i++) {
+                    select_list[i].options[this.selectedIndex].style.display = 'none';
+                }
+            } else {
+                for (let i = 0; i < select_list.length; i++) {
+                    select_list[i].options[this.selectedIndex].style.display = 'none';
+                }
+                for (let i = 0; i < select_list.length; i++) {
+                    select_list[i].options[wisdom_index].style.display = 'block';
+                }
+                wisdom_index = this.selectedIndex;
+            }
+        }
+        if (this.id === charisma_list.id) {
+            if (charisma_index === 0) {
+                charisma_index = this.selectedIndex;
+                for (let i = 0; i < select_list.length; i++) {
+                    select_list[i].options[this.selectedIndex].style.display = 'none';
+                }
+            } else {
+                for (let i = 0; i < select_list.length; i++) {
+                    select_list[i].options[this.selectedIndex].style.display = 'none';
+                }
+                for (let i = 0; i < select_list.length; i++) {
+                    select_list[i].options[charisma_index].style.display = 'block';
+                }
+                charisma_index = this.selectedIndex;
+            }
+        }
+    }
+    else
+    {
+        if (this.id === strength_list.id)
+        {
+            for (let i = 0; i < select_list.length; i++)
+            {
+                select_list[i].options[strength_index].style.display = 'block';
+            }
+            strength_index = 0;
+        }
+        if (this.id === dexterity_list.id)
+        {
+            for (let i = 0; i < select_list.length; i++)
+            {
+                select_list[i].options[dexterity_list].style.display = 'block';
+            }
+           dexterity_index = 0;
+        }
+        if (this.id === constitution_list.id)
+        {
+            for (let i = 0; i < select_list.length; i++)
+            {
+                select_list[i].options[constitution_index].style.display = 'block';
+            }
+            constitution_index = 0;
+        }
+        if (this.id === intelligence_list.id)
+        {
+            for (let i = 0; i < select_list.length; i++)
+            {
+                select_list[i].options[intelligence_index].style.display = 'block';
+            }
+            intelligence_index = 0;
+        }
+        if (this.id === wisdom_list.id)
+        {
+            for (let i = 0; i < select_list.length; i++)
+            {
+                select_list[i].options[wisdom_index].style.display = 'block';
+            }
+            wisdom_index = 0;
+        }
+
+        if (this.id === charisma_list.id)
+        {
+            for (let i = 0; i < select_list.length; i++)
+            {
+                select_list[i].options[charisma_index].style.display = 'block';
+            }
+            charisma_index = 0;
+        }
+    }
+    set_totals();
+}//END SEARCH AND UPDATE
+
+function set_totals()
+{
+    strength_total.innerHTML = (parseInt(strength_list.value) + parseInt(db_race_strength)).toString();
+    dexterity_total.innerHTML = (parseInt(dexterity_list.value) + parseInt(db_race_dexterity)).toString();
+    constitution_total.innerHTML = (parseInt(constitution_list.value) + parseInt(db_race_constitution)).toString();
+    intelligence_total.innerHTML = (parseInt(intelligence_list.value) + parseInt(db_race_intelligence)).toString();
+    wisdom_total.innerHTML = (parseInt(wisdom_list.value) + parseInt(db_race_wisdom)).toString();
+    charisma_total.innerHTML = (parseInt(charisma_list.value) + parseInt(db_race_charisma)).toString();
 }
+
 
 /*---------------------------------------END ABILITIES--------------------------------------------*/
 
@@ -913,12 +1102,12 @@ let user_number = 1;
 
 let db_race_name = "";
 let db_sub_race_name = "";
-let db_strength = 0;
-let db_dexterity = 0;
-let db_constitution = 0;
-let db_intelligence = 0;
-let db_wisdom = 0;
-let db_charisma = 0;
+let db_race_strength = 0;
+let db_race_dexterity = 0;
+let db_race_constitution = 0;
+let db_race_intelligence = 0;
+let db_race_wisdom = 0;
+let db_race_charisma = 0;
 let db_features = [];
 
 let db_class_name = "";
@@ -932,21 +1121,35 @@ let db_weapons = "";
 let db_class_features = "";
 
 
+let db_strength = 0;
+let db_dexterity = 0;
+let db_constitution = 0;
+let db_intelligence = 0;
+let db_wisdom = 0;
+let db_charisma = 0;
+let db_strength_mod = 0;
+let db_dexterity_mod = 0;
+let db_constitution_mod = 0;
+let db_intelligence_mod = 0;
+let db_wisdom_mod = 0;
+let db_charisma_mod = 0
+
+
 
 //FUNCTION TO STORE CHARACTER DETAILS
 function set_race_details(race, features)
 {
     console.log(race);
     console.log(features);
-
+    console.log(race[0]['charisma'])
     //RACE
     db_race_name = race[0]['race_name'];
-    db_strength = race[0]['strength'];
-    db_dexterity = race[0]['dexterity'];
-    db_constitution = race[0]['constitution'];
-    db_intelligence = race[0]['intelligence'];
-    db_wisdom = race[0]['wisdom'];
-    db_charisma = race[0]['charisma'];
+    db_race_strength = race[0]['strength'];
+    db_race_dexterity = race[0]['dexterity'];
+    db_race_constitution = race[0]['constitution'];
+    db_race_intelligence = race[0]['intelligence'];
+    db_race_wisdom = race[0]['wisdom'];
+    db_race_charisma = race[0]['charisma'];
     db_features = JSON.stringify(features);
 
 }//END STORE RACE DETAILS
@@ -960,12 +1163,12 @@ function set_race_details_sub(race, sub_race, features)
 
     db_race_name = race[0]['race_name'];
     db_sub_race_name = sub_race[0]['sub_race_name'];
-    db_strength = race[0]['strength'] + sub_race[0]['strength'];
-    db_dexterity = race[0]['dexterity'] + sub_race[0]['dexterity'];
-    db_constitution = race[0]['constitution'] + sub_race[0]['constitution'];
-    db_intelligence = race[0]['intelligence'] + sub_race[0]['intelligence'];
-    db_wisdom = race[0]['wisdom'] + sub_race[0]['wisdom'];
-    db_charisma = race[0]['charisma'] + sub_race[0]['charisma'];
+    db_race_strength = race[0]['strength'] + sub_race[0]['strength'];
+    db_race_dexterity = race[0]['dexterity'] + sub_race[0]['dexterity'];
+    db_race_constitution = race[0]['constitution'] + sub_race[0]['constitution'];
+    db_race_intelligence = race[0]['intelligence'] + sub_race[0]['intelligence'];
+    db_race_wisdom = race[0]['wisdom'] + sub_race[0]['wisdom'];
+    db_race_charisma = race[0]['charisma'] + sub_race[0]['charisma'];
     db_features = JSON.stringify(features);
 
 

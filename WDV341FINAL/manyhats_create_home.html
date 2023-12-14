@@ -104,38 +104,106 @@
         <div class="abilities-container">
             <div class="ability">
                 <div class="ability-select-container" >
-                    <label for="ability-select-strength"></label>
-                    <select class="ability-select" id="ability-select-strength"></select>
+                    <label for="ability-select-strength">STRENGTH</label>
+                    <select class="ability-select" id="ability-select-strength">
+                        <option value="0">--</option>
+                        <option value="15">15</option>
+                        <option value="14">14</option>
+                        <option value="13">13</option>
+                        <option value="12">12</option>
+                        <option value="10">10</option>
+                        <option value="8">8</option>
+                    </select>
+                    <div class="ability-text">
+                        TOTAL = <span id="strength-total"></span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="ability">
+                <div class="ability-select-container" >
+                    <label for="ability-select-dexterity">DEXTERITY</label>
+                    <select class="ability-select" id="ability-select-dexterity">
+                        <option value="0">--</option>
+                        <option value="15">15</option>
+                        <option value="14">14</option>
+                        <option value="13">13</option>
+                        <option value="12">12</option>
+                        <option value="10">10</option>
+                        <option value="8">8</option>
+                    </select>
+                    <div class="ability-text">
+                        TOTAL = <span id="dexterity-total"></span>
+                    </div>
                 </div>
             </div>
             <div class="ability">
                 <div class="ability-select-container" >
-                    <label for="ability-select-dexterity"></label>
-                    <select class="ability-select" id="ability-select-dexterity"></select>
+                    <label for="ability-select-constitution">CONSTITUTION</label>
+                    <select class="ability-select" id="ability-select-constitution">
+                        <option value="0">--</option>
+                        <option value="15">15</option>
+                        <option value="14">14</option>
+                        <option value="13">13</option>
+                        <option value="12">12</option>
+                        <option value="10">10</option>
+                        <option value="8">8</option>
+                    </select>
+                    <div class="ability-text">
+                        TOTAL = <span id="constitution-total"></span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="ability">
+                <div class="ability-select-container" >
+                    <label for="ability-select-intelligence">INTELLIGENCE</label>
+                    <select class="ability-select" id="ability-select-intelligence">
+                        <option value="0">--</option>
+                        <option value="15">15</option>
+                        <option value="14">14</option>
+                        <option value="13">13</option>
+                        <option value="12">12</option>
+                        <option value="10">10</option>
+                        <option value="8">8</option>
+                    </select>
+                    <div class="ability-text">
+                        TOTAL = <span id="intelligence-total"></span>
+                    </div>
                 </div>
             </div>
             <div class="ability">
                 <div class="ability-select-container" >
-                    <label for="ability-select-constitution"></label>
-                    <select class="ability-select" id="ability-select-constitution"></select>
+                    <label for="ability-select-wisdom">WISDOM</label>
+                    <select class="ability-select" id="ability-select-wisdom">
+                        <option value="0">--</option>
+                        <option value="15">15</option>
+                        <option value="14">14</option>
+                        <option value="13">13</option>
+                        <option value="12">12</option>
+                        <option value="10">10</option>
+                        <option value="8">8</option>
+                    </select>
+                    <div class="ability-text">
+                        TOTAL = <span id="wisdom-total"></span>
+                    </div>
                 </div>
             </div>
             <div class="ability">
                 <div class="ability-select-container" >
-                    <label for="ability-select-intelligence"></label>
-                    <select class="ability-select" id="ability-select-intelligence"></select>
-                </div>
-            </div>
-            <div class="ability">
-                <div class="ability-select-container" >
-                    <label for="ability-select-wisdom"></label>
-                    <select class="ability-select" id="ability-select-wisdom"></select>
-                </div>
-            </div>
-            <div class="ability">
-                <div class="ability-select-container" >
-                    <label for="ability-select-charisma"></label>
-                    <select class="ability-select" id="ability-select-charisma"></select>
+                    <label for="ability-select-charisma">CHARISMA</label>
+                    <select class="ability-select" id="ability-select-charisma">
+                        <option value="0">--</option>
+                        <option value="15">15</option>
+                        <option value="14">14</option>
+                        <option value="13">13</option>
+                        <option value="12">12</option>
+                        <option value="10">10</option>
+                        <option value="8">8</option>
+                    </select>
+                    <div class="ability-text">
+                        TOTAL = <span id="charisma-total"></span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -179,8 +247,10 @@
         <button class="btn-previous-form" id="submit-previous"> > </button>
     </div>
     <div class="character-container">
-        <div><h1>submit</h1></div>
-        <div><h1>submit</h1></div>
+        <div>
+            <button type="button" id="submit-character"> ADD CHARACTER</button>
+        </div>
+
     </div>
     <div>
         <button class="btn-next-form" id="submit-next" disabled="disabled"> > </button>
